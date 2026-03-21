@@ -16,18 +16,8 @@ out_debug.txt
 *.png
 *.jpg
 
-# Folders to exclude by default (unless specifically requested)
+# Folders to exclude
 Archive/
 Tools/
 .gemini/
 main.js
-
-# Specific folders to keep
-!/Core/
-!/Data/
-!/Results/
-!/Docs/
-!/README.md
-!/requirements.txt
-!/tmp_generate_html.py
-!/.gitignore

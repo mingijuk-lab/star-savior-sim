@@ -8,12 +8,12 @@
 - **시각화 리더보드**: 계산 결과를 차트와 카드로 시각화하여 한눈에 비교할 수 있는 HTML 보고서를 생성합니다.
 
 ## 프로젝트 구조
-- `Core/`: 핵심 계산 로직 (`calc_dps.py`)
-- `Data/`: 캐릭터 스펙 및 스킬 사이클 정의 마스터 데이터 (`.md`)
+- `Core/`: 핵심 계산 로직
+  - `calc_dps.py` — DPS 시뮬레이션 엔진
+  - `generate_html.py` — 리더보드 HTML 생성
+- `Data/`: 캐릭터 스펙 및 스킬 사이클 마스터 데이터 (`.md`)
 - `Docs/`: 시뮬레이션 규칙 및 가이드라인
 - `Results/`: 시뮬레이션 결과 (`.csv`, `.html`)
-- `Tools/`: 기타 보조 스크립트
-- `tmp_generate_html.py`: 리더보드 생성 스크립트
 
 ## 실행 방법
 1. **시뮬레이션 수행**:
@@ -24,7 +24,7 @@
 
 2. **리더보드 생성**:
    ```bash
-   python tmp_generate_html.py
+   python Core/generate_html.py
    ```
    실행 후 `Results/dps_results.html` 파일이 생성됩니다. 이 파일을 브라우저로 열어 결과를 확인하세요.
 
