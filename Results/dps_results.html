@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Savior DPS Leaderboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            border-color: #3b82f6;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold gradient-text mb-4">Star Savior DPS Leaderboard</h1>
+            <p class="text-slate-400 text-lg">캐릭터별 최적화 장비, 아르카나, 여정 조합 시뮬레이션 결과</p>
+        </header>
+        
+        <!-- Chart Section -->
+        <div class="glass-panel p-6 mb-12 shadow-2xl">
+            <div class="h-[400px]">
+                <canvas id="dpsChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">샤를(바니걸)(실전최적화)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-900/40 text-slate-400 border-slate-800">어쌔신</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">14,704</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">82,513</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">14,687</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">82,421</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">프레이(달속성파티)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-purple-900/40 text-purple-400 border-purple-800">캐스터</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 치피+10%(최대3회) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">11,531</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">87,965</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+24% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택), 치피+12% [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">11,319</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">86,202</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">샤를(바니걸)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-900/40 text-slate-400 border-slate-800">어쌔신</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">11,377</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">66,875</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">11,332</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">66,981</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">샤를(바니걸)(패시브1lv)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-900/40 text-slate-400 border-slate-800">어쌔신</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">10,264</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">61,647</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">10,123</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">61,136</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">클레어(바니걸)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-red-900/40 text-red-400 border-red-800">스트라이커</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+24% / 특수기DMG+5%(최대5회), 치피+12% [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">9,409</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">101,261</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+30% / 특수기DMG+5%(최대5회), 치피+12% [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커D</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">9,374</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">101,587</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">로자리아(공버프)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">8,478</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">85,925</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">8,437</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">86,351</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">프레이</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-purple-900/40 text-purple-400 border-purple-800">캐스터</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 치피+10%(최대3회) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">8,165</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">87,965</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+24% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택), 치피+12% [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">8,015</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">86,202</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">로자리아</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">8,013</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">85,925</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">7,977</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">86,351</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">유미나</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">7,339</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">54,169</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">7,153</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">58,498</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">키라</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-900/40 text-slate-400 border-slate-800">어쌔신</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,976</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">60,523</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,934</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">60,168</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">아세라</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-red-900/40 text-red-400 border-red-800">스트라이커</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+24% / 특수기DMG+5%(최대5회), 치피+12% [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,632</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">42,047</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 속도+8 [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,565</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">40,792</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">레이시</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,358</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">49,202</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,240</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">48,147</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">로자리아(패시브1lv)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,278</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">91,512</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,164</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">88,729</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">에핀델</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-900/40 text-slate-400 border-slate-800">어쌔신</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,208</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">49,445</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">어쌔신</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,167</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">48,949</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">샤를</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-red-900/40 text-red-400 border-red-800">스트라이커</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+14% / 치확+30% / 속도+8 [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,164</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">69,812</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 속도+8 [대상: 일반]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">스트라이커B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">6,157</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">69,733</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">루나</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-purple-900/40 text-purple-400 border-purple-800">캐스터</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+24% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택), 치피+12% [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,579</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">49,675</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+30% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,474</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">48,921</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">리디아</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,445</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">49,502</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,432</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">49,664</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">유미나(패시브1lv)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,443</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">47,835</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,437</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">51,994</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">뮤리엘</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-purple-900/40 text-purple-400 border-purple-800">캐스터</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+30% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,251</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">45,334</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 치피+10%(최대3회) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,251</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">41,875</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">스칼렛(바니걸)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,206</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">40,237</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치피 +40% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">파괴4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,175</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">40,450</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">스마일</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,136</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">54,387</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">5,074</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">54,026</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">릴리</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-purple-900/40 text-purple-400 border-purple-800">캐스터</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+14% / 치확+30% / 턴시작 치피+10%(최대3회) [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">4,832</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">70,187</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+8% / 치확+24% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택), 치피+12% [대상: 캐스터]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">캐스터C</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">4,744</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">69,064</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">리디아(실전최적화)</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-green-900/40 text-green-400 border-green-800">레인저</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">4,793</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">33,273</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="치확 +30% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">통찰4세트</span>
+                                    <span title="공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">레인저B</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">4,773</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">32,580</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+            <div class="glass-panel p-6 card-hover flex flex-col">
+                <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-slate-100">힐데</h2>
+                    <span class="text-xs px-2 py-1 rounded border bg-slate-800 text-slate-300 border-slate-700">디펜더</span>
+                </div>
+                <div class="space-y-4">
+    
+                    <div class="bg-slate-800/80 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-yellow-400 w-8 shrink-0">#1</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="디펜더A" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">디펜더A</span>
+                                    <span title="공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">AX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">0</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">0</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-slate-800/40 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="text-2xl font-black text-slate-400 w-8 shrink-0">#2</div>
+                            <div class="flex-grow min-w-0">
+                                <div class="flex gap-1 overflow-hidden">
+                                    <span title="공격력 +20% / 기본부옵: 공+16.25%, 속도+60" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">공격4세트</span>
+                                    <span title="디펜더A" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">디펜더A</span>
+                                    <span title="치피+10% / 치명타시 다음 타격 DI+25% (연속성)" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">FX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mt-1">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
+                                <div class="text-xl font-bold text-blue-400 leading-none">0</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
+                                <div class="text-sm font-semibold text-purple-400 leading-none">0</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+    
+        </div>
+
+        <!-- Glossary Section -->
+        <div class="glass-panel p-8 mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-slate-100 flex items-center">
+                <span class="w-8 h-8 bg-blue-600 rounded mr-3 flex items-center justify-center text-sm">ⓘ</span>
+                세부 정보 가이드 (아르카나 / 장비 / 여정)
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Arcana -->
+                <div>
+                    <h3 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span> 아르카나 (Arcana)
+                    </h3>
+                    <div class="space-y-3">
+
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">어쌔신</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+14% / 치확+30% / 턴시작 속도+10(최대3회) [대상: 어쌔신]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">스트라이커A</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+14% / 치확+30% / 특수기DMG+5%(최대5회) [대상: 일반]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">스트라이커B</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+14% / 치확+30% / 속도+8 [대상: 일반]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">스트라이커C</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+14% / 치확+24% / 특수기DMG+5%(최대5회), 치피+12% [대상: 일반]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">스트라이커D</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+6% / 치확+30% / 특수기DMG+5%(최대5회), 치피+12% [대상: 일반]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">캐스터A</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+14% / 치확+30% / 턴시작 치피+10%(최대3회) [대상: 캐스터]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">캐스터B</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+8% / 치확+30% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택) [대상: 캐스터]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">캐스터C</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+8% / 치확+24% / 턴시작 치피+10%(3회) + 특수기DMG+5%(5스택), 치피+12% [대상: 캐스터]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">레인저A</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+6% / 치확+24% / 피증+12% / 조건부 치확+5%, 타겟당 공+3% [대상: 레인저]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">레인저B</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+6% / 치확+24% / 특수기DMG+5% / 조건부 치확+5%, 치피+12% [대상: 레인저]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">레인저C</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+6% / 치확+24% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">레인저D</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공+0% / 치확+18% / 피증+12% / 조건부 특수기DMG+5%, 타겟당 공+3%, 조건부 치확+5% [대상: 레인저]</span>
+                        </div>
+    
+                    </div>
+                </div>
+                <!-- Equipment -->
+                <div>
+                    <h3 class="text-emerald-400 font-bold mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 장비 (Equipment)
+                    </h3>
+                    <div class="space-y-3">
+
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">공격4</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공격력 +20% / 기본부옵: 공+16.25%, 속도+60</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">통찰4</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">치확 +30% / 기본부옵: 공+16.25%, 속도+60</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">파괴4</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">치피 +40% / 기본부옵: 공+16.25%, 속도+60</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">속도4</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">속도 +15 / 기본부옵: 공+16.25%, 속도+75</span>
+                        </div>
+    
+                    </div>
+                </div>
+                <!-- Journey -->
+                <div>
+                    <h3 class="text-purple-400 font-bold mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span> 여정 (Journey)
+                    </h3>
+                    <div class="space-y-3">
+
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">AX</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">공격력+8% / 턴시작 공격력+8%(최대5회), 궁극기시 초기화 (폭발력)</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">FX</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">치피+10% / 치명타시 다음 타격 DI+25% (연속성)</span>
+                        </div>
+    
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-300 block mb-1">EX</span>
+                            <span class="text-slate-500 text-xs leading-relaxed">치확+10% / 기본기 치명타시 25%확률 팀원 기본기 (협공)</span>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('dpsChart').getContext('2d');
+        
+        const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient1.addColorStop(0, 'rgba(59, 130, 246, 1)'); 
+        gradient1.addColorStop(1, 'rgba(59, 130, 246, 0.2)');
+        
+        const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient2.addColorStop(0, 'rgba(168, 85, 247, 0.8)'); 
+        gradient2.addColorStop(1, 'rgba(168, 85, 247, 0.1)');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["\uc0e4\ub97c(\ubc14\ub2c8\uac78)(\uc2e4\uc804\ucd5c\uc801\ud654)", "\ud504\ub808\uc774(\ub2ec\uc18d\uc131\ud30c\ud2f0)", "\uc0e4\ub97c(\ubc14\ub2c8\uac78)", "\uc0e4\ub97c(\ubc14\ub2c8\uac78)(\ud328\uc2dc\ube0c1lv)", "\ud074\ub808\uc5b4(\ubc14\ub2c8\uac78)", "\ub85c\uc790\ub9ac\uc544(\uacf5\ubc84\ud504)", "\ud504\ub808\uc774", "\ub85c\uc790\ub9ac\uc544", "\uc720\ubbf8\ub098", "\ud0a4\ub77c", "\uc544\uc138\ub77c", "\ub808\uc774\uc2dc", "\ub85c\uc790\ub9ac\uc544(\ud328\uc2dc\ube0c1lv)", "\uc5d0\ud540\ub378", "\uc0e4\ub97c", "\ub8e8\ub098", "\ub9ac\ub514\uc544", "\uc720\ubbf8\ub098(\ud328\uc2dc\ube0c1lv)", "\ubba4\ub9ac\uc5d8", "\uc2a4\uce7c\ub81b(\ubc14\ub2c8\uac78)", "\uc2a4\ub9c8\uc77c", "\ub9b4\ub9ac", "\ub9ac\ub514\uc544(\uc2e4\uc804\ucd5c\uc801\ud654)", "\ud790\ub370"],
+                datasets: [
+                    {
+                        label: '1위 조합 DPS',
+                        data: [14703.88, 11531.42, 11376.61, 10263.87, 9409.07, 8477.84, 8165.49, 8012.85, 7338.61, 6976.08, 6632.18, 6357.82, 6278.18, 6207.73, 6164.29, 5578.91, 5445.29, 5443.33, 5251.03, 5205.74, 5135.64, 4831.54, 4793.35, 0.0],
+                        backgroundColor: gradient1,
+                        borderColor: '#3b82f6',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.8
+                    },
+                    {
+                        label: '2위 조합 DPS',
+                        data: [14687.36, 11319.13, 11332.35, 10123.07, 9373.78, 8437.32, 8015.17, 7976.75, 7153.12, 6934.25, 6564.6, 6240.31, 6164.34, 6166.82, 6157.37, 5474.2, 5432.15, 5436.77, 5250.59, 5175.34, 5074.33, 4744.15, 4772.97, 0.0],
+                        backgroundColor: gradient2,
+                        borderColor: '#a855f7',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: { 
+                        labels: { 
+                            color: '#e2e8f0',
+                            font: { family: "'Inter', sans-serif", size: 14 }
+                        } 
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#f8fafc',
+                        bodyColor: '#cbd5e1',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(51, 65, 85, 0.5)', drawBorder: false },
+                        ticks: { 
+                            color: '#94a3b8',
+                            font: { family: "'Inter', sans-serif" }
+                        }
+                    },
+                    x: {
+                        grid: { display: false, drawBorder: false },
+                        ticks: { 
+                            color: '#e2e8f0',
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project temporary files
+tmp_*.py
+out.txt
+out2.txt
+out_debug.txt
+*.webp
+*.png
+*.jpg
+
+# Folders to exclude by default (unless specifically requested)
+Archive/
+Tools/
+.gemini/
+main.js
+
+# Specific folders to keep
+!/Core/
+!/Data/
+!/Results/
+!/Docs/
+!/README.md
+!/requirements.txt
+!/tmp_generate_html.py
+!/.gitignore

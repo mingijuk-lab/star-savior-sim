@@ -1,0 +1,296 @@
+{
+  "id": 5,
+  "name": "루나",
+  "rank": "SSR",
+  "attr": "질서",
+  "class": "캐스터",
+  "atk_type": "원소",
+  "inst": {
+    "birth": 45734,
+    "height": 167,
+    "origin": "불명",
+    "team": "보이저 구원단",
+    "cv_ko": "방시우",
+    "cv_jp": "미나토 미야",
+    "desc": "꿈의 대마녀 마기의 수제자이자, 그녀의 '달의 지팡이'를 물려받은 자칭 라비스타 최고의 예언자. 그날 생긴 돈은 그날 카지노에서 모두 써버리는 대책 없는 삶을 살고 있다."
+  },
+  "status": {
+    "atk": 4648,
+    "hp": 22538,
+    "def": 1752,
+    "spd": 93,
+    "crit_rate": 0.14,
+    "crit_dmg": 0.68,
+    "eff_rate": 1,
+    "eff_resist": 0,
+    "acc": 1
+  },
+  "journey_status": {
+    "str": 180,
+    "hp": 20,
+    "end": 20,
+    "focus": 130,
+    "prot": 10
+  },
+  "potentials": [
+    {
+      "level": 3,
+      "value": "공격의 감각"
+    },
+    {
+      "level": 6,
+      "value": "파괴의 감각"
+    },
+    {
+      "level": 10,
+      "value": "통찰의 솜씨"
+    }
+  ],
+  "skills": [
+    {
+      "id": 17,
+      "name": "미래를 보는 소녀",
+      "type": 0,
+      "desc": "루나의 공격력이 15% 증가합니다. 루나가 내 눈에 비친 세계 사용 시 강화 효과 상태이면 치명타 피해가 20% 증가합니다.",
+      "levels": [
+        {
+          "level": 1,
+          "desc": [
+            {
+              "type": 0,
+              "value": 5
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "desc": [
+            {
+              "type": 0,
+              "value": 5
+            },
+            {
+              "type": 8,
+              "value": 10
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "desc": [
+            {
+              "type": 0,
+              "value": 10
+            },
+            {
+              "type": 8,
+              "value": 15
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "desc": [
+            {
+              "type": 0,
+              "value": 15
+            },
+            {
+              "type": 8,
+              "value": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "호신용 마력탄",
+      "type": 1,
+      "atk_type": "원소",
+      "target": "적 전체",
+      "desc": "손가락을 튕겨 만들어 낸 마력 구체를 적들에게 쏘아냅니다. 자실에게 통찰 스택을 1개 부여합니다.",
+      "nova_desc": "타격 시 일시적으로 자신의 강인도 고정 피해가 1 증가합니다.",
+      "levels": [
+        {
+          "level": 1,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "level": 2,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 3,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 4,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 5,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 6,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 7,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 8,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 9,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 10,
+          "type": 1,
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "헤카테의 불씨",
+      "type": 2,
+      "atk_type": "원소",
+      "target": "적 전체",
+      "cooltime": 3,
+      "break": 0,
+      "nova": 1,
+      "desc": "모자에 달의 마력을 담아 적 한가운데로 날려 터뜨립니다. 자신에게 2턴 간 치명타 확률 증가를 발생시킵니다.",
+      "nova_desc": "타격 시 일시적으로 자신의 강인도 고정 피해가 1 증가합니다.",
+      "levels": [
+        {
+          "level": 1,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "level": 2,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 3,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 4,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 5,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 6,
+          "type": 4,
+          "value": 1
+        },
+        {
+          "level": 7,
+          "type": 1,
+          "value": 3
+        },
+        {
+          "level": 8,
+          "type": 1,
+          "value": 3
+        },
+        {
+          "level": 9,
+          "type": 1,
+          "value": 3
+        },
+        {
+          "level": 10,
+          "type": 4,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "내 눈에 비친 세계",
+      "type": 3,
+      "atk_type": "원소",
+      "target": "적 전체",
+      "cooltime": 4,
+      "break": 1,
+      "nova": 1,
+      "desc": "달의 지팡이의 힘을 끌어내어 적들에게 피할 수 없는 운명을 선고합니다. 적 전체에게 75% 확률로 2턴 간 속박을 발생시킵니다.",
+      "nova_desc": "타격 시 일시적으로 자신의 강인도 고정 피해가 1 증가하고 속박의 발생 확률이 100%로 증가합니다.",
+      "levels": [
+        {
+          "level": 1,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "level": 2,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "level": 3,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 4,
+          "type": 26,
+          "value": 10
+        },
+        {
+          "level": 5,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 6,
+          "type": 4,
+          "value": 1
+        },
+        {
+          "level": 7,
+          "type": 1,
+          "value": 2
+        },
+        {
+          "level": 8,
+          "type": 26,
+          "value": 15
+        },
+        {
+          "level": 9,
+          "type": 1,
+          "value": 3
+        },
+        {
+          "level": 10,
+          "type": 1,
+          "value": 5
+        }
+      ]
+    }
+  ]
+}
