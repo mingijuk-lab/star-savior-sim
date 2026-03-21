@@ -320,8 +320,8 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
     return dps, total_dmg, cycle_time, max_hit
 
 def main():
-    specs = extract_json_from_md("d:/Star/Data/캐릭터_스펙_마스터.md")
-    rotations = extract_json_from_md("d:/Star/Data/사이클_로테이션_마스터.md")
+    specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
+    rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
     
     # Some chars might only exist in specs, skip if no rotation
     results = []
@@ -357,7 +357,7 @@ def main():
     # Sort and save
     results.sort(key=lambda x: (x["Character"], -x["DPS"]))
     
-    with open("d:/Star/Results/dps_results.csv", "w", newline="", encoding="utf-8-sig") as f:
+    with open("Results/dps_results.csv", "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=["Character", "Class", "Equip", "Arcana", "Journey", "DPS", "MaxHit"])
         writer.writeheader()
         writer.writerows(results)
