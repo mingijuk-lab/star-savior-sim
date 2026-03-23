@@ -1,3 +1,6 @@
+# Virtual environment
+.venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -9,9 +12,7 @@ Thumbs.db
 
 # Project temporary files
 tmp_*.py
-out.txt
-out2.txt
-out_debug.txt
+out*.txt
 *.webp
 *.png
 *.jpg
@@ -19,5 +20,6 @@ out_debug.txt
 # Folders to exclude
 Archive/
 Tools/
+Results/
 .gemini/
 main.js
