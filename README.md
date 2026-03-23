@@ -9,7 +9,8 @@
 
 ## 프로젝트 구조
 - `Core/`: 핵심 계산 로직
-  - `calc_dps.py` — DPS 시뮬레이션 엔진
+  - `calc_dps.py` — DPS 시뮬레이션 엔진 (모듈화 구조)
+  - `compare_builds.py` — 캐릭터별 빌드 비교 리포트 생성기
   - `generate_html.py` — 리더보드 HTML 생성
 - `Data/`: 캐릭터 스펙 및 스킬 사이클 마스터 데이터 (`.md`)
 - `Docs/`: 시뮬레이션 규칙 및 가이드라인

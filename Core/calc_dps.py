@@ -64,6 +64,103 @@ JOURNEYS = {
     "EX": {"atk_base": 0.00, "cr": 0.10, "cd": 0.00, "type": "EX"},
 }
 
+class Mechanic:
+    def __init__(self, cname, cdata):
+        self.cname = cname
+        self.cdata = cdata
+        self.stacks = {}
+        self.ga_gain = 0.0
+    def hit_pre(self, t, arc): return 0.0, 0.0 # di_bonus, atk_bonus
+    def on_hit(self, t, is_ult, cr_i): pass
+    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits): return 0.0 # ga_reduction
+
+class FreyMechanic(Mechanic):
+    def __init__(self, cname, cdata):
+        super().__init__(cname, cdata)
+        self.stacks = {"hr": 0.0, "cooling": 0}
+    def hit_pre(self, t, arc):
+        di = self.stacks["hr"] * 0.01
+        if "강제협상" in t.get("note", "") and t.get("di", 0.0) < 0.5: di += 1.00
+        return di, 0.0
+    def on_hit(self, t, is_ult, cr_i):
+        is_spec = "특수기" in t.get("note", "") or t.get("omega_elig", False)
+        if t.get("is_basic", False): self.stacks["cooling"] += 1
+        elif is_spec: self.stacks["cooling"] += 3
+        if self.stacks["cooling"] >= 5:
+            self.stacks["hr"] = min(self.stacks["hr"] + 1, 5)
+            self.stacks["cooling"] = 0
+    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
+        ga = 0.0
+        if self.cname == "프레이(달속성파티)":
+            ga += 0.24
+            hr_p = self.cdata.get("패시브", {}).get("hr_확률", 1.0)
+            self.stacks["hr"] = min(self.stacks["hr"] + (3 * hr_p), 5.0)
+        if "강제협상" in t.get("note", ""):
+            ga += 0.30
+            self.stacks["hr"] = 0
+        if "추가턴" in t.get("note", "") and t.get("coeff", 1.0) == 0.0: ga += 1.0
+        if is_ult: self.stacks["hr"] = min(self.stacks["hr"] + 3, 5)
+        return ga
+
+class RosariaMechanic(Mechanic):
+    def __init__(self, cname, cdata):
+        super().__init__(cname, cdata)
+        self.stacks = {"upwa": 0.0, "gukdong": 0}
+    def hit_pre(self, t, arc):
+        is_spec = (not t.get("is_basic", False)) and (not t.get("is_ult", False)) and t.get("coeff", 0) > 0
+        di = 0.0
+        if is_spec:
+            if self.stacks["upwa"] >= 3.0: di = 0.40
+            elif self.stacks["upwa"] >= 2.0: di = 0.20
+            elif self.stacks["upwa"] >= 1.0: di = 0.10
+        return di, 0.0
+    def on_hit(self, t, is_ult, cr_i):
+        if t.get("is_basic", False):
+            self.stacks["upwa"] = min(self.stacks["upwa"] + (self.stacks["gukdong"] * 0.20), 5.0)
+    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
+        is_spec = (not t.get("is_basic", False)) and (not t.get("is_ult", False)) and t.get("coeff", 0) > 0
+        if is_ult:
+            p_s = 1.0 - prob_none_crit
+            growth = p_s * min(total_expected_crit_hits, 3.0)
+            self.stacks["upwa"] = p_s * (self.stacks["upwa"] + growth)
+            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
+        elif is_spec:
+            self.stacks["upwa"] = 0
+            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
+        else:
+            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
+        return 0.0
+
+class LydiaMechanic(Mechanic):
+    def __init__(self, cname, cdata):
+        super().__init__(cname, cdata)
+        self.lydia_stack = 0
+    def hit_pre(self, t, arc):
+        return 0.0, self.lydia_stack * 0.06
+    def on_hit(self, t, is_ult, cr_i):
+        if t.get("is_basic", False): self.lydia_stack = min(self.lydia_stack + 1, 5)
+    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
+        return 0.30 if is_ult else 0.0
+
+class YuminaMechanic(Mechanic):
+    def __init__(self, cname, cdata):
+        super().__init__(cname, cdata)
+        self.yumina_stack = 0
+    def hit_pre(self, t, arc):
+        return 0.0, min(self.yumina_stack * 0.04, 0.20)
+    def on_hit(self, t, is_ult, cr_i):
+        self.yumina_stack = min(self.yumina_stack + 1, 5)
+    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
+        gain = self.cdata.get("패시브", {}).get("치명타_행게_증가", 0.0)
+        return (1.0 - prob_none_crit) * gain
+
+def get_mechanic(cname, cdata):
+    if cname.startswith("프레이"): return FreyMechanic(cname, cdata)
+    if cname.startswith("로자리아"): return RosariaMechanic(cname, cdata)
+    if cname == "리디아": return LydiaMechanic(cname, cdata)
+    if cname == "유미나": return YuminaMechanic(cname, cdata)
+    return Mechanic(cname, cdata)
+
 def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
     eq = EQUIPMENTS[equip_name]
     arc = ARCANAS[arcana_name]
@@ -124,50 +221,35 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
     cycle_time = 0.0
     total_dmg = 0.0
     
-    # Stacks
+    # Stacks and Mechanic
+    m = get_mechanic(cname, cdata)
     ax_stack = 0
     fx_carry = 0.0
-    ga_reduction = 0.0 # Carryover from previous turn
-    yumina_stack = 0
-    frey_hr_stack = 0 # HR 스택 추적 추가
-    lydia_stack = 0 # 리디아 스택 추적 추적
-    
-    # Rosaria specific stacks
-    rosaria_upwa = 0.0
-    rosaria_gukdong = 0
+    ga_reduction = 0.0
     
     ranger_a_cr_stack = 0
     ranger_a_atk_stack = 0.0
     ranger_c_spec_stack = 0
     ranger_c_atk_stack = 0.0
     ex_bonus_accum = 0.0
-    ult_count_total = 0 # 리디아 궁극기 횟수 추적
-    max_hit = 0.0 # 단일 히트 최대 데미지 추적 (기댓값 기준)
+    max_hit = 0.0
 
     action_idx = 0
     while action_idx < MAX_ACTIONS:
         for t in turns:
-            if action_idx >= MAX_ACTIONS:
-                break
+            if action_idx >= MAX_ACTIONS: break
             
             is_ult = t.get("is_ult", False)
-            if is_ult: ult_count_total += 1
-            
             action_idx += 1
             
-            # Update Turn Start stacks
-            if jr["type"] == "AX":
-                ax_stack = min(ax_stack + 1, 5)
+            if jr["type"] == "AX": ax_stack = min(ax_stack + 1, 5)
 
-            # Determine hits (AoE 4 hits for Ult, else specified 'hits', default 1)
             base_hits = t.get("hits", 4 if is_ult else 1)
-            
-            # Action start settings
             spd_i = final_spd * t.get("spd_mult", 1.0)
             if spd_i > 0:
                 turn_time = (1000.0 / spd_i) * (1.0 - ga_reduction)
                 cycle_time += turn_time
-            ga_reduction = 0.0 # Reset after use
+            ga_reduction = 0.0
             
             t_atk_buf = t.get("atk_buf", 0.0)
             t_di_buf = t.get("di", 0.0)
@@ -176,7 +258,6 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             
             turn_total_dmg = 0.0
             
-            # Hit processing
             hit_list = []
             if t.get("coeff", 0.0) > 0:
                 hit_coeff = t["coeff"] / base_hits
@@ -185,118 +266,61 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             if t.get("extra_coeff", 0.0) > 0:
                 hit_list.append(t["extra_coeff"])
             
-            # For GA gain tracking/Crit tracking in this turn
-            prob_none_crit = 1.0
-            last_cr_i = 0.0
-            total_expected_crit_hits = 0.0
-            is_special = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
+            # Rosaria Auto-Bonus Basic
+            is_spec = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
+            if cname.startswith("로자리아") and is_spec and m.stacks["upwa"] >= 3.0:
+                if t.get("extra_coeff", 0.0) == 0: hit_list.append(1.50)
 
-            # Rosaria Auto-Bonus Basic (if Upwa >= 3)
-            if cname.startswith("로자리아") and is_special and rosaria_upwa >= 3.0:
-                if t.get("extra_coeff", 0.0) == 0:
-                    hit_list.append(1.50)
+            prob_none_crit = 1.0
+            total_expected_crit_hits = 0.0
 
             for hit in hit_list:
-                # Update stacks that might have changed from previous hit
-                ranger_a_cr_bonus = (ranger_a_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD"] else 0.0
-                cr_i = min(cr_base_total + t_cr_buf + ranger_a_cr_bonus, 1.0)
+                m_di, m_atk = m.hit_pre(t, arc)
+                
+                ra_cr = (ranger_a_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD"] else 0.0
+                cr_i = min(cr_base_total + t_cr_buf + ra_cr, 1.0)
                 cd_i = cd_base_total + t_cd_buf
                 crit_contrib = (cr_i * cd_i)
-                last_cr_i = cr_i
                 prob_none_crit *= (1.0 - cr_i)
                 total_expected_crit_hits += cr_i
                 
-                ranger_a_atk_bonus = (ranger_a_atk_stack * 0.03) if arc["type"] == "rangerA" else 0.0
-                ranger_c_atk_bonus = (ranger_c_atk_stack * 0.03) if arc["type"] in ["rangerC", "rangerD"] else 0.0
-                dyn_atk = t_atk_buf + ranger_a_atk_bonus + ranger_c_atk_bonus
+                ra_atk = (ranger_a_atk_stack * 0.03) if arc["type"] == "rangerA" else 0.0
+                rc_atk = (ranger_c_atk_stack * 0.03) if arc["type"] in ["rangerC", "rangerD"] else 0.0
+                dyn_atk = t_atk_buf + ra_atk + rc_atk + m_atk
                 
-                if cname == "유미나":
-                    dyn_atk += min(yumina_stack * 0.04, 0.20)
-                if cname == "리디아":
-                    dyn_atk += (lydia_stack * 0.06)
-
                 ax_val = (ax_stack * 0.08) if jr["type"] == "AX" else 0.0
                 eff_base = pool * (1 + d_static) + 1000
                 eff_atk = eff_base * (1 + dyn_atk + ax_val)
                 
-                # DI calculation
                 omega_di = omega_max if t.get("omega_elig", False) else 0.0
-                ranger_c_spec_di = (ranger_c_spec_stack * 0.05) if arc["type"] in ["rangerC", "rangerD"] else 0.0
+                rc_spec_di = (ranger_c_spec_stack * 0.05) if arc["type"] in ["rangerC", "rangerD"] else 0.0
                 
-                # Rosaria Upwa DI logic (Applies to Special Skill)
-                upwa_di_val = 0.0
-                is_special = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
-                if cname.startswith("로자리아") and is_special:
-                    if rosaria_upwa >= 3.0: 
-                        upwa_di_val = 0.40 # 20% + 20%
-                    elif rosaria_upwa >= 2.0:
-                        upwa_di_val = 0.20
-                    elif rosaria_upwa >= 1.0:
-                        upwa_di_val = 0.10
-                        
-                total_di = t_di_buf + omega_di + fx_carry + ranger_c_spec_di + upwa_di_val
+                total_di = t_di_buf + omega_di + fx_carry + rc_spec_di + m_di
                 
                 hit_dmg = (eff_atk * hit) * (1 + total_di + crit_contrib)
                 turn_total_dmg += hit_dmg
                 
-                # On-Hit Side Effects
+                # On-Hit
                 if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD"] and t.get("is_basic", False):
                     ranger_a_cr_stack = min(ranger_a_cr_stack + 1, 5)
                 
                 if is_ult:
-                    if arc["type"] == "rangerA":
-                        ranger_a_atk_stack = min(ranger_a_atk_stack + cr_i, 5.0)
-                    if arc["type"] in ["rangerC", "rangerD"]:
-                        ranger_c_atk_stack = min(ranger_c_atk_stack + cr_i, 5.0)
+                    if arc["type"] == "rangerA": ranger_a_atk_stack = min(ranger_a_atk_stack + cr_i, 5.0)
+                    if arc["type"] in ["rangerC", "rangerD"]: ranger_c_atk_stack = min(ranger_c_atk_stack + cr_i, 5.0)
                 
-                if cname == "유미나":
-                    yumina_stack = min(yumina_stack + 1, 5)
-                    
-                if cname.startswith("로자리아") and t.get("is_basic", False):
-                    # Passive Upwa gain: Gukdong * 20%
-                    rosaria_upwa = min(rosaria_upwa + (rosaria_gukdong * 0.20), 5.0)
+                m.on_hit(t, is_ult, cr_i)
             
-            # Post-Action effects
-            if cname == "유미나":
-                yumina_ga_gain = cdata.get("패시브", {}).get("치명타_행게_증가", 0.0)
-                ga_reduction = (1.0 - prob_none_crit) * yumina_ga_gain
-            elif cname.startswith("프레이"):
-                ga_reduction = 0.0
-                if cname == "프레이(달속성파티)":
-                    ga_reduction += 0.24 # 달속성 3인 공격
-                if "강제협상" in t.get("note", ""):
-                    ga_reduction += 0.30 # HR 5스택 소모 시 30% 증가
-                if "추가턴" in t.get("note", "") and t.get("coeff", 1.0) == 0.0:
-                    ga_reduction += 1.0 # 100% 증가 (즉시 추가턴)
-            else:
-                ga_reduction = 0.0 # Standard reset or overridden by Lydia Ult below
+            # Post-Action
+            ga_reduction = m.post_action(t, is_ult, prob_none_crit, total_expected_crit_hits)
             
-            if cname.startswith("로자리아"):
-                if is_ult:
-                    # Prob Success = 1 - None Crit
-                    prob_success = 1.0 - prob_none_crit
-                    # Expected growth = prob * (min(expected_crit_hits, 3))
-                    growth = prob_success * min(total_expected_crit_hits, 3.0)
-                    # If fail, reset
-                    rosaria_upwa = prob_success * (rosaria_upwa + growth)
-                    rosaria_gukdong = min(rosaria_gukdong + 1, 5)
-                elif is_special:
-                    rosaria_upwa = 0 # Consume
-                    rosaria_gukdong = min(rosaria_gukdong + 1, 5)
-                elif t.get("is_basic", False):
-                    rosaria_gukdong = min(rosaria_gukdong + 1, 5)
-
-            if t.get("is_basic", False) and cname == "리디아":
-                lydia_stack = min(lydia_stack + 1, 5)
-                
             if jr["type"] == "FX" and len(hit_list) > 0:
-                fx_carry = last_cr_i * 0.25
-                
+                fx_carry = (1.0 - prob_none_crit) * 0.25
+
             if jr["type"] == "EX" and t.get("is_basic", False):
-                ex_bonus_accum += last_cr_i * 0.25 * 16215
+                ex_bonus_accum += (1.0 - prob_none_crit) * 0.25 * 16215
             
-            is_special = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
-            if is_special and arc["type"] in ["rangerB", "rangerC", "rangerD"]:
+            is_spec = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
+            if is_spec and arc["type"] in ["rangerB", "rangerC", "rangerD"]:
                 ranger_c_spec_stack = min(ranger_c_spec_stack + 1, 5)
 
             if is_ult:
