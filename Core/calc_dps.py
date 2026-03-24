@@ -44,10 +44,10 @@ EQUIPMENTS = {
 # 대부분 24%가 기본, 레인저만 특수 기믹 (기본기 타격 시 치확+5%, 최대 5회)
 ARCANAS = {
     "어쌔신":     {"class": ["어쌔신"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "assassin"},
-    "스트라이커A": {"class": ["스트라이커", "디펜더"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "strikerA"},
-    "스트라이커B": {"class": ["스트라이커", "디펜더"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "strikerB"},
-    "스트라이커C": {"class": ["스트라이커", "디펜더"], "atk": 0.14, "cr": 0.24, "cd": 0.12, "type": "strikerC"},
-    "스트라이커D": {"class": ["스트라이커", "디펜더"], "atk": 0.06, "cr": 0.30, "cd": 0.12, "type": "strikerD"},
+    "스트라이커A": {"class": ["스트라이커"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "strikerA"},
+    "스트라이커B": {"class": ["스트라이커"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "strikerB"},
+    "스트라이커C": {"class": ["스트라이커"], "atk": 0.14, "cr": 0.24, "cd": 0.12, "type": "strikerC"},
+    "스트라이커D": {"class": ["스트라이커"], "atk": 0.06, "cr": 0.30, "cd": 0.12, "type": "strikerD"},
     "캐스터A":     {"class": ["캐스터"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "casterA"},
     "캐스터B":     {"class": ["캐스터"], "atk": 0.08, "cr": 0.30, "cd": 0.00, "type": "casterB"},
     "캐스터C":     {"class": ["캐스터"], "atk": 0.08, "cr": 0.24, "cd": 0.12, "type": "casterC"},
@@ -55,12 +55,14 @@ ARCANAS = {
     "레인저B":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.00, "type": "rangerB"},
     "레인저C":     {"class": ["레인저"], "atk": 0.00, "cr": 0.18, "cd": 0.12, "type": "rangerC"},
     "레인저D":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.12, "type": "rangerD"},
+    "레인저(유미나 전용)": {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.12, "type": "yumina_exclusive"}
 }
 
 JOURNEYS = {
     "AX": {"atk_base": 0.08, "cr": 0.0, "cd": 0.0, "type": "AX"},
     "FX": {"atk_base": 0.00, "cr": 0.0, "cd": 0.10, "type": "FX"},
     "EX": {"atk_base": 0.00, "cr": 0.10, "cd": 0.00, "type": "EX"},
+    "GX": {"atk_base": 0.00, "cr": 0.00, "cd": 0.00, "type": "GX"}
 }
 
 class Mechanic:
@@ -73,6 +75,7 @@ class Mechanic:
     def on_hit(self, t, is_ult, cr_i): pass
     def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits): return 0.0 # ga_reduction
     def get_spd_mult(self): return 0.0 # additional spd multiplier
+    def get_bleed_stacks(self, t, is_ult): return 0 # return number of bleed stacks to apply
 
 class FreyMechanic(Mechanic):
     def __init__(self, cname, cdata):
@@ -162,6 +165,7 @@ class YuminaMechanic(Mechanic):
         super().__init__(cname, cdata)
         self.yumina_stack = 0
         self.ult_atk_timer = 0
+        self.special_di_stack = 0
     def hit_pre(self, t, arc):
         stack_atk = self.cdata.get("패시브", {}).get("스택_당_공격력", 0.04)
         max_stack = self.cdata.get("패시브", {}).get("최대_스택", 5)
@@ -174,8 +178,15 @@ class YuminaMechanic(Mechanic):
     def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
         if self.ult_atk_timer > 0: self.ult_atk_timer -= 1
         if is_ult: self.ult_atk_timer = 2
+        
         gain = self.cdata.get("패시브", {}).get("치명타_행게_증가", 0.0)
         return (1.0 - prob_none_crit) * gain
+    def get_bleed_stacks(self, t, is_ult):
+        if is_ult: return 2
+        is_spec = (not t.get("is_basic", False)) and t.get("coeff", 0) > 0
+        if is_spec:
+            return 2 if self.yumina_stack >= 5 else 1
+        return 0
 
 class CharlesMechanic(Mechanic):
     def __init__(self, cname, cdata):
@@ -236,9 +247,11 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
     turns = rdata.get("turns", [])
     if not turns: return 0, 0, 0, 0
     
-    cycle_time = 0.0
+    expected_crits = 0.0
     total_dmg = 0.0
     max_hit = 0.0
+    bleeding_dots = [] # list of {"turns": 2, "atk": val}
+    cycle_time = 0.0
     
     # Dynamic Tracking
     m = get_mechanic(cname, cdata)
@@ -267,9 +280,7 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
             
             # 0. Arcana Stack Update (Turn Start)
             if arc["type"] == "assassin": assassin_spd_stack = min(assassin_spd_stack + 1, 3)
-            # Omega (Turn Start) - Only for StrikerA/C/D and CasterB/C
-            if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC"]:
-                omega_dmg_stack = min(omega_dmg_stack + 1, 5)
+            # Omega (Turn Start) - Removed (moved to Action block)
             if arc["type"] in ["casterA", "casterB", "casterC"]:
                 caster_cd_stack = min(caster_cd_stack + 1, 3)
 
@@ -313,15 +324,18 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
 
             # Ranger Special DMG Stack Update (Apply before hit)
             is_spec_action = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
-            if is_spec_action and arc["type"] in ["rangerB", "rangerC", "rangerD"]:
-                rc_spec_stack = min(rc_spec_stack + 1, 5)
+            if is_spec_action:
+                if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"]:
+                    rc_spec_stack = min(rc_spec_stack + 1, 5)
+                if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC"]:
+                    omega_dmg_stack = min(omega_dmg_stack + 1, 5)
             
             # 5. Hit Loop
             for (hit_coeff, is_extra_basic) in hit_list:
                 m_di, m_atk = m.hit_pre(t, arc)
                 
                 # Ranger CR Stack (5% each)
-                ra_cr_bonus = (ra_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC"] else 0.0
+                ra_cr_bonus = (ra_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD", "yumina_exclusive"] else 0.0
                 cr_i = min(cr_base_total + t_cr + ra_cr_bonus, 1.0)
                 cd_i = cd_base_total + t_cd + (caster_cd_stack * 0.10)
                 
@@ -339,7 +353,7 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
                 
                 # DI Summing
                 omega_di = (omega_dmg_stack * 0.05) if t.get("omega_elig", False) else 0.0
-                rc_spec_di = (rc_spec_stack * 0.05) if arc["type"] in ["rangerB", "rangerC", "rangerD"] else 0.0
+                rc_spec_di = (rc_spec_stack * 0.05) if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"] else 0.0
                 total_di = t_di + omega_di + fx_carry + rc_spec_di + m_di
                 
                 # Custom Formula Support (e.g. Hilde)
@@ -352,6 +366,10 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
                 else:
                     dmg = (eff_atk * hit_coeff) * (1 + total_di + crit_contrib)
                 
+                if arc["type"] == "yumina_exclusive" and t.get("is_basic", False):
+                    # Chain damage: 5% of Atk on Crit (Expected)
+                    dmg += (eff_atk * 0.05) * cr_i
+                
                 turn_dmg += dmg
                 
                 # Metadata for Mechanic tracking
@@ -361,17 +379,37 @@ def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_a
                 
             # Ranger Stack Increments (Turn level)
             if "레인저" in arc["class"]:
-                if arc["type"] in ["rangerA", "rangerB", "rangerC"]:
+                if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD", "yumina_exclusive"]:
                     # Basic CR increment rules
                     if t.get("is_basic", False) or t.get("extra_coeff", 0) > 0:
                         ra_cr_stack = min(ra_cr_stack + 1, 5)
                 
                 if is_ult:
                     if arc["type"] == "rangerA": ra_atk_stack = min(ra_atk_stack + 1, 5)
-                    if arc["type"] in ["rangerB", "rangerC", "rangerD"]: rc_atk_stack = min(rc_atk_stack + 1, 5)
+                    if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"]: rc_atk_stack = min(rc_atk_stack + 1, 5)
 
             # 6. Post-Action Logic
             ga_reduction = m.post_action(t, is_ult, prob_none_crit, expected_crits)
+            
+            # 7. Bleed Application
+            # Journey GX: 50% chance for 2-turn bleed on basic hit
+            if jr["type"] == "GX" and t.get("is_basic", False):
+                bleeding_dots.append({"turns": 2, "atk": eff_atk * 0.5, "di": total_di}) # 0.5 is expected stack count
+            
+            # Mechanic Bleed
+            m_bleed_count = m.get_bleed_stacks(t, is_ult)
+            if m_bleed_count > 0:
+                bleeding_dots.append({"turns": 2, "atk": eff_atk * m_bleed_count, "di": total_di})
+            
+            # 8. DOT Tick (Enemy Actions)
+            turn_bleed_dmg = 0
+            for dot in bleeding_dots:
+                # Damage formula: 25% of Atk * (1 + DI)
+                turn_bleed_dmg += dot["atk"] * 0.25 * (1 + dot["di"])
+                dot["turns"] -= 1
+            
+            bleeding_dots = [d for d in bleeding_dots if d["turns"] > 0]
+            turn_dmg += turn_bleed_dmg
             
             if jr["type"] == "FX" and hit_list:
                 fx_carry = (1.0 - prob_none_crit) * 0.25
@@ -404,12 +442,18 @@ def main():
         print(f"Starting simulation for: {cname}")
         rdata = rotations[cname]
         cclass = cdata.get("분류", "일반")
+        if cclass == "디펜더":
+            continue
         
         for eq_name in EQUIPMENTS.keys():
             for arc_name, arc_data in ARCANAS.items():
                 # Check class compatibility
                 valid = cclass in arc_data["class"]
                 if not valid: continue
+                
+                # Exclusive Arcana Check (e.g. Yumina only)
+                if "전용" in arc_name and "유미나" not in cname:
+                    continue
                         
                 for jr_name in JOURNEYS.keys():
                     for t_limit in target_turns:
