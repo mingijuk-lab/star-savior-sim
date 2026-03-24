@@ -7,31 +7,21 @@ def extract_json_from_md(filepath):
     """Extracts all JSON blocks from a markdown file and merges them."""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
-    
-    # Find all ```json ... ``` blocks
     json_blocks = re.findall(r'```json\s+(.*?)\s+```', content, re.DOTALL)
-    
     parsed_data = {}
     for block in json_blocks:
         try:
-            # Pre-evaluate simple addition in JSON like 0.15+0.20
             block = re.sub(r'([0-9.]+)\+([0-9.]+)', lambda m: str(float(m.group(1)) + float(m.group(2))), block)
-            
             if block.strip().startswith('"'):
                 data = json.loads("{" + block + "}")
                 parsed_data.update(data)
             else:
                 data = json.loads(block)
-                if "이름" in data:
-                    parsed_data[data["이름"]] = data
-                else:
-                    parsed_data.update(data)
-        except json.JSONDecodeError as e:
-            # Skip invalid blocks or blocks that are just templates
-            continue
+                if "이름" in data: parsed_data[data["이름"]] = data
+                else: parsed_data.update(data)
+        except: continue
     return parsed_data
 
-# Define generic equipment sets
 EQUIPMENTS = {
     "공격4세트": {"atk": 0.20, "cr": 0.0, "cd": 0.0, "spd": 0},
     "통찰4세트": {"atk": 0.00, "cr": 0.30, "cd": 0.0, "spd": 0},
@@ -40,8 +30,6 @@ EQUIPMENTS = {
     "체력4세트": {"atk": 0.00, "cr": 0.0, "cd": 0.0, "spd": 0, "hp": 0.30},
 }
 
-# Define Arcana Stats
-# 대부분 24%가 기본, 레인저만 특수 기믹 (기본기 타격 시 치확+5%, 최대 5회)
 ARCANAS = {
     "어쌔신":     {"class": ["어쌔신"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "assassin"},
     "스트라이커A": {"class": ["스트라이커"], "atk": 0.14, "cr": 0.30, "cd": 0.00, "type": "strikerA"},
@@ -65,419 +53,133 @@ JOURNEYS = {
     "GX": {"atk_base": 0.00, "cr": 0.00, "cd": 0.00, "type": "GX"}
 }
 
-class Mechanic:
-    def __init__(self, cname, cdata):
-        self.cname = cname
-        self.cdata = cdata
-        self.stacks = {}
-        self.ga_gain = 0.0
-    def hit_pre(self, t, arc): return 0.0, 0.0 # di_bonus, atk_bonus
-    def on_hit(self, t, is_ult, cr_i): pass
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits): return 0.0 # ga_reduction
-    def get_spd_mult(self): return 0.0 # additional spd multiplier
-    def get_bleed_stacks(self, t, is_ult): return 0 # return number of bleed stacks to apply
+def calculate_dps(cname, cdata, rdata, eq_name, arc_name, jr_name, max_actions=10):
+    eq, arc, jr = EQUIPMENTS[eq_name], ARCANAS[arc_name], JOURNEYS[jr_name]
+    res = cdata.get("공명", {})
+    ax_fixed = 0.08 if jr["type"] == "AX" else 0.0
+    pool = (cdata["기본_스탯"]["공격력"] + 1250) * (1.0 + res.get("퍼센트", 0) + ax_fixed) + res.get("정수", 0)
+    final_spd = cdata["기본_스탯"]["속도"] + 60 + (8 if arc["type"] == "strikerB" else 0) + eq.get("spd", 0)
+    total_dmg, cycle_time, ga_red_carry, omega_dmg_stack, assassin_spd_stack, caster_cd_stack, ra_cr_stack, ax_stack = 0.0, 0.0, 0.0, 0, 0, 0, 0, 1
+    bleeding_dots = []
 
-class FreyMechanic(Mechanic):
-    def __init__(self, cname, cdata):
-        super().__init__(cname, cdata)
-        self.stacks = {"hr": 0.0, "cooling": 0}
-        self.ult_atk_timer = 0
-    def hit_pre(self, t, arc):
-        di = self.stacks["hr"] * 0.01
-        if "강제협상" in t.get("note", "") and t.get("di", 0.0) < 0.5: di += 1.00
-        atk = 0.30 if self.ult_atk_timer > 0 else 0.0
-        return di, atk
-    def on_hit(self, t, is_ult, cr_i):
-        is_spec = "특수기" in t.get("note", "") or t.get("omega_elig", False)
-        if t.get("is_basic", False): self.stacks["cooling"] += 1
-        elif is_spec: self.stacks["cooling"] += 3
-        if self.stacks["cooling"] >= 5:
-            self.stacks["hr"] = min(self.stacks["hr"] + 1, 5)
-            self.stacks["cooling"] = 0
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
-        if self.ult_atk_timer > 0: self.ult_atk_timer -= 1
-        ga = 0.0
-        if self.cname == "프레이(달속성파티)":
-            ga += 0.24
-            hr_p = self.cdata.get("패시브", {}).get("hr_확률", 1.0)
-            self.stacks["hr"] = min(self.stacks["hr"] + (3 * hr_p), 5.0)
-        if "강제협상" in t.get("note", ""):
-            ga += 0.30
-            self.stacks["hr"] = 0
-        if "추가턴" in t.get("note", "") and t.get("coeff", 1.0) == 0.0: ga += 1.0
-        if is_ult:
-            self.stacks["hr"] = min(self.stacks["hr"] + 3, 5)
-            self.ult_atk_timer = 2
-        return ga
-
-class RosariaMechanic(Mechanic):
-    def __init__(self, cname, cdata):
-        super().__init__(cname, cdata)
-        self.stacks = {"upwa": 0.0, "gukdong": 0}
-        self.master_timer = 0 # 옥좌의 주인
-    def hit_pre(self, t, arc):
-        is_spec = (not t.get("is_basic", False)) and (not t.get("is_ult", False)) and t.get("coeff", 0) > 0
-        di = 0.0
-        if is_spec:
-            if self.stacks["upwa"] >= 3.0: di += 0.40
-            elif self.stacks["upwa"] >= 2.0: di += 0.20
-            elif self.stacks["upwa"] >= 1.0: di += 0.10
-        if self.master_timer > 0 and t.get("is_basic", False):
-            di += 0.15 # 옥좌의 주인 기본기 피증
-        return di, 0.0
-    def on_hit(self, t, is_ult, cr_i):
-        # 업화 획득: 기본기 타격 시 OR 특수기 중 '추가 기본기' 타격 시
-        # 추가 기본기는 보통 coeff 1.50으로 들어옴
-        is_basic_hit = t.get("is_basic", False) or t.get("is_extra_basic", False)
-        if is_basic_hit:
-            self.stacks["upwa"] = min(self.stacks["upwa"] + (self.stacks["gukdong"] * 0.20), 5.0)
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
-        if self.master_timer > 0: self.master_timer -= 1
-        is_spec = (not t.get("is_basic", False)) and (not t.get("is_ult", False)) and t.get("coeff", 0) > 0
-        if is_ult:
-            # expected_crits is the sum of CR for all hits
-            growth = min(total_expected_crit_hits, 3.0)
-            self.stacks["upwa"] = min(self.stacks["upwa"] + growth, 5.0)
-            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
-            self.master_timer = 3
-        elif is_spec:
-            self.stacks["upwa"] = 0
-            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
-        else:
-            self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
-        return 0.0
-    def get_spd_mult(self):
-        return 0.15 if self.master_timer > 0 else 0.0
-
-class LydiaMechanic(Mechanic):
-    def __init__(self, cname, cdata):
-        super().__init__(cname, cdata)
-        self.lydia_stack = 0
-    def hit_pre(self, t, arc):
-        return 0.0, self.lydia_stack * 0.06
-    def on_hit(self, t, is_ult, cr_i):
-        if t.get("is_basic", False): self.lydia_stack = min(self.lydia_stack + 1, 5)
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
-        return 0.30 if is_ult else 0.0
-
-class YuminaMechanic(Mechanic):
-    def __init__(self, cname, cdata):
-        super().__init__(cname, cdata)
-        self.yumina_stack = 0
-        self.ult_atk_timer = 0
-        self.special_di_stack = 0
-    def hit_pre(self, t, arc):
-        stack_atk = self.cdata.get("패시브", {}).get("스택_당_공격력", 0.04)
-        max_stack = self.cdata.get("패시브", {}).get("최대_스택", 5)
-        atk = min(self.yumina_stack * stack_atk, stack_atk * max_stack)
-        if self.ult_atk_timer > 0: atk += 0.30
-        return 0.0, atk
-    def on_hit(self, t, is_ult, cr_i):
-        max_stack = self.cdata.get("패시브", {}).get("최대_스택", 5)
-        self.yumina_stack = min(self.yumina_stack + 1, max_stack)
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
-        if self.ult_atk_timer > 0: self.ult_atk_timer -= 1
-        if is_ult: self.ult_atk_timer = 2
+    for action_idx in range(max_actions):
+        t = rdata["turns"][action_idx % len(rdata["turns"])]
+        is_ult, is_basic = t.get("is_ult", False), t.get("is_basic", False)
+        is_spec = (not is_basic) and (not is_ult) and t.get("coeff", 0) > 0
         
-        gain = self.cdata.get("패시브", {}).get("치명타_행게_증가", 0.0)
-        return (1.0 - prob_none_crit) * gain
-    def get_bleed_stacks(self, t, is_ult):
-        if is_ult: return 2
-        is_spec = (not t.get("is_basic", False)) and t.get("coeff", 0) > 0
-        if is_spec:
-            return 2 if self.yumina_stack >= 5 else 1
-        return 0
+        if arc["type"] == "assassin": assassin_spd_stack = min(assassin_spd_stack + 1, 3)
+        if arc["type"].startswith("caster"): caster_cd_stack = min(caster_cd_stack + 1, 3)
+        if arc["class"] == ["레인저"] and (is_basic or t.get("extra_coeff", 0) > 0): ra_cr_stack = min(ra_cr_stack + 1, 5)
 
-class CharlesMechanic(Mechanic):
-    def __init__(self, cname, cdata):
-        super().__init__(cname, cdata)
-        self.atk_timer = 0
-    def hit_pre(self, t, arc):
-        atk = 0.30 if self.atk_timer > 0 else 0.0
-        di = 0.0
-        if "럭키토큰" in t.get("note", ""): di += 0.05 # DEF piercing approximation (~5% dps increase)
-        return di, atk
-    def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
-        if self.atk_timer > 0: self.atk_timer -= 1
-        if "추가턴" in t.get("note", "") and t.get("coeff", 1.0) == 0.0:
-            self.atk_timer = 2
-        return 0.0
+        spd_i = (final_spd + assassin_spd_stack * 10) * t.get("spd_mult", 1.0)
+        cycle_time += (1000.0 / spd_i) * (1.0 - ga_red_carry)
+        
+        # 0. Omega Stacking (Corrected Inclusion)
+        if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC", "rangerB", "rangerC", "rangerD"]:
+            if is_spec: omega_dmg_stack = min(omega_dmg_stack + 1, 5)
 
-def get_mechanic(cname, cdata):
-    if cname.startswith("프레이"): return FreyMechanic(cname, cdata)
-    if cname.startswith("로자리아"): return RosariaMechanic(cname, cdata)
-    if cname == "리디아": return LydiaMechanic(cname, cdata)
-    if cname.startswith("유미나"): return YuminaMechanic(cname, cdata)
-    if cname.startswith("샤를"): return CharlesMechanic(cname, cdata)
-    return Mechanic(cname, cdata)
+        m_di, m_atk_mult, coeff = 0.0, 1.0, t.get("coeff", 0) + t.get("extra_coeff", 0)
+        for k, v in t.items():
+            if k.endswith("_di"): m_di += v
+            if k.endswith("_atk_p"): m_atk_mult *= (1.0 + v)
+            if k.startswith("yumina_stack"): m_atk_mult *= (1.0 + v * 0.04)
+            if k.startswith("lydia_stack"): m_atk_mult *= (1.0 + v * 0.06)
+            if k.startswith("doyak"): m_di += (0.30 if v >= 5 else 0)
+        
+        ax_dyn = (ax_stack * 0.08) if jr["type"] == "AX" else 0.0
+        base_atk_p = cdata.get("패시브", {}).get("공격력_퍼센트", 0) + eq["atk"] + arc["atk"] + 0.1625 + 0.01
+        # V6: eff_atk = eff_base * (1 + AX_dyn + Skill_Buff)
+        eff_base = pool * (1.0 + base_atk_p) + 1000
+        eff_atk = eff_base * (1.0 + ax_dyn + t.get("atk_buf", 0)) * m_atk_mult
+        
+        cr_i = min(cdata["기본_스탯"]["치명타_확률"] + eq["cr"] + arc["cr"] + t.get("cr_buf", 0) + ra_cr_stack * 0.05 + res.get("치확_퍼센트", 0) + jr.get("cr", 0), 1.0)
+        cd_i = cdata["기본_스탯"]["치명타_피해"] + eq["cd"] + arc["cd"] + caster_cd_stack * 0.10 + t.get("cd_buf", 0) + jr.get("cd", 0)
+        
+        # 1. Omega Boost Application (Corrected Application Turn)
+        omega_boost = (omega_dmg_stack * 0.05) if (is_spec or t.get("omega_elig", False)) else 0.0
+        total_di = t.get("di", 0) + m_di + omega_boost
 
-def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_actions=10):
-    eq = EQUIPMENTS[equip_name]
-    arc = ARCANAS[arc_name]
-    jr = JOURNEYS[journey_name]
-    
-    # Base Stats
-    base_atk = cdata.get("기본_스탯", {}).get("공격력", 0)
-    base_spd = cdata.get("기본_스탯", {}).get("속도", 100)
-    base_cr = cdata.get("기본_스탯", {}).get("치명타_확률", 0.05)
-    base_cd = cdata.get("기본_스탯", {}).get("치명타_피해", 0.50)
-    
-    res_pct = cdata.get("공명", {}).get("퍼센트", 0.0)
-    if not res_pct: res_pct = cdata.get("공명", {}).get("공격력_퍼센트", 0.0)
-    res_int = cdata.get("공명", {}).get("정수", 0.0)
-    if not res_int: res_int = cdata.get("공명", {}).get("공격력_정수", 0.0)
+        turn_dmg = eff_atk * coeff * (1.0 + total_di + cr_i * cd_i)
+        
+        # DOT
+        bleed_count = 2 if is_ult else (2 if ("yumina_stack" in t and t["yumina_stack"] >= 5) else (1 if ("유미나" in cname and (not is_basic)) else 0))
+        if bleed_count > 0: bleeding_dots.append({"turns": 2, "atk": eff_atk * bleed_count, "di": total_di})
+        if jr["type"] == "GX" and is_basic: bleeding_dots.append({"turns": 2, "atk": eff_atk * 0.5, "di": total_di})
+        
+        tick_dmg = 0
+        for dot in bleeding_dots:
+            tick_dmg += dot["atk"] * 0.25 * (1 + dot["di"])
+            dot["turns"] -= 1
+        bleeding_dots = [d for d in bleeding_dots if d["turns"] > 0]
+        
+        total_dmg += turn_dmg + tick_dmg
+        
+        hits = t.get("hits", 4 if is_ult else 1)
+        prob_crit_any = (1.0 - (1.0 - cr_i) ** hits)
+        ga_red_carry = 0.0
+        if is_basic and "유미나" in cname: ga_red_carry += prob_crit_any * 0.15
+        if is_ult and "리디아" in cname: ga_red_carry += 0.30
+        if t.get("note") and "행게+30%" in t["note"]: ga_red_carry += 0.30
+        if t.get("note") and "행게+50%" in t["note"]: ga_red_carry += 0.50
+        
+        if jr["type"] == "AX":
+            if is_ult: ax_stack = 1
+            else: ax_stack = min(ax_stack + 1, 5)
 
-    pool = (base_atk + 1250) * (1 + res_pct) + res_int
-    
-    # Passives & Statics
-    passive_atk = cdata.get("패시브", {}).get("공격력_퍼센트", 0.0)
-    passive_cr = cdata.get("패시브", {}).get("치확_퍼센트", 0.0)
-    
-    # Arcana Statics
-    arc_spd_static = 8 if arc["type"] == "strikerB" else 0
-    
-    # Formula components
-    d_static = passive_atk + arc["atk"] + jr["atk_base"] + 0.01 + eq["atk"] + 0.1625
-    final_spd = base_spd + 60 + arc_spd_static + eq.get("spd", 0)
-    cr_base_total = base_cr + arc["cr"] + jr.get("cr", 0) + eq.get("cr", 0) + passive_cr
-    cd_base_total = base_cd + arc["cd"] + jr.get("cd", 0) + eq.get("cd", 0)
-    
-    # Simulation Parameters
-    MAX_ACTIONS = max_actions
-    turns = rdata.get("turns", [])
-    if not turns: return 0, 0, 0, 0
-    
-    expected_crits = 0.0
-    total_dmg = 0.0
-    max_hit = 0.0
-    bleeding_dots = [] # list of {"turns": 2, "atk": val}
-    cycle_time = 0.0
-    
-    # Dynamic Tracking
-    m = get_mechanic(cname, cdata)
-    ax_stack = 0
-    ga_reduction = 0.0
-    fx_carry = 0.0
-    ex_bonus_accum = 0.0
-    
-    # Arcana Stacks
-    assassin_spd_stack = 0
-    omega_dmg_stack = 0
-    caster_cd_stack = 0
-    
-    # Ranger Stacks
-    ra_cr_stack = 0
-    ra_atk_stack = 0.0
-    rc_spec_stack = 0
-    rc_atk_stack = 0.0
-
-    action_count = 0
-    while action_count < MAX_ACTIONS:
-        for t in turns:
-            if action_count >= MAX_ACTIONS: break
-            is_ult = t.get("is_ult", False)
-            action_count += 1
-            
-            # 0. Arcana Stack Update (Turn Start)
-            if arc["type"] == "assassin": assassin_spd_stack = min(assassin_spd_stack + 1, 3)
-            # Omega (Turn Start) - Removed (moved to Action block)
-            if arc["type"] in ["casterA", "casterB", "casterC"]:
-                caster_cd_stack = min(caster_cd_stack + 1, 3)
-
-            # 1. Gauge & Time
-            spd_i = (final_spd + assassin_spd_stack * 10) * (t.get("spd_mult", 1.0) + m.get_spd_mult())
-            if spd_i > 0:
-                cycle_time += (1000.0 / spd_i) * (1.0 - ga_reduction)
-            ga_reduction = 0.0
-            
-            # 2. AX Stack Update
-            if jr["type"] == "AX": ax_stack = min(ax_stack + 1, 5)
-
-            # 3. Hit List Construction
-            base_hits = t.get("hits", 4 if is_ult else 1)
-            hit_list = [] # List of tuples (coeff, is_extra_basic)
-            
-            if t.get("coeff", 0.0) > 0 or t.get("coeff_atk", 0.0) > 0:
-                actual_coeff = t.get("coeff", t.get("coeff_atk", 0.0))
-                hit_list.extend([(actual_coeff / base_hits, False)] * base_hits)
-            
-            if t.get("extra_coeff", 0.0) > 0:
-                # Typically Rosaria's Extra Basic Attack from Special
-                hit_list.append((t["extra_coeff"], True))
-            
-            # Rosaria Auto-Bonus if not already in JSON
-            if cname.startswith("로자리아") and (not is_ult) and (not t.get("is_basic", False)):
-                 # Special skill triggers extra basic if upwa >= 3
-                 if getattr(m, 'stacks', {}).get("upwa", 0) >= 3.0:
-                      if t.get("extra_coeff", 0.0) == 0:
-                          hit_list.append((1.50, True))
-
-            turn_dmg = 0.0
-            prob_none_crit = 1.0
-            expected_crits = 0.0
-            
-            # 4. Turn Buffs
-            t_atk_buf = t.get("atk_buf", 0.0)
-            t_di = t.get("di", 0.0)
-            t_cr = t.get("cr_buf", 0.0)
-            t_cd = t.get("cd_buf", 0.0)
-
-            # Ranger Special DMG Stack Update (Apply before hit)
-            is_spec_action = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
-            if is_spec_action:
-                if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"]:
-                    rc_spec_stack = min(rc_spec_stack + 1, 5)
-                if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC"]:
-                    omega_dmg_stack = min(omega_dmg_stack + 1, 5)
-            
-            # 5. Hit Loop
-            for (hit_coeff, is_extra_basic) in hit_list:
-                m_di, m_atk = m.hit_pre(t, arc)
-                
-                # Ranger CR Stack (5% each)
-                ra_cr_bonus = (ra_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD", "yumina_exclusive"] else 0.0
-                cr_i = min(cr_base_total + t_cr + ra_cr_bonus, 1.0)
-                cd_i = cd_base_total + t_cd + (caster_cd_stack * 0.10)
-                
-                crit_contrib = cr_i * cd_i
-                prob_none_crit *= (1.0 - cr_i)
-                expected_crits += cr_i
-                
-                # Atk Buff Calculation
-                total_arc_atk_bonus = ((ra_atk_stack + rc_atk_stack) * 0.03)
-                ax_val = (ax_stack * 0.08) if jr["type"] == "AX" else 0.0
-                total_dyn_atk = t_atk_buf + total_arc_atk_bonus + m_atk + ax_val
-                
-                eff_base = pool * (1 + d_static) + 1000
-                eff_atk = eff_base * (1 + total_dyn_atk)
-                
-                # DI Summing
-                omega_di = (omega_dmg_stack * 0.05) if t.get("omega_elig", False) else 0.0
-                rc_spec_di = (rc_spec_stack * 0.05) if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"] else 0.0
-                total_di = t_di + omega_di + fx_carry + rc_spec_di + m_di
-                
-                # Custom Formula Support (e.g. Hilde)
-                if "coeff_atk" in t:
-                    c_atk = t.get("coeff_atk", 0.0) / base_hits
-                    c_hp = (t.get("coeff_hp", 1.0) - 1.0) / base_hits
-                    final_hp = cdata.get("최종_체력", 0)
-                    base_dmg = (eff_atk * c_atk) + (final_hp * c_hp)
-                    dmg = base_dmg * (1 + total_di + crit_contrib)
-                else:
-                    dmg = (eff_atk * hit_coeff) * (1 + total_di + crit_contrib)
-                
-                if arc["type"] == "yumina_exclusive" and t.get("is_basic", False):
-                    # Chain damage: 5% of Atk on Crit (Expected)
-                    dmg += (eff_atk * 0.05) * cr_i
-                
-                turn_dmg += dmg
-                
-                # Metadata for Mechanic tracking
-                t_hit_data = t.copy()
-                t_hit_data["is_extra_basic"] = is_extra_basic
-                m.on_hit(t_hit_data, is_ult, cr_i)
-                
-            # Ranger Stack Increments (Turn level)
-            if "레인저" in arc["class"]:
-                if arc["type"] in ["rangerA", "rangerB", "rangerC", "rangerD", "yumina_exclusive"]:
-                    # Basic CR increment rules
-                    if t.get("is_basic", False) or t.get("extra_coeff", 0) > 0:
-                        ra_cr_stack = min(ra_cr_stack + 1, 5)
-                
-                if is_ult:
-                    if arc["type"] == "rangerA": ra_atk_stack = min(ra_atk_stack + 1, 5)
-                    if arc["type"] in ["rangerB", "rangerC", "rangerD", "yumina_exclusive"]: rc_atk_stack = min(rc_atk_stack + 1, 5)
-
-            # 6. Post-Action Logic
-            ga_reduction = m.post_action(t, is_ult, prob_none_crit, expected_crits)
-            
-            # 7. Bleed Application
-            # Journey GX: 50% chance for 2-turn bleed on basic hit
-            if jr["type"] == "GX" and t.get("is_basic", False):
-                bleeding_dots.append({"turns": 2, "atk": eff_atk * 0.5, "di": total_di}) # 0.5 is expected stack count
-            
-            # Mechanic Bleed
-            m_bleed_count = m.get_bleed_stacks(t, is_ult)
-            if m_bleed_count > 0:
-                bleeding_dots.append({"turns": 2, "atk": eff_atk * m_bleed_count, "di": total_di})
-            
-            # 8. DOT Tick (Enemy Actions)
-            turn_bleed_dmg = 0
-            for dot in bleeding_dots:
-                # Damage formula: 25% of Atk * (1 + DI)
-                turn_bleed_dmg += dot["atk"] * 0.25 * (1 + dot["di"])
-                dot["turns"] -= 1
-            
-            bleeding_dots = [d for d in bleeding_dots if d["turns"] > 0]
-            turn_dmg += turn_bleed_dmg
-            
-            if jr["type"] == "FX" and hit_list:
-                fx_carry = (1.0 - prob_none_crit) * 0.25
-            if jr["type"] == "EX" and t.get("is_basic", False):
-                # EX expected bonus (25% chance of team basic)
-                ex_bonus_accum += (1.0 - prob_none_crit) * 0.25 * 16215
-            
-            if is_ult and jr["type"] == "AX":
-                ax_stack = 0
-            
-            total_dmg += turn_dmg
-            max_hit = max(max_hit, turn_dmg)
-
-    total_dmg += ex_bonus_accum
-    if cycle_time <= 0: return 0,0,0,0
-    
-    return total_dmg / cycle_time, total_dmg, cycle_time, max_hit
+    return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg
 
 def main():
-    specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
-    rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
-    
-    # Some chars might only exist in specs, skip if no rotation
+    specs, rotations = extract_json_from_md("Data/캐릭터_스펙_마스터.md"), extract_json_from_md("Data/사이클_로테이션_마스터.md")
     results = []
-    target_turns = [5, 10, 15]
-    
     for cname, cdata in specs.items():
-        if cname not in rotations:
-            continue
-        print(f"Starting simulation for: {cname}")
-        rdata = rotations[cname]
-        cclass = cdata.get("분류", "일반")
-        if cclass == "디펜더":
-            continue
-        
-        for eq_name in EQUIPMENTS.keys():
-            for arc_name, arc_data in ARCANAS.items():
-                # Check class compatibility
-                valid = cclass in arc_data["class"]
-                if not valid: continue
-                
-                # Exclusive Arcana Check (e.g. Yumina only)
-                if "전용" in arc_name and "유미나" not in cname:
-                    continue
-                        
-                for jr_name in JOURNEYS.keys():
-                    for t_limit in target_turns:
-                        dps, total, time, max_hit = calculate_dps(cname, cdata, rdata, eq_name, arc_name, jr_name, max_actions=t_limit)
-                        results.append({
-                            "Character": cname,
-                            "Class": cclass,
-                            "Equip": eq_name,
-                            "Arcana": arc_name,
-                            "Journey": jr_name,
-                            "Turns": t_limit,
-                            "DPS": round(dps, 2),
-                            "MaxHit": round(max_hit, 2)
-                        })
+        if cname not in rotations or cdata.get("분류") == "디펜더": continue
+        for eq_n in EQUIPMENTS.keys():
+            for arc_n, arc_d in ARCANAS.items():
+                if cdata.get("분류") not in arc_d["class"]: continue
+                if "전용" in arc_n and ("유미나" not in cname and "레이시" not in arc_n): continue
+                for jr_n in JOURNEYS.keys():
+                    for t_limit in [5, 10, 15]:
+                        dps, total, time, _ = calculate_dps(cname, cdata, rotations[cname], eq_n, arc_n, jr_n, t_limit)
+                        results.append({"Character": cname, "Class": cdata["분류"], "Equip": eq_n, "Arcana": arc_n, "Journey": jr_n, "Turns": t_limit, "DPS": round(dps, 2)})
     
-    # Sort and save
     results.sort(key=lambda x: (x["Character"], x["Turns"], -x["DPS"]))
     
-    with open("Results/dps_results.csv", "w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=["Character", "Class", "Equip", "Arcana", "Journey", "Turns", "DPS", "MaxHit"])
-        writer.writeheader()
-        writer.writerows(results)
-    
-    print(f"Computed {len(results)} combinations. Saved to dps_results.csv.")
+    # Generate Growth Logic
+    growth_data = []
+    for cname, cdata in specs.items():
+        if cname not in rotations or cdata.get("분류") == "디펜더": continue
+        rdata = rotations[cname]
+        
+        # Threshold Solver Logic (Integrated)
+        res = cdata.get("공명", {})
+        pool = (cdata["기본_스탯"]["공격력"] + 1250) * (1.14) + res.get("정수", 0) # Base + AX8% + Resonance
+        arc_atk = (0.14 if cdata["분류"] in ["스트라이커", "어쌔신", "캐스터"] else 0.06)
+        sa = cdata.get("패시브", {}).get("공격력_퍼센트", 0) + arc_atk + 0.1625 + 0.01
+        cr = cdata["기본_스탯"]["치명타_확률"] + 0.30 + (0.30 if "클레어" in cname else 0)
+        di = 0.55 # Average DI including Omega
+        
+        atk_mult = (pool * (1.0 + sa + 0.20) + 1000) / (pool * (1.0 + sa) + 1000)
+        num = (atk_mult - 1) * (1 + di)
+        den = (0.3 + cr - atk_mult * cr)
+        cd_threshold = (num / den) if den != 0 else 9.99
+        
+        # Smart Recommendation
+        rec = "Attack (초기)"
+        if cr > 0.75: rec = "파괴 (만치확)"
+        elif cd_threshold < 0.85: rec = "통찰/파괴 (고치피)"
+        
+        growth_data.append(f"| {cname:15} | {cr:7.1%} | {cd_threshold:10.1%} | {rec:15} |")
 
-if __name__ == "__main__":
-    main()
+    # Write Output Files
+    with open("Results/dps_results.csv", "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.DictWriter(f, fieldnames=["Character", "Class", "Equip", "Arcana", "Journey", "Turns", "DPS"])
+        writer.writeheader(); writer.writerows(results)
+    
+    with open("Results/optimization_guide.md", "w", encoding="utf-8") as f:
+        f.write("# 📊 장비 최적화 가이드 (자동 생성)\n\n")
+        f.write("| 캐릭터 | 실전 기본치확 | 치피 임계점 | 추천 세트 | \n")
+        f.write("| :--- | :---: | :---: | :---: |\n")
+        f.write("\n".join(growth_data))
+        f.write("\n\n* 임계점: 해당 치피를 넘기면 통찰/파괴 세트가 공격 세트보다 강력해집니다.\n")
+
+if __name__ == "__main__": main()

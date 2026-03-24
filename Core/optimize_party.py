@@ -4,6 +4,8 @@ import re
 import math
 import csv
 import pandas as pd
+import itertools
+from multiprocessing import Pool, cpu_count
 
 # --- Configuration & Data Loading ---
 
@@ -24,10 +26,9 @@ ARCANAS = {
 }
 
 EQUIPMENTS = {
-    "공격4세트": {"atk": 0.20, "cr": 0.0, "cd": 0.0, "spd": 0, "hp": 0.0},
-    "파괴4세트": {"atk": 0.00, "cr": 0.0, "cd": 0.40, "spd": 0, "hp": 0.0},
-    "통찰4세트": {"atk": 0.00, "cr": 0.30, "cd": 0.0, "spd": 0, "hp": 0.0},
-    "속도4세트": {"atk": 0.00, "cr": 0.0, "cd": 0.0, "spd": 15, "hp": 0.0},
+    "공격4세트": {"atk": 0.20, "cr": 0.0, "cd": 0.0, "spd": 0},
+    "파괴4세트": {"atk": 0.00, "cr": 0.0, "cd": 0.40, "spd": 0},
+    "통찰4세트": {"atk": 0.00, "cr": 0.30, "cd": 0.0, "spd": 0},
 }
 
 def extract_json_from_md(filepath):
@@ -71,7 +72,7 @@ class CharacterState:
         if self.arc["type"].startswith("caster"): self.caster_cd_stack = min(self.caster_cd_stack + 1, 3)
         if self.arc["class"] == ["레인저"] and (is_basic or t.get("extra_coeff", 0) > 0): self.ra_cr_stack = min(self.ra_cr_stack + 1, 5)
         
-        # Omega Stacking Logic (V8 Standard: Only Special increments)
+        # Fixed Omega Stacking
         if self.arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC", "rangerB", "rangerC", "rangerD"]:
             if is_spec: self.omega_dmg_stack = min(self.omega_dmg_stack + 1, 5)
 
@@ -82,7 +83,7 @@ class CharacterState:
             if k.startswith("yumina_stack"): m_atk_mult *= (1.0 + v * 0.04)
             if k.startswith("lydia_stack"): m_atk_mult *= (1.0 + v * 0.06)
             if k.startswith("doyak"): m_di += (0.30 if v >= 5 else 0)
-        
+
         ax_dyn = (self.ax_stack * 0.08) if self.jr_type == "AX" else 0.0
         base_atk_p = self.cdata.get("패시브", {}).get("공격력_퍼센트", 0) + self.eq["atk"] + self.arc["atk"] + t.get("atk_buf", 0) + 0.1625 + 0.01
         eff_atk = self.pool * (1.0 + base_atk_p + ax_dyn) * m_atk_mult + 1000
@@ -91,10 +92,10 @@ class CharacterState:
         cr_i = min(self.cdata["기본_스탯"]["치명타_확률"] + self.eq["cr"] + self.arc["cr"] + t.get("cr_buf", 0) + self.ra_cr_stack * 0.05 + self.cdata.get("공명", {}).get("치확_퍼센트", 0), 1.0)
         cd_i = self.cdata["기본_스탯"]["치명타_피해"] + self.eq["cd"] + self.arc["cd"] + self.caster_cd_stack * 0.10 + t.get("cd_buf", 0)
         
-        # Omega DI Application: Only on Special Turns (or omega_elig)
+        # Fixed Omega Application
         omega_boost = (self.omega_dmg_stack * 0.05) if (is_spec or t.get("omega_elig", False)) else 0.0
         total_di = t.get("di", 0) + m_di + omega_boost
-
+        
         dmg = eff_atk * coeff * (1.0 + total_di + cr_i * cd_i)
         self.total_damage += dmg
         
@@ -110,7 +111,8 @@ class CharacterState:
             else: self.ax_stack = min(self.ax_stack + 1, 5)
         return dmg
 
-def run_party_simulation(config, turns=50):
+def run_sim_unpacker(args):
+    config, turns = args
     states = [CharacterState(**c) for c in config]
     total_actions = 0
     while total_actions < turns:
@@ -120,19 +122,33 @@ def run_party_simulation(config, turns=50):
             cur_spd = (s.base_spd + s.eq.get("spd", 0) + 60 + (8 if s.arc["type"] == "strikerB" else 0) + s.assassin_spd_stack * 10) * s.rdata["turns"][s.turn_count % len(s.rdata["turns"])].get("spd_mult", 1.0)
             s.gauge = min(1.0, s.gauge + cur_spd * min_t / 1000.0)
         ready = [s for s in states if s.gauge >= 0.9999]; ready[0].take_turn(); total_actions += 1
-    
-    res = []; total_dmg = sum(s.total_damage for s in states)
-    for s in states: res.append({"Character": s.name, "Turns": s.turn_count, "Total Damage": round(s.total_damage, 2), "Share": round(s.total_damage / total_dmg * 100, 2)})
-    return res, total_dmg
+    total_dmg = sum(s.total_damage for s in states)
+    return config, total_dmg
+
+def optimize_party_grid(char_names, jr_type="AX", turns=50):
+    member_search_space = []
+    for name in char_names:
+        full_name = next((k for k in SPECS.keys() if name in k), None)
+        cclass = SPECS[full_name]["분류"]
+        valid_arcs = [a_n for a_n, a_d in ARCANAS.items() if (cclass in a_d["class"])]
+        valid_arcs = [a for a in valid_arcs if ("전용" not in a) or (name in a)]
+        options = [{"name_query": name, "arc_name": a, "eq_name": e, "jr_type": jr_type} for e in EQUIPMENTS.keys() for a in valid_arcs]
+        member_search_space.append(options)
+    combinations = list(itertools.product(*member_search_space))
+    tasks = [(list(combo), turns) for combo in combinations]
+    with Pool(cpu_count()) as p: results = p.map(run_sim_unpacker, tasks)
+    results.sort(key=lambda x: x[1], reverse=True)
+    return results
 
 if __name__ == "__main__":
-    TURNS = 50
-    party = [
-        {"name_query": "로자리아", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"},
-        {"name_query": "유미나", "arc_name": "레인저(유미나 전용)", "eq_name": "파괴4세트", "jr_type": "AX"},
-        {"name_query": "리디아", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"},
-        {"name_query": "레이시", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"}
-    ]
-    res, total = run_party_simulation(party, TURNS)
-    print(pd.DataFrame(res).to_string(index=False))
-    print(f"\nTotal Party Damage: {total:,}\n")
+    PARTY_NAMES = ["로자리아", "유미나", "리디아", "레이시"]
+    top_results = optimize_party_grid(PARTY_NAMES)
+    report_file = "Results/party_optimization_raw.csv"
+    with open(report_file, "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Rank", "Total Damage", "Member 1 EQ", "Member 1 Arc", "Member 2 EQ", "Member 2 Arc", "Member 3 EQ", "Member 3 Arc", "Member 4 EQ", "Member 4 Arc"])
+        for i, (config, dmg) in enumerate(top_results[:100]):
+            row = [i+1, round(dmg, 0)]
+            for c in config: row.extend([c["eq_name"], c["arc_name"]])
+            writer.writerow(row)
+    print(f"\nOptimization Finished. Top 1: {top_results[0][1]:,.0f} Damage\n")
