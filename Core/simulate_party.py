@@ -74,9 +74,10 @@ class CharacterState:
         self.cr_base = self.cdata["기본_스탯"]["치명타_확률"]
         self.cd_base = self.cdata["기본_스탯"]["치명타_피해"]
         
-        # Passives
+        # Passives & Resonance
         self.pass_atk_p = self.cdata.get("패시브", {}).get("공격력_퍼센트", 0.0)
         self.pass_cr_p = self.cdata.get("패시브", {}).get("치확_퍼센트", 0.0)
+        self.res_cr_p = self.cdata.get("공명", {}).get("치확_퍼센트", 0.0)
         
         # Gauge & Stacks
         self.gauge = 0.0
@@ -141,66 +142,52 @@ class CharacterState:
                  self.ra_cr_stack = min(self.ra_cr_stack + 1, 5)
              ra_cr_bonus = self.ra_cr_stack * 0.05
         
-        cr_i = min(self.cr_base + self.pass_cr_p + self.eq["cr"] + self.arc["cr"] + t.get("cr_buf", 0.0) + ra_cr_bonus, 1.0)
+        cr_i = min(self.cr_base + self.pass_cr_p + self.res_cr_p + self.eq["cr"] + self.arc["cr"] + t.get("cr_buf", 0.0) + ra_cr_bonus, 1.0)
         cd_i = self.cd_base + self.eq["cd"] + self.arc["cd"] + self.caster_cd_stack * 0.10 + t.get("cd_buf", 0.0)
         
         coeff = t.get("coeff", 0.0) + t.get("extra_coeff", 0)
-        turn_dmg = eff_base * coeff * (1.0 + total_di) * (1.0 + (cr_i * (1.0 + cd_i)))
+        # Additive Damage Formula (as per V7 Official Guide)
+        # Total_DI = Skill_DI + Omega_DI + CD_Bonus (Expected)
+        total_di_all = total_di + (cr_i * cd_i)
+        
+        turn_dmg = eff_base * coeff * (1.0 + total_di_all)
         self.total_damage += turn_dmg
         
         # Reset Gauge
         self.gauge = 0.0
         
-        # --- PASSIVE GAUGE EFFECTS ---
-        # 1. Yumina: 15% AG on Crit
         if "유미나" in self.name:
-             # Using expected value: gauge += 0.15 * cr_i
-             self.gauge += 0.15 * cr_i
+             # Hypothesis: Per Hit gain instead of Per Action.
+             # gain = 0.15 * Expected_Hits_that_Crit
+             hits = t.get("hits", 4 if is_ult else 1)
+             expected_crits = hits * cr_i
+             self.gauge += 0.15 * expected_crits
              
-        # 2. Fray/Lydia etc. (Hardcoded or based on spec if available)
         if t.get("note") and "행게+30%" in t["note"]:
              self.gauge += 0.30
              
-        # Clear AX if ult
         if is_ult and self.jr_type == "AX": self.ax_stack = 0
         
         return turn_dmg
 
 def run_party_simulation(member_configs, target_turns=50):
     states = [CharacterState(**cfg) for cfg in member_configs]
-    
     total_actions = 0
-    time_elapsed = 0.0
-    
     while total_actions < target_turns:
-        # Find time to reach 100% (1.0) for every character
-        # Time = (Remaining Gauge) / Speed
-        # Assuming speed 100 advances 0.1 gauge per 'tick' or similar. 
-        # Standard: 1000/spd = time for 1.0 gauge.
-        
         times = []
         for s in states:
             spd = s.get_current_spd()
-            if spd <= 0: spd = 1 # Avoid div by zero
+            if spd <= 0: spd = 1
             times.append((1.0 - s.gauge) * (1000.0 / spd))
-        
         min_time = min(times)
-        time_elapsed += min_time
-        
-        # Advance everyone's gauge
         for s in states:
             spd = s.get_current_spd()
             s.gauge = min(1.0, s.gauge + (spd * min_time) / 1000.0)
-        
-        # Pick the one(s) at 1.0 gauge (priority to the one who was ready first)
         ready_chars = [s for s in states if s.gauge >= 0.9999]
         if ready_chars:
-            # If multiple ready, we could use order, but usually one is exact min
-            actor = ready_chars[0] 
-            actor.take_turn()
+            ready_chars[0].take_turn()
             total_actions += 1
     
-    # Summary
     results = []
     total_party_dmg = sum(s.total_damage for s in states)
     for s in states:
@@ -208,22 +195,33 @@ def run_party_simulation(member_configs, target_turns=50):
             "Character": s.name,
             "Turns": s.turn_count,
             "Total Damage": round(s.total_damage, 2),
-            "Share": round((s.total_damage / total_party_dmg) * 100, 2) if total_party_dmg > 0 else 0
+            "Share": round((s.total_damage / total_party_dmg) * 100, 2)
         })
     return results, total_party_dmg
 
 if __name__ == "__main__":
-    # Requested Party: 4 Rangers (Rosaria, Yumina, Lydia, Lacey)
-    party_optimal = [
-        {"name_query": "로자리아(공버프)", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"},
+    TURNS = 200
+    party_atk = [
+        {"name_query": "로자리아", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"},
+        {"name_query": "유미나", "arc_name": "레인저(유미나 전용)", "eq_name": "공격4세트", "jr_type": "AX"},
+        {"name_query": "리디아", "arc_name": "레인저D", "eq_name": "파괴4세트", "jr_type": "AX"},
+        {"name_query": "레이시", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"}
+    ]
+    party_ins = [
+        {"name_query": "로자리아", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"},
         {"name_query": "유미나", "arc_name": "레인저(유미나 전용)", "eq_name": "통찰4세트", "jr_type": "AX"},
         {"name_query": "리디아", "arc_name": "레인저D", "eq_name": "파괴4세트", "jr_type": "AX"},
         {"name_query": "레이시", "arc_name": "레인저D", "eq_name": "공격4세트", "jr_type": "AX"}
     ]
     
-    print("Running 4-RANGER GAUGE-BASED Party Simulation (Total Turns: 50)...\n")
-    res_opt, total_opt = run_party_simulation(party_optimal, 50)
+    print(f"Running Long-term Simulation ({TURNS} total turns)...\n")
+    res_atk, _ = run_party_simulation(party_atk, TURNS)
+    res_ins, _ = run_party_simulation(party_ins, TURNS)
     
-    print("### RESULTS (4-Ranger Specialized Team) ###")
-    print(pd.DataFrame(res_opt).to_string(index=False))
-    print(f"\nTotal Party Damage: {total_opt:,}\n")
+    df_atk = pd.DataFrame(res_atk)
+    df_ins = pd.DataFrame(res_ins)
+    
+    print("### RESULTS: YUMINA (ATTACK SET) ###")
+    print(df_atk[df_atk['Character'].str.contains('유미나')].to_string(index=False))
+    print("\n### RESULTS: YUMINA (INSIGHT SET) ###")
+    print(df_ins[df_ins['Character'].str.contains('유미나')].to_string(index=False))
