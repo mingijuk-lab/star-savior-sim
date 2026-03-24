@@ -15,15 +15,14 @@ def analyze_all(csv_path='Results/dps_results.csv'):
 
     characters = sorted(list(set(r['Character'] for r in data)))
     
-    # 1. Optimal Builds by Character
-    optimal_builds = {}
+    # 1. Optimal Builds by Character and Turns
+    optimal_builds = {} # key: (Character, Turns)
     for r in data:
-        c = r['Character']
-        if c not in optimal_builds or r['DPS'] > optimal_builds[c]['DPS']:
-            optimal_builds[c] = r
+        key = (r['Character'], r['Turns'])
+        if key not in optimal_builds or r['DPS'] > optimal_builds[key]['DPS']:
+            optimal_builds[key] = r
             
-    # 2. Passive Level Comparisons
-    # Pairs: (Lv4_Name, Lv1_Name)
+    # 2. Passive Level Comparisons (at 15 turns)
     pairs = [
         ("프레이(달속성파티)", "프레이(달속성파티, 1lv)"),
         ("로자리아", "로자리아(패시브1lv)"),
@@ -33,9 +32,11 @@ def analyze_all(csv_path='Results/dps_results.csv'):
     
     passive_comp = []
     for lv4, lv1 in pairs:
-        if lv4 in optimal_builds and lv1 in optimal_builds:
-            dps4 = optimal_builds[lv4]['DPS']
-            dps1 = optimal_builds[lv1]['DPS']
+        key4 = (lv4, "15")
+        key1 = (lv1, "15")
+        if key4 in optimal_builds and key1 in optimal_builds:
+            dps4 = optimal_builds[key4]['DPS']
+            dps1 = optimal_builds[key1]['DPS']
             diff = (dps4 - dps1) / dps1 * 100
             passive_comp.append({
                 "Character": lv4,
@@ -45,21 +46,32 @@ def analyze_all(csv_path='Results/dps_results.csv'):
             })
 
     # Output Generation
-    print("# Full Simulation Analysis Report\n")
+    lines = []
+    lines.append("# Full Simulation Analysis Report (5/10/15 Turns)\n")
     
-    print("## 1. Character Passive Level Comparison (Lv1 vs Max)")
-    print("| Character | Max Lv DPS | Lv1 DPS | Difference |")
-    print("| :--- | :--- | :--- | :--- |")
+    lines.append("## 1. Character Passive Level Comparison (15 Turns)")
+    lines.append("| Character | Max Lv DPS | Lv1 DPS | Difference |")
+    lines.append("| :--- | :--- | :--- | :--- |")
     for pc in passive_comp:
-        print(f"| {pc['Character']} | {pc['Lv4_DPS']:,} | {pc['Lv1_DPS']:,} | +{pc['Increase']} |")
+        lines.append(f"| {pc['Character']} | {pc['Lv4_DPS']:,} | {pc['Lv1_DPS']:,} | +{pc['Increase']} |")
         
-    print("\n## 2. Optimal Builds (Top 1 for each Character)")
-    print("| Character | Equipment | Arcana | Journey | DPS | MaxHit |")
-    print("| :--- | :--- | :--- | :--- | :--- | :--- |")
-    for c in characters:
-        if "1lv" in c: continue # Skip Lv 1 in the general optimal list if needed or keep both
-        b = optimal_builds[c]
-        print(f"| {c} | {b['Equip']} | {b['Arcana']} | {b['Journey']} | {b['DPS']:,} | {b['MaxHit']:,} |")
+    lines.append("\n## 2. Optimal Builds by Combat Length")
+    for t in ["5", "10", "15"]:
+        lines.append(f"\n### combat_length: {t} turns")
+        lines.append("| Character | Equipment | Arcana | Journey | DPS | MaxHit |")
+        lines.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
+        for c in characters:
+            if "1lv" in c: continue
+            key = (c, t)
+            if key in optimal_builds:
+                b = optimal_builds[key]
+                lines.append(f"| {c} | {b['Equip']} | {b['Arcana']} | {b['Journey']} | {b['DPS']:,} | {b['MaxHit']:,} |")
+
+    content = "\n".join(lines)
+    print(content)
+    
+    with open("Results/summary_report.md", "w", encoding="utf-8-sig") as f:
+        f.write(content)
 
 if __name__ == "__main__":
     analyze_all()

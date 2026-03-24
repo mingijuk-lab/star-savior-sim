@@ -6,30 +6,31 @@ from collections import defaultdict
 results = []
 try:
     with open('Results/dps_results.csv', mode='r', encoding='utf-8-sig') as f:
-        reader = csv.reader(f)
-        header = next(reader)
+        reader = csv.DictReader(f)
         for row in reader:
-            if len(row) >= 6:
-                results.append({
-                    'Character': row[0],
-                    'Class': row[1],
-                    'Equipment': row[2],
-                    'Arcana': row[3],
-                    'Journey': row[4],
-                    'DPS': float(row[5]),
-                    'MaxHit': float(row[6]) if len(row) > 6 else 0
-                })
+            results.append({
+                'Character': row['Character'],
+                'Class': row['Class'],
+                'Equipment': row['Equip'],
+                'Arcana': row['Arcana'],
+                'Journey': row['Journey'],
+                'Turns': row['Turns'],
+                'DPS': float(row['DPS']),
+                'MaxHit': float(row['MaxHit'])
+            })
 except Exception as e:
     print(f"Error reading file: {e}")
 
-char_groups = defaultdict(list)
+# Group by (Character, Turns) and take Top 1
+char_turns_groups = defaultdict(lambda: defaultdict(list))
 for r in results:
-    char_groups[r['Character']].append(r)
+    char_turns_groups[r['Character']][r['Turns']].append(r)
 
 top_results = {}
-for char, items in char_groups.items():
-    sorted_items = sorted(items, key=lambda x: x['DPS'], reverse=True)
-    top_results[char] = sorted_items[:2]
+for char, turns_dict in char_turns_groups.items():
+    top_results[char] = {}
+    for turns, items in turns_dict.items():
+        top_results[char][turns] = max(items, key=lambda x: x['DPS'])
 
 html_content = """<!DOCTYPE html>
 <html lang="ko">
@@ -120,13 +121,14 @@ class_colors = {
     "어쌔신": "bg-slate-900/40 text-slate-400 border-slate-800",
 }
 
-sorted_chars = sorted(top_results.keys(), key=lambda k: top_results[k][0]['DPS'] if top_results[k] else 0, reverse=True)
+sorted_chars = sorted(top_results.keys(), key=lambda k: top_results[k].get('15', {}).get('DPS', 0), reverse=True)
 
 for char in sorted_chars:
-    items = top_results[char]
-    if not items: continue
+    char_data = top_results[char]
+    if not char_data: continue
     
-    char_class = items[0]['Class']
+    # Get class from any of the results
+    char_class = next(iter(char_data.values()))['Class']
     class_style = class_colors.get(char_class, "bg-slate-800 text-slate-300 border-slate-700")
     
     html_content += f"""
@@ -138,37 +140,37 @@ for char in sorted_chars:
                 <div class="space-y-4">
     """
     
-    for i, item in enumerate(items):
-        rank = i + 1
-        rank_color = "text-yellow-400" if rank == 1 else "text-slate-400"
-        bg_opacity = "bg-slate-800/80" if rank == 1 else "bg-slate-800/40"
+    for t_val in ["5", "10", "15"]:
+        if t_val not in char_data: continue
+        item = char_data[t_val]
+        
+        # Determine rank appearance or just labeling
+        label_color = "text-blue-400" if t_val == "5" else ("text-purple-400" if t_val == "10" else "text-emerald-400")
         
         eq_name = item['Equipment'].replace("세트", "").strip()
-        arcana_key = item['Arcana'].split(" ")[0] if item['Arcana'] else ""
+        arc_key = item['Arcana'].split(" ")[0] if item['Arcana'] else ""
         eq_title = equip_details.get(eq_name, item['Equipment'])
-        arc_title = arcana_details.get(arcana_key, item['Arcana'])
+        arc_title = arcana_details.get(arc_key, item['Arcana'])
         jour_title = journey_details.get(item['Journey'], item['Journey'])
         
         html_content += f"""
-                    <div class="{bg_opacity} rounded-xl p-4 flex flex-col gap-2">
-                        <div class="flex items-center gap-3">
-                            <div class="text-2xl font-black {rank_color} w-8 shrink-0">#{rank}</div>
-                            <div class="flex-grow min-w-0">
-                                <div class="flex gap-1 overflow-hidden">
-                                    <span title="{eq_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">{item['Equipment']}</span>
-                                    <span title="{arc_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">{item['Arcana']}</span>
-                                    <span title="{jour_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">{item['Journey']}</span>
-                                </div>
-                            </div>
+                    <div class="bg-slate-800/60 rounded-xl p-4 flex flex-col gap-2">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-black {label_color} uppercase tracking-tighter">{t_val} TURNS OPTIMAL</span>
                         </div>
-                        <div class="flex justify-between items-end mt-1">
+                        <div class="flex gap-1 overflow-hidden mb-1">
+                            <span title="{eq_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 cursor-help truncate">{item['Equipment']}</span>
+                            <span title="{arc_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/30 border border-blue-800 text-blue-300 cursor-help truncate">{item['Arcana']}</span>
+                            <span title="{jour_title}" class="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/30 border border-purple-800 text-purple-300 cursor-help truncate">{item['Journey']}</span>
+                        </div>
+                        <div class="flex justify-between items-end">
                             <div>
-                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Average DPS</div>
-                                <div class="text-xl font-bold text-blue-400 leading-none">{item['DPS']:,.0f}</div>
+                                <div class="text-[9px] text-slate-500 uppercase tracking-widest font-bold">Avg DPS</div>
+                                <div class="text-lg font-bold text-blue-400 leading-none">{item['DPS']:,.0f}</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Max Hit</div>
-                                <div class="text-sm font-semibold text-purple-400 leading-none">{item['MaxHit']:,.0f}</div>
+                                <div class="text-[9px] text-slate-500 uppercase tracking-widest font-bold">Max Hit</div>
+                                <div class="text-xs font-semibold text-slate-400 leading-none">{item['MaxHit']:,.0f}</div>
                             </div>
                         </div>
                     </div>
@@ -179,14 +181,13 @@ for char in sorted_chars:
     """
 
 char_labels = []
-top1_dps = []
-top2_dps = []
+top15_dps = []
+top5_dps = []
 for char in sorted_chars:
-    items = top_results[char]
-    if not items: continue
+    char_data = top_results[char]
     char_labels.append(char)
-    top1_dps.append(items[0]['DPS'])
-    top2_dps.append(items[1]['DPS'] if len(items) > 1 else 0)
+    top15_dps.append(char_data.get("15", {}).get("DPS", 0))
+    top5_dps.append(char_data.get("5", {}).get("DPS", 0))
 
 # Add Glossary Section
 html_content += """
@@ -272,8 +273,8 @@ html_content += """
                 labels: """ + json.dumps(char_labels) + """,
                 datasets: [
                     {
-                        label: '1위 조합 DPS',
-                        data: """ + json.dumps(top1_dps) + """,
+                        label: '15턴 최적 DPS',
+                        data: """ + json.dumps(top15_dps) + """,
                         backgroundColor: gradient1,
                         borderColor: '#3b82f6',
                         borderWidth: 1,
@@ -282,8 +283,8 @@ html_content += """
                         categoryPercentage: 0.8
                     },
                     {
-                        label: '2위 조합 DPS',
-                        data: """ + json.dumps(top2_dps) + """,
+                        label: '5턴 최적 DPS',
+                        data: """ + json.dumps(top5_dps) + """,
                         backgroundColor: gradient2,
                         borderColor: '#a855f7',
                         borderWidth: 1,

@@ -52,8 +52,9 @@ ARCANAS = {
     "캐스터B":     {"class": ["캐스터"], "atk": 0.08, "cr": 0.30, "cd": 0.00, "type": "casterB"},
     "캐스터C":     {"class": ["캐스터"], "atk": 0.08, "cr": 0.24, "cd": 0.12, "type": "casterC"},
     "레인저A":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.12, "type": "rangerA"},
-    "레인저B":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.12, "type": "rangerB"},
-    "레인저C":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.00, "type": "rangerC"},
+    "레인저B":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.00, "type": "rangerB"},
+    "레인저C":     {"class": ["레인저"], "atk": 0.00, "cr": 0.18, "cd": 0.12, "type": "rangerC"},
+    "레인저D":     {"class": ["레인저"], "atk": 0.06, "cr": 0.24, "cd": 0.12, "type": "rangerD"},
 }
 
 JOURNEYS = {
@@ -122,15 +123,18 @@ class RosariaMechanic(Mechanic):
             di += 0.15 # 옥좌의 주인 기본기 피증
         return di, 0.0
     def on_hit(self, t, is_ult, cr_i):
-        if t.get("is_basic", False):
+        # 업화 획득: 기본기 타격 시 OR 특수기 중 '추가 기본기' 타격 시
+        # 추가 기본기는 보통 coeff 1.50으로 들어옴
+        is_basic_hit = t.get("is_basic", False) or t.get("is_extra_basic", False)
+        if is_basic_hit:
             self.stacks["upwa"] = min(self.stacks["upwa"] + (self.stacks["gukdong"] * 0.20), 5.0)
     def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
         if self.master_timer > 0: self.master_timer -= 1
         is_spec = (not t.get("is_basic", False)) and (not t.get("is_ult", False)) and t.get("coeff", 0) > 0
         if is_ult:
-            p_s = 1.0 - prob_none_crit
-            growth = p_s * min(total_expected_crit_hits, 3.0)
-            self.stacks["upwa"] = p_s * (self.stacks["upwa"] + growth)
+            # expected_crits is the sum of CR for all hits
+            growth = min(total_expected_crit_hits, 3.0)
+            self.stacks["upwa"] = min(self.stacks["upwa"] + growth, 5.0)
             self.stacks["gukdong"] = min(self.stacks["gukdong"] + 1, 5)
             self.master_timer = 3
         elif is_spec:
@@ -159,11 +163,14 @@ class YuminaMechanic(Mechanic):
         self.yumina_stack = 0
         self.ult_atk_timer = 0
     def hit_pre(self, t, arc):
-        atk = min(self.yumina_stack * 0.04, 0.20)
+        stack_atk = self.cdata.get("패시브", {}).get("스택_당_공격력", 0.04)
+        max_stack = self.cdata.get("패시브", {}).get("최대_스택", 5)
+        atk = min(self.yumina_stack * stack_atk, stack_atk * max_stack)
         if self.ult_atk_timer > 0: atk += 0.30
         return 0.0, atk
     def on_hit(self, t, is_ult, cr_i):
-        self.yumina_stack = min(self.yumina_stack + 1, 5)
+        max_stack = self.cdata.get("패시브", {}).get("최대_스택", 5)
+        self.yumina_stack = min(self.yumina_stack + 1, max_stack)
     def post_action(self, t, is_ult, prob_none_crit, total_expected_crit_hits):
         if self.ult_atk_timer > 0: self.ult_atk_timer -= 1
         if is_ult: self.ult_atk_timer = 2
@@ -193,9 +200,9 @@ def get_mechanic(cname, cdata):
     if cname.startswith("샤를"): return CharlesMechanic(cname, cdata)
     return Mechanic(cname, cdata)
 
-def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
+def calculate_dps(cname, cdata, rdata, equip_name, arc_name, journey_name, max_actions=10):
     eq = EQUIPMENTS[equip_name]
-    arc = ARCANAS[arcana_name]
+    arc = ARCANAS[arc_name]
     jr = JOURNEYS[journey_name]
     
     # Base Stats
@@ -216,18 +223,16 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
     passive_cr = cdata.get("패시브", {}).get("치확_퍼센트", 0.0)
     
     # Arcana Statics
-    # Arcana Statics (Only those NOT handled dynamically in the loop)
     arc_spd_static = 8 if arc["type"] == "strikerB" else 0
     
     # Formula components
-    # d_static includes everything that doesn't change turn-by-turn
     d_static = passive_atk + arc["atk"] + jr["atk_base"] + 0.01 + eq["atk"] + 0.1625
     final_spd = base_spd + 60 + arc_spd_static + eq.get("spd", 0)
     cr_base_total = base_cr + arc["cr"] + jr.get("cr", 0) + eq.get("cr", 0) + passive_cr
     cd_base_total = base_cd + arc["cd"] + jr.get("cd", 0) + eq.get("cd", 0)
     
     # Simulation Parameters
-    MAX_ACTIONS = 20 # 2 cycles for steady state
+    MAX_ACTIONS = max_actions
     turns = rdata.get("turns", [])
     if not turns: return 0, 0, 0, 0
     
@@ -238,8 +243,8 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
     # Dynamic Tracking
     m = get_mechanic(cname, cdata)
     ax_stack = 0
-    fx_carry = 0.0
     ga_reduction = 0.0
+    fx_carry = 0.0
     ex_bonus_accum = 0.0
     
     # Arcana Stacks
@@ -262,7 +267,8 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             
             # 0. Arcana Stack Update (Turn Start)
             if arc["type"] == "assassin": assassin_spd_stack = min(assassin_spd_stack + 1, 3)
-            if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC", "rangerB"]:
+            # Omega (Turn Start) - Only for StrikerA/C/D and CasterB/C
+            if arc["type"] in ["strikerA", "strikerC", "strikerD", "casterB", "casterC"]:
                 omega_dmg_stack = min(omega_dmg_stack + 1, 5)
             if arc["type"] in ["casterA", "casterB", "casterC"]:
                 caster_cd_stack = min(caster_cd_stack + 1, 3)
@@ -276,18 +282,24 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             # 2. AX Stack Update
             if jr["type"] == "AX": ax_stack = min(ax_stack + 1, 5)
 
-            # 3. Hit List
+            # 3. Hit List Construction
             base_hits = t.get("hits", 4 if is_ult else 1)
-            hit_list = []
-            if t.get("coeff", 0.0) > 0:
-                hit_list.extend([t["coeff"] / base_hits] * base_hits)
-            if t.get("extra_coeff", 0.0) > 0:
-                hit_list.append(t["extra_coeff"])
+            hit_list = [] # List of tuples (coeff, is_extra_basic)
             
-            # Rosaria Auto-Bonus
-            if cname.startswith("로자리아") and (not is_ult) and t.get("is_basic", False):
+            if t.get("coeff", 0.0) > 0 or t.get("coeff_atk", 0.0) > 0:
+                actual_coeff = t.get("coeff", t.get("coeff_atk", 0.0))
+                hit_list.extend([(actual_coeff / base_hits, False)] * base_hits)
+            
+            if t.get("extra_coeff", 0.0) > 0:
+                # Typically Rosaria's Extra Basic Attack from Special
+                hit_list.append((t["extra_coeff"], True))
+            
+            # Rosaria Auto-Bonus if not already in JSON
+            if cname.startswith("로자리아") and (not is_ult) and (not t.get("is_basic", False)):
+                 # Special skill triggers extra basic if upwa >= 3
                  if getattr(m, 'stacks', {}).get("upwa", 0) >= 3.0:
-                      if t.get("extra_coeff", 0.0) == 0: hit_list.append(1.50)
+                      if t.get("extra_coeff", 0.0) == 0:
+                          hit_list.append((1.50, True))
 
             turn_dmg = 0.0
             prob_none_crit = 1.0
@@ -298,13 +310,18 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             t_di = t.get("di", 0.0)
             t_cr = t.get("cr_buf", 0.0)
             t_cd = t.get("cd_buf", 0.0)
+
+            # Ranger Special DMG Stack Update (Apply before hit)
+            is_spec_action = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
+            if is_spec_action and arc["type"] in ["rangerB", "rangerC", "rangerD"]:
+                rc_spec_stack = min(rc_spec_stack + 1, 5)
             
             # 5. Hit Loop
-            for hit in hit_list:
+            for (hit_coeff, is_extra_basic) in hit_list:
                 m_di, m_atk = m.hit_pre(t, arc)
                 
                 # Ranger CR Stack (5% each)
-                ra_cr_bonus = (ra_cr_stack * 0.05) if "레인저" in arc["class"] else 0.0
+                ra_cr_bonus = (ra_cr_stack * 0.05) if arc["type"] in ["rangerA", "rangerB", "rangerC"] else 0.0
                 cr_i = min(cr_base_total + t_cr + ra_cr_bonus, 1.0)
                 cd_i = cd_base_total + t_cd + (caster_cd_stack * 0.10)
                 
@@ -312,32 +329,46 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
                 prob_none_crit *= (1.0 - cr_i)
                 expected_crits += cr_i
                 
-                # Dynamic Atk Buffs [SUM then MULTIPLY]
-                ra_atk_bonus = (ra_atk_stack * 0.03) if arc["type"] == "rangerA" else 0.0
-                rc_atk_bonus = (rc_atk_stack * 0.03) if arc["type"] in ["rangerC", "rangerD"] else 0.0
+                # Atk Buff Calculation
+                total_arc_atk_bonus = ((ra_atk_stack + rc_atk_stack) * 0.03)
                 ax_val = (ax_stack * 0.08) if jr["type"] == "AX" else 0.0
-                
-                total_dyn_atk = t_atk_buf + ra_atk_bonus + rc_atk_bonus + m_atk + ax_val
+                total_dyn_atk = t_atk_buf + total_arc_atk_bonus + m_atk + ax_val
                 
                 eff_base = pool * (1 + d_static) + 1000
                 eff_atk = eff_base * (1 + total_dyn_atk)
                 
-                # DI Sum
+                # DI Summing
                 omega_di = (omega_dmg_stack * 0.05) if t.get("omega_elig", False) else 0.0
-                rc_spec_di = (rc_spec_stack * 0.05) if arc["type"] in ["rangerC", "rangerD"] else 0.0
+                rc_spec_di = (rc_spec_stack * 0.05) if arc["type"] in ["rangerB", "rangerC", "rangerD"] else 0.0
                 total_di = t_di + omega_di + fx_carry + rc_spec_di + m_di
                 
-                dmg = (eff_atk * hit) * (1 + total_di + crit_contrib)
+                # Custom Formula Support (e.g. Hilde)
+                if "coeff_atk" in t:
+                    c_atk = t.get("coeff_atk", 0.0) / base_hits
+                    c_hp = (t.get("coeff_hp", 1.0) - 1.0) / base_hits
+                    final_hp = cdata.get("최종_체력", 0)
+                    base_dmg = (eff_atk * c_atk) + (final_hp * c_hp)
+                    dmg = base_dmg * (1 + total_di + crit_contrib)
+                else:
+                    dmg = (eff_atk * hit_coeff) * (1 + total_di + crit_contrib)
+                
                 turn_dmg += dmg
                 
-                # On-Hit Logic
-                if "레인저" in arc["class"] and t.get("is_basic", False):
-                    ra_cr_stack = min(ra_cr_stack + 1, 5)
-                if is_ult:
-                    if arc["type"] == "rangerA": ra_atk_stack = min(ra_atk_stack + cr_i, 5.0)
-                    if arc["type"] in ["rangerC", "rangerD"]: rc_atk_stack = min(rc_atk_stack + cr_i, 5.0)
+                # Metadata for Mechanic tracking
+                t_hit_data = t.copy()
+                t_hit_data["is_extra_basic"] = is_extra_basic
+                m.on_hit(t_hit_data, is_ult, cr_i)
                 
-                m.on_hit(t, is_ult, cr_i)
+            # Ranger Stack Increments (Turn level)
+            if "레인저" in arc["class"]:
+                if arc["type"] in ["rangerA", "rangerB", "rangerC"]:
+                    # Basic CR increment rules
+                    if t.get("is_basic", False) or t.get("extra_coeff", 0) > 0:
+                        ra_cr_stack = min(ra_cr_stack + 1, 5)
+                
+                if is_ult:
+                    if arc["type"] == "rangerA": ra_atk_stack = min(ra_atk_stack + 1, 5)
+                    if arc["type"] in ["rangerB", "rangerC", "rangerD"]: rc_atk_stack = min(rc_atk_stack + 1, 5)
 
             # 6. Post-Action Logic
             ga_reduction = m.post_action(t, is_ult, prob_none_crit, expected_crits)
@@ -345,12 +376,9 @@ def calculate_dps(cname, cdata, rdata, equip_name, arcana_name, journey_name):
             if jr["type"] == "FX" and hit_list:
                 fx_carry = (1.0 - prob_none_crit) * 0.25
             if jr["type"] == "EX" and t.get("is_basic", False):
+                # EX expected bonus (25% chance of team basic)
                 ex_bonus_accum += (1.0 - prob_none_crit) * 0.25 * 16215
             
-            is_spec = (not t.get("is_basic", False)) and (not is_ult) and t.get("coeff", 0) > 0
-            if is_spec and arc["type"] in ["rangerB", "rangerC", "rangerD"]:
-                rc_spec_stack = min(rc_spec_stack + 1, 5)
-                
             if is_ult and jr["type"] == "AX":
                 ax_stack = 0
             
@@ -368,9 +396,9 @@ def main():
     
     # Some chars might only exist in specs, skip if no rotation
     results = []
+    target_turns = [5, 10, 15]
     
     for cname, cdata in specs.items():
-        print(f"Processing candidate: {cname}")
         if cname not in rotations:
             continue
         print(f"Starting simulation for: {cname}")
@@ -379,29 +407,29 @@ def main():
         
         for eq_name in EQUIPMENTS.keys():
             for arc_name, arc_data in ARCANAS.items():
-                # Check class compatibility: 분류와 아르카나 class 배열 직접 매칭
+                # Check class compatibility
                 valid = cclass in arc_data["class"]
-
-                if not valid:
-                    continue
+                if not valid: continue
                         
                 for jr_name in JOURNEYS.keys():
-                    dps, total, time, max_hit = calculate_dps(cname, cdata, rdata, eq_name, arc_name, jr_name)
-                    results.append({
-                        "Character": cname,
-                        "Class": cclass,
-                        "Equip": eq_name,
-                        "Arcana": arc_name,
-                        "Journey": jr_name,
-                        "DPS": round(dps, 2),
-                        "MaxHit": round(max_hit, 2)
-                    })
+                    for t_limit in target_turns:
+                        dps, total, time, max_hit = calculate_dps(cname, cdata, rdata, eq_name, arc_name, jr_name, max_actions=t_limit)
+                        results.append({
+                            "Character": cname,
+                            "Class": cclass,
+                            "Equip": eq_name,
+                            "Arcana": arc_name,
+                            "Journey": jr_name,
+                            "Turns": t_limit,
+                            "DPS": round(dps, 2),
+                            "MaxHit": round(max_hit, 2)
+                        })
     
     # Sort and save
-    results.sort(key=lambda x: (x["Character"], -x["DPS"]))
+    results.sort(key=lambda x: (x["Character"], x["Turns"], -x["DPS"]))
     
     with open("Results/dps_results.csv", "w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=["Character", "Class", "Equip", "Arcana", "Journey", "DPS", "MaxHit"])
+        writer = csv.DictWriter(f, fieldnames=["Character", "Class", "Equip", "Arcana", "Journey", "Turns", "DPS", "MaxHit"])
         writer.writeheader()
         writer.writerows(results)
     
