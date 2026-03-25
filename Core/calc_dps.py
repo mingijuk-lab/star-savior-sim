@@ -443,9 +443,10 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                                               # However, for conditional stacks like Blood Echo, we need a "crit" event.
                                               # For now, we'll use the effective crit rate as a probability.
         
-        # 피의 메아리 Stack Update (v26.0)
+        # 피의 메아리 Stack Update (v27.0 - 4 Target Assumption)
+        TARGET_COUNT = 4
         if any(j.name == "피의 메아리" for j in jrs) and is_aoe and is_crit:
-            rosa_atk_stack = min(5, rosa_atk_stack + 1)
+            rosa_atk_stack = min(5, rosa_atk_stack + TARGET_COUNT)
             
         # This `hits` list was likely intended for something else, but it's not used.
         # If it's meant to track individual hit damage for a more complex crit simulation,
