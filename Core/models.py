@@ -101,9 +101,7 @@ class Character:
         # pool = (Base_Atk + 1250) * (1 + Resonance%) + Resonance_Flat
         # We might need to adjust this per stat.
         
-        if stat_type == StatType.ATK:
-            # Replicating the 'pool' and 'eff_atk' logic if needed, 
-            # but let's stick to a generic one first and refine.
+        if stat_type == StatType.ATK or stat_type == StatType.DEF_PEN:
             return (base * (1.0 + percent_sum) + flat_sum) * multi_factor
         
         return (base * (1.0 + percent_sum) + flat_sum) * multi_factor

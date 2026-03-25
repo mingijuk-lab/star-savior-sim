@@ -145,6 +145,12 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     ex_total_cr = 0.0
     frey_hr = 0
     frey_cr_turns = 0
+    charles_lucky_token_turns = 0 # Track Charles's Lucky Token
+    charles_atk_buff_turns = 0   # Track Charles's ATK 30% (2 turns)
+    rosaria_def_pen_turns = 0    # Track Rosaria's DEF Pen (3 turns after Ult)
+    smile_def_red_turns = 0 # Track Smile's DEF Red debuff
+    lydia_atk_stack = 0     # Lydia's Passive (6% x 5)
+    yumina_atk_stack = 0    # Yumina's Passive (4% x 5)
     bleeding_dots = []
     
     # Universal Attribute (속성) Stack
@@ -208,11 +214,17 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             frey_hr = 0
             # AG +30% handled later
             
-        # Yumina State Detection
+        # Yumina Base config
         is_yumina = "유미나" in cname
         y_is_1lv = "1lv" in cname
         y_atk_per_stack = 0.02 if y_is_1lv else 0.04
         y_crit_ga = 0.09 if y_is_1lv else 0.15
+        
+        # Trigger Passives
+        if "리디아" in cname:
+            lydia_atk_stack = min(5, lydia_atk_stack + (1 if not is_ult else 0)) # Ult might not stack if it's "Son-gil" only, but user says "after using Son-gil". We'll assume any action for now.
+        if is_yumina:
+            yumina_atk_stack = min(5, yumina_atk_stack + 1)
         
         # Buff Application (Starts after Spec, so if it was set in PREVIOUS end-of-turn, it's active now)
         cr_from_buff = 0.30 if (is_frey and frey_cr_turns > 0) else 0.0
@@ -222,6 +234,20 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if any(j.name == "하늘의 심판" for j in jrs): caster_cd_stack = min(caster_cd_stack + 1, 3)
         if any(j.name == "깊은 애도" for j in jrs) and (is_basic or t.get("extra_coeff", 0) > 0):
             ra_cr_stack = min(ra_cr_stack + 1, 5)
+
+        # 0. Defense Calculation (v14.2)
+        target_def_base = 3000.0
+        # Check for DEF Reduction (Smile's debuff or Journey)
+        current_def_red = 0.30 if smile_def_red_turns > 0 else 0.0
+        
+        # DEF Penetration (stat-based + dynamic buffer)
+        def_pen_total = char.get_stat(StatType.DEF_PEN, []) + t.get("def_pen_buf", 0.0)
+            
+        effective_def = target_def_base * (1.0 - current_def_red) * (1.0 - def_pen_total)
+        def_multiplier = 1.0 - (effective_def / (effective_def + 3000.0))
+
+        # Dynamic ATK Multipliers (now primarily in t['atk_buf'])
+        m_di = 0.0
 
         dyn_mods = []
         if assassin_spd_stack > 0: dyn_mods.append(Modifier(StatType.SPEED, assassin_spd_stack * 10, ModifierType.FLAT, "AssassinStack"))
@@ -242,19 +268,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if any(j.name == "허수의 개척자" for j in jrs):
             if is_spec: omega_dmg_stack = min(omega_dmg_stack + 1, 5)
 
-        m_di, m_atk_mult, coeff = 0.0, 1.0, t.get("coeff", 0) + t.get("extra_coeff", 0)
+        coeff = t.get("coeff", 0) + t.get("extra_coeff", 0)
         
         # Apply Attribute (속성) Dynamic Stats
-        if is_yumina:
-            m_atk_mult *= (1.0 + t.get("yumina_hit_stack", 0) * y_atk_per_stack)
-            # Yumina's Leap (attr_stack) threshold for DI removed as it is not in spec. 
-            # Leap is used below for Bleed count logic.
+        # (Attribute stacks and effects are now handled in the unified summation logic below)
 
         for k, v in t.items():
             if k.endswith("_di"): m_di += v
-            if k.endswith("_atk_p"): m_atk_mult *= (1.0 + v)
-            if k.startswith("lydia_stack"): m_atk_mult *= (1.0 + v * 0.06)
-            # yumina_stack/doyak from JSON are now ignored in favor of dynamic engine
+            if k.endswith("_atk_p"): dyn_atk_p_sum += v # Add to sum
+            # lydia_stack/yumina_stack from JSON are now ignored in favor of dynamic engine
         
         # 1. Raw Pool (Stella Archive only)
         raw_pool = (cdata["기본_스탯"]["공격력"] + 1250)
@@ -271,17 +293,25 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # Standard v14.1 eff_base: Resonance is excluded from multipliers
         eff_base = raw_pool * (1.0 + static_atk_p) + 1000
         
-        # 3. Dynamic ATK and Multipliers
-        # AX Formula: eff_atk = [pool * (1 + d_static) + 1000] * (1 + AX_stack * 0.08 + atk_buf)
+        # 3. Dynamic ATK and Multipliers (v14.3 Unified Summation)
+        # Formula: eff_atk = eff_base * (1 + Σ(Dynamic_Atk_Buffs)) + resonance
+        # Summing all dynamic buffs: AX + Json_Atk_Buf + Passive_Stacks + Multiplier_Effects
+        
         res_p = res.get("퍼센트", 0)
         res_flat = res.get("정수", 0)
         resonance_val = (raw_pool * res_p + res_flat)
         
+        dyn_atk_p_sum = t.get("atk_buf", 0.0)
         if has_ax:
-            eff_atk = eff_base * (1.0 + ax_stacks[action_idx] * 0.08 + t.get("atk_buf", 0)) * m_atk_mult + resonance_val
-        else:
-            # Non-AX: (1 + static + dynamic)
-            eff_atk = (raw_pool * (1.0 + static_atk_p + t.get("atk_buf", 0)) + 1000) * m_atk_mult + resonance_val
+            dyn_atk_p_sum += ax_stacks[action_idx] * 0.08
+        
+        if "리디아" in cname:
+            dyn_atk_p_sum += lydia_atk_stack * 0.06
+        if is_yumina:
+            dyn_atk_p_sum += yumina_atk_stack * y_atk_per_stack
+            
+        # Final multiplicative formula for dynamic buffs
+        eff_atk = eff_base * (1.0 + dyn_atk_p_sum) + resonance_val
         
         # 4. Crit Calculation
         cr_dyn = ra_cr_stack * 0.05 + t.get("cr_buf", 0) + cr_from_buff
@@ -303,11 +333,12 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             if any(j.journey_type == "yumina_ex" for j in jrs):
                 chain_dmg += eff_atk * 0.05 # Catalyst (Yumina)
             
-        turn_dmg = eff_atk * coeff * (1.0 + total_di + cr_i * cd_i) + chain_dmg
+        # Final Damage with Defense (v14.2)
+        turn_dmg = (eff_atk * coeff * (1.0 + total_di + cr_i * cd_i) + chain_dmg) * def_multiplier
         
         # Rosaria Extra Basic (TN+)
         if rosaria_extra_basic:
-            turn_dmg += eff_atk * 1.50 * (1.0 + total_di + cr_i * cd_i)
+            turn_dmg += (eff_atk * 1.50 * (1.0 + total_di + cr_i * cd_i)) * def_multiplier
         
         total_dmg += turn_dmg
         
@@ -336,6 +367,10 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if is_ult:
             if "로자리아" in cname: ga_red_carry += 0.50
             if "리디아" in cname: ga_red_carry += 0.30
+            if "스마일" in cname: smile_def_red_turns = 2 # Apply 30% DEF Red for 2 turns
+        
+        # Buff/Debuff decrement
+        smile_def_red_turns = max(0, smile_def_red_turns - 1)
         if t.get("note"):
             if "행게+30%" in t["note"]: ga_red_carry += 0.30
             if "행게+50%" in t["note"]: ga_red_carry += 0.50
@@ -493,7 +528,9 @@ def main():
     EQUIPMENTS = setup_equipments(substat_vars)
     use_total_dmg = (substat_vars.get("METRIC", 2) == 2)
 
-    specs, rotations = extract_json_from_md("Data/캐릭터_스펙_마스터.md"), extract_json_from_md("Data/사이클_로테이션_마스터.md")
+    with open("Data/characters.json", "r", encoding="utf-8") as f:
+        specs = json.load(f)
+    rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
     results = []
     
     metric_label = "Total Damage" if use_total_dmg else "DPS"
