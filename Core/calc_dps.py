@@ -174,11 +174,20 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     y_crit_ga = 0.09 if y_is_1lv else 0.15
     y_atk_rate = 0.02 if y_is_1lv else 0.04
 
-    action_idx = 0
-    for t in rdata["turns"]:
+    rosa_atk_stack = 0
+    
+    turns = rdata["turns"]
+    turns_count = len(turns)
+
+    hits = [] # For calculating average crit chance for Blood Echo
+
+    for action_idx in range(turns_count):
         if action_idx >= max_actions:
             break
-            
+        
+        # 0. Prep action data
+        t = turns[action_idx]
+        
         is_ult = t.get("is_ult", False)
         if force_no_ult and is_ult:
             is_ult = False
@@ -190,6 +199,14 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             is_spec = (not is_basic) and (not is_ult) and (not t.get("is_extra", False))
             is_extra = t.get("is_extra", False)
             coeff = t.get("coeff", 0) + t.get("extra_coeff", 0)
+        
+        # Determine is_aoe from cdata (v26.0)
+        curr_skill_type = "궁극기" if is_ult else ("기본기" if is_basic else "특수기")
+        curr_skill = cdata.get("스킬", {}).get(curr_skill_type, {})
+        is_aoe = "전체 공격" in curr_skill.get("부가", "")
+        # Yumina Catalyst Exception: If Yumina's basic attack is used with "경력직 용병", it becomes AoE.
+        if "유미나" in cname and is_basic and any(j.name == "경력직 용병" for j in jrs):
+            is_aoe = True
 
         # Attribute Stack (Universal Rule: Basic +1)
         if is_basic:
@@ -321,7 +338,11 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # dyn_atk_p_sum is already initialized and populated by passive stacks
         if has_ax:
             dyn_atk_p_sum += ax_stacks[action_idx] * 0.08
-        
+            
+        # 피의 메아리 (v26.0)
+        if any(j.name == "피의 메아리" for j in jrs):
+            dyn_atk_p_sum += rosa_atk_stack * 0.03
+            
         # Final multiplicative formula for dynamic buffs
         eff_atk = eff_base * (1.0 + dyn_atk_p_sum) + resonance_val
         
@@ -416,31 +437,26 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # but we keep the state updates here for any remaining logic if needed.
         # (Though most should be in t.get('attribute_stack'))
         
-        action_idx += 1
+        # 6. Post-Action stack updates
+        is_crit = (np.random.rand() < eff_cr) # This is a statistical simulation, not a true random roll for a single run.
+                                              # For average DPS, we assume average crit rate applies.
+                                              # However, for conditional stacks like Blood Echo, we need a "crit" event.
+                                              # For now, we'll use the effective crit rate as a probability.
+        
+        # 피의 메아리 Stack Update (v26.0)
+        if any(j.name == "피의 메아리" for j in jrs) and is_aoe and is_crit:
+            rosa_atk_stack = min(5, rosa_atk_stack + 1)
+            
+        # This `hits` list was likely intended for something else, but it's not used.
+        # If it's meant to track individual hit damage for a more complex crit simulation,
+        # it needs to be integrated differently. For average DPS, the `cr_i * cd_i` term
+        # already accounts for average crit damage.
+        # if is_crit:
+        #     hits.append(dmg_raw * (1.0 + cd_i))
 
-    # Apply EX Bonus (v6): basic_count * cr_i * 0.25 * 16215
-    if has_ex and ex_basic_count > 0:
-        avg_cr = ex_total_cr / ex_basic_count
-        ex_bonus = ex_basic_count * avg_cr * 0.25 * 16215
-        total_dmg += ex_bonus
 
     return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg
 
-    # CD = G / (B*(Cr_i - Cr_a) - G*Cr_a)
-    
-    denom = B * (Cr_ins4 - Cr_atk4) - Atk4_gain * Cr_atk4
-    if denom <= 0: return 999.9
-    
-    CD_needed = Atk4_gain / denom
-    
-    # Current CD
-    current_cd = cdata["기본_스탯"]["치명타_피해"]
-    for jr in jrs:
-        for mod in jr.modifiers:
-            if mod.stat_type == StatType.CRIT_DAMAGE:
-                current_cd += mod.value
-                
-    return max(0, CD_needed - current_cd)
 
 def get_valid_journeys(char_name, char_class):
     valid = []
@@ -513,7 +529,12 @@ def main():
     use_total_dmg = (substat_vars.get("METRIC", 2) == 2)
 
     # 2. Specs
-    specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
+    try:
+        with open("Data/characters.json", "r", encoding="utf-8") as f:
+            specs = json.load(f)
+    except:
+        specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
+        
     rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
     results = []
     

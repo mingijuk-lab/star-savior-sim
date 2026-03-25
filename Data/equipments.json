@@ -300,6 +300,14 @@
             "restrict": {
                 "char": "유미나"
             }
+        },
+        "피의 메아리": {
+            "type": "rosa_ex",
+            "modifiers": [],
+            "note": "전체 공격으로 치명타 발생 시 치명타 발생한 대상의 수 만큼 공격력 3% 증가(최대 5회 중첩)",
+            "restrict": {
+                "char": "로자리아"
+            }
         }
     },
     "journeys_archive": {
