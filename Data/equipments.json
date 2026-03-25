@@ -1,0 +1,412 @@
+{
+    "four_piece_sets": {
+        "공격": [
+            {
+                "stat": "ATK",
+                "value": 0.20,
+                "type": "PERCENT"
+            }
+        ],
+        "통찰": [
+            {
+                "stat": "CRIT_RATE",
+                "value": 0.30,
+                "type": "FLAT"
+            }
+        ],
+        "파괴": [
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": 0.40,
+                "type": "FLAT"
+            }
+        ],
+        "체력": [
+            {
+                "stat": "HP",
+                "value": 0.30,
+                "type": "PERCENT"
+            }
+        ]
+    },
+    "two_piece_sets": {
+        "투지": [
+            {
+                "stat": "ATK",
+                "value": 0.05,
+                "type": "PERCENT"
+            }
+        ],
+        "보조": [],
+        "장벽": [
+            {
+                "stat": "HP",
+                "value": 0.10,
+                "type": "PERCENT"
+            }
+        ]
+    },
+    "base_pieces": {
+        "weapon": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ],
+        "gloves": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ],
+        "armor": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ],
+        "necklace": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ],
+        "ring": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ],
+        "boots": [
+            {
+                "stat": "ATK",
+                "value": "$ATK$",
+                "type": "PERCENT"
+            },
+            {
+                "stat": "SPEED",
+                "value": "$SPD$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_RATE",
+                "value": "$CR$",
+                "type": "FLAT"
+            },
+            {
+                "stat": "CRIT_DAMAGE",
+                "value": "$CD$",
+                "type": "FLAT"
+            }
+        ]
+    },
+    "journeys": {
+        "노페인 노게인": {
+            "type": "lacey_ex",
+            "modifiers": [
+                {
+                    "stat": "ATK",
+                    "val": 0.06,
+                    "type": "PERCENT"
+                },
+                {
+                    "stat": "CRIT_RATE",
+                    "val": 0.06,
+                    "type": "FLAT"
+                }
+            ]
+        },
+        "누각 위, 유리달 맞이": {
+            "type": "common_atk",
+            "modifiers": [
+                {
+                    "stat": "ATK",
+                    "val": 0.08,
+                    "type": "PERCENT"
+                }
+            ]
+        },
+        "친구들과의 산책": {
+            "type": "dana_ex",
+            "modifiers": [],
+            "note": "최초 2턴간 치확 30% 증가",
+            "restrict": {
+                "class": "캐스터"
+            }
+        },
+        "키라만큼 귀여워": {
+            "type": "kira_ex",
+            "modifiers": [],
+            "note": "탄력 가속 (Turn시작 속도 10 x 3)",
+            "restrict": {
+                "class": "어쌔신"
+            }
+        },
+        "하늘의 심판": {
+            "type": "muriel_ex",
+            "modifiers": [],
+            "note": "표적 정렬 (Turn시작 치피 10% x 3)",
+            "restrict": {
+                "class": "캐스터"
+            }
+        },
+        "허수의 개척자": {
+            "type": "omega_ex",
+            "modifiers": [],
+            "note": "스택 트리거 (특수기 피해 5% x 5)"
+        },
+        "어느 한 기사의 맹세": {
+            "type": "charles_knight",
+            "modifiers": [
+                {
+                    "stat": "SPEED",
+                    "val": 8.0,
+                    "type": "FLAT"
+                }
+            ]
+        },
+        "완벽한 바니걸": {
+            "type": "claire_bunny",
+            "modifiers": [
+                {
+                    "stat": "HP",
+                    "val": 0.06,
+                    "type": "PERCENT"
+                },
+                {
+                    "stat": "CRIT_RATE",
+                    "val": 0.06,
+                    "type": "FLAT"
+                }
+            ]
+        },
+        "깊은 애도": {
+            "type": "belis_ex",
+            "modifiers": [],
+            "note": "잠식의 그림자 (기본기 후 치확 5% x 5)",
+            "restrict": {
+                "class": "레인저"
+            }
+        },
+        "메이드 바이 페트라": {
+            "type": "petra_ex",
+            "modifiers": [
+                {
+                    "stat": "CRIT_RATE",
+                    "val": 0.18,
+                    "type": "FLAT"
+                }
+            ]
+        },
+        "불굴의 역작": {
+            "type": "indomitable_masterpiece",
+            "modifiers": [
+                {
+                    "stat": "CRIT_DAMAGE",
+                    "val": 0.12,
+                    "type": "FLAT"
+                },
+                {
+                    "stat": "HP",
+                    "val": 0.04,
+                    "type": "PERCENT"
+                }
+            ]
+        },
+        "경력직 용병": {
+            "type": "yumina_ex",
+            "modifiers": [],
+            "note": "카탈리스트 (치명타시 공격력의 5% 추가피해)",
+            "restrict": {
+                "char": "유미나"
+            }
+        }
+    },
+    "journeys_archive": {
+        "대단하고 엄청난 바니걸": {
+            "type": "scarlet_bunny",
+            "modifiers": [],
+            "note": "강화효과 개수당 효적 10%"
+        },
+        "공녀, 왕좌에 오르다": {
+            "type": "frey_support",
+            "modifiers": [],
+            "note": "별빛 은총 (회복량)"
+        },
+        "스타라니스의 영애": {
+            "type": "asera_ex",
+            "modifiers": [
+                {
+                    "stat": "HP",
+                    "val": 0.08,
+                    "type": "PERCENT"
+                }
+            ]
+        },
+        "조용한 휴식 시간": {
+            "type": "emily_ex",
+            "modifiers": [],
+            "note": "신중한 전술 (스타포스)"
+        },
+        "본 투비 와일드": {
+            "type": "harley_ex",
+            "modifiers": [],
+            "note": "두 번째 심장 (강인도 +1)"
+        },
+        "하늘의 시련": {
+            "type": "elisa_ex",
+            "modifiers": [
+                {
+                    "stat": "HP",
+                    "val": 0.08,
+                    "type": "PERCENT"
+                }
+            ],
+            "note": "방어력 8% / 효저 4%"
+        },
+        "보이지 않는 곳": {
+            "type": "seres_ex",
+            "modifiers": [],
+            "note": "응급 처치 (회복)"
+        },
+        "진실은 언제나 하나겠지요": {
+            "type": "lily_ex",
+            "modifiers": [],
+            "note": "결연한 각오 (증표/HP 50%이하)"
+        },
+        "만족스러운 식사": {
+            "type": "vesta_ex",
+            "modifiers": [],
+            "note": "강인한 의지 (강인도 +2)"
+        },
+        "유리창 너머의 밤 풍경": {
+            "type": "carmen_ex",
+            "modifiers": [],
+            "note": "여유로운 응수"
+        },
+        "튀김 명인": {
+            "type": "tanya_ex",
+            "modifiers": [],
+            "note": "튀김 파티"
+        },
+        "서류 더미 위의 책임감": {
+            "type": "roberta_ex",
+            "modifiers": [],
+            "note": "재난 대응 프로토콜"
+        },
+        "서투른 욕망 해소법": {
+            "type": "charles_ex",
+            "modifiers": [],
+            "note": "더블 탭 (연쇄 피해)",
+            "restrict": {
+                "class": "어쌔신"
+            }
+        },
+        "노스텔지어의 역습": {
+            "type": "hilde_ex",
+            "modifiers": [],
+            "note": "침묵의 방패 (선제방어)"
+        }
+    },
+    "arcana_blessing": {
+        "AX": {
+            "stat": "ATK",
+            "base_val": 0.08,
+            "dynamic_val": 0.08,
+            "max_stack": 5,
+            "reset_on_ult": true
+        },
+        "FX": {
+            "stat": "CRIT_DAMAGE",
+            "base_val": 0.10,
+            "dynamic_val": 0.25,
+            "note": "Critical Carry DI"
+        },
+        "EX": {
+            "stat": "CRIT_RATE",
+            "base_val": 0.10,
+            "dynamic_val": 0.25,
+            "bonus_base": 16215
+        }
+    }
+}
