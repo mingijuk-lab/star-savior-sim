@@ -1,82 +1,60 @@
-import pandas as pd
-import numpy as np
-from Core.models import StatType, Modifier, ModifierType, Character
-from Core.data_loader import extract_json_from_md, load_equipments_from_json
-from Core.calc_dps import calculate_dps, JOURNEYS, setup_equipments, find_best_journeys, get_interactive_substats
-import Core.calc_dps as c_dps
+from Core.models import StatType
+from typing import Dict, List, Callable
 
-def sweep_gear_performance(character_name, stat_type, max_val=0.30, steps=15):
+def profile_stat_scaling(
+    char_name: str, 
+    cdata: Dict, 
+    rdata: Dict, 
+    equip_names: List[str], 
+    stat_type: StatType, 
+    max_increment: float, 
+    step: float, 
+    find_best_func: Callable
+) -> List[Dict]:
     """
-    Sweeps a specific sub-stat total from 0 to max_val and finds the best gear set.
+    특정 스탯(공격력, 치확, 치피)이 0%부터 max_increment까지 step 단위로 증가할 때,
+    각 구간별 절대적인 1위 빌드(장비+축복+여정)의 변화를 추적하여 반환합니다.
     """
-    # 1. Setup specs
-    specs, rotations = extract_json_from_md("Data/캐릭터_스펙_마스터.md"), extract_json_from_md("Data/사이클_로테이션_마스터.md")
-    if character_name not in specs: return
-    
-    cdata, rdata = specs[character_name], rotations[character_name]
-    char_class = cdata.get("분류", cdata.get("class", "Unknown"))
-    
-    # 2. Initialize default EQUIPMENTS to find best journeys
-    default_vars = {"$ATK$": 0.0, "$SPD$": 0.0, "$CR$": 0.0, "$CD$": 0.0}
-    c_dps.EQUIPMENTS = setup_equipments(default_vars)
-    
-    base_eq = list(c_dps.EQUIPMENTS.keys())[0]
-    best_jrs, _ = find_best_journeys(character_name, char_class, cdata, rdata, base_eq, 5)
-    
-    # Sub-stat variable name mapping
-    var_map = {StatType.ATK: "$ATK$", StatType.SPEED: "$SPD$", StatType.CRIT_RATE: "$CR$", StatType.CRIT_DAMAGE: "$CD$"}
+    var_map = {
+        StatType.ATK: "$ATK$", 
+        StatType.CRIT_RATE: "$CR$", 
+        StatType.CRIT_DAMAGE: "$CD$"
+    }
     target_var = var_map.get(stat_type)
-    stat_label = {StatType.ATK: "공격력%", StatType.SPEED: "속도", StatType.CRIT_RATE: "치명타확률", StatType.CRIT_DAMAGE: "치명타피해"}[stat_type]
+    if not target_var:
+        return []
+
+    char_class = cdata.get("분류", cdata.get("class", "Unknown"))
+    results = []
     
-    report_lines = []
-    report_lines.append(f"\n### [분석 대상: {character_name} | 분석 스탯: {stat_label}]")
-    report_lines.append(f"- 범위: 0.0 ~ {max_val} (총 수치)")
-    
-    import Core.calc_dps
-    original_equipments = c_dps.EQUIPMENTS
-    
-    current_best = None
-    for val in np.linspace(0, max_val, steps + 1):
-        per_piece_val = val / 6.0
+    # 0.0부터 max_increment까지 step 간격으로 반복 (예: 0%, 10%, 20%...)
+    current_increment = 0.0
+    while current_increment <= max_increment + 1e-9: # 부동소수점 오차 방지
         vars = {"$ATK$": 0.0, "$SPD$": 0.0, "$CR$": 0.0, "$CD$": 0.0}
-        vars[target_var] = per_piece_val
+        # 6개 부위에 스탯을 균등 분배
+        vars[target_var] = current_increment / 6.0 
         
-        local_equipments = load_equipments_from_json("Data/equipments.json", vars)
-        c_dps.EQUIPMENTS = local_equipments
+        best_dps = -1.0
+        best_build = {}
         
-        best_set, best_dps = None, -1
-        for eq_name in local_equipments.keys():
-            dps, _, _, _ = calculate_dps(character_name, cdata, rdata, eq_name, best_jrs, 10)
-            if dps > best_dps:
-                best_dps, best_set = dps, eq_name
-        
-        if best_set != current_best:
-            line = f" > 총 {stat_label} +{val*100:4.1f}% 지점: 최적 = [{best_set}] (DPS: {best_dps:,.0f})"
-            print(line)
-            report_lines.append(line)
-            current_best = best_set
+        # 현재 스탯 증가량에서 모든 장비 세트를 순회하며 1위를 찾음
+        for eq_name in equip_names:
+            # find_best_journeys 함수 호출 (5개 여정, 축복 최적화)
+            res = find_best_func(char_name, char_class, cdata, rdata, eq_name, 5, False, vars)
             
-    c_dps.EQUIPMENTS = original_equipments
-    return report_lines
-
-if __name__ == "__main__":
-    import sys
-    import io
-    if sys.stdout.encoding != 'utf-8':
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
-    full_report = ["# 장비 세트별 민감도 분석 리포트 (Sensitivity Analysis)\n"]
-    full_report.append(f"> 한계 수치: 30% (Total Sum)\n")
-
-    for char in ["로자리아", "유미나"]:
-        print(f"\n{'='*20} {char} 최적화 분석 {'='*20}")
-        full_report.append(f"## {char} 분석 결과")
-        full_report.extend(sweep_gear_performance(char, StatType.CRIT_RATE))
-        full_report.extend(sweep_gear_performance(char, StatType.CRIT_DAMAGE))
-        full_report.extend(sweep_gear_performance(char, StatType.ATK))
-        full_report.append("\n---\n")
-
-    with open("Results/sensitivity_report.md", "w", encoding="utf-8") as f:
-        f.write("\n".join(full_report))
-    
-    print(f"\n[OK] 분석 완료. 결과가 Results/sensitivity_report.md 에 저장되었습니다.")
+            std_jrs, std_bless, std_dps = res["standard"]
+            
+            if std_dps > best_dps:
+                best_dps = std_dps
+                best_build = {
+                    "increment": current_increment,
+                    "equip": eq_name,
+                    "blessing": std_bless or "None",
+                    "journeys": " | ".join(std_jrs),
+                    "dps": best_dps
+                }
+                
+        results.append(best_build)
+        current_increment += step
+        
+    return results

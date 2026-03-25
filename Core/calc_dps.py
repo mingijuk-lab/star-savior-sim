@@ -1,11 +1,12 @@
-import json
-import re
-import csv
-import itertools
 import sys
+import os
+import json
+import itertools
+from Core.models import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
+from Core.data_loader import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
+from Core.gear_sensitivity import profile_stat_scaling
+import numpy as np
 import pandas as pd
-from Core.models import StatType, Modifier, ModifierType, EquipmentPiece, EquipmentSet, Arcana, Journey, Character
-from Core.data_loader import extract_json_from_md, load_equipments_from_json
 
 if sys.stdout.encoding != 'utf-8':
     try:
@@ -73,11 +74,15 @@ def setup_blessings():
 
 BLESSINGS = setup_blessings()
 
-def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False):
+def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None):
     """
-    jr_names: List of journey names (up to 5).
+    Main simulation engine for damage calculation.
+    Supports turns, hits, buffs, and dynamic passive stacking.
     """
-    eq = EQUIPMENTS[eq_name]
+    if custom_equipments:
+        eq = custom_equipments[eq_name]
+    else:
+        eq = EQUIPMENTS[eq_name]
     
     if isinstance(jr_names, str): jr_names = [jr_names]
     jrs = [JOURNEYS[j] for j in jr_names if j in JOURNEYS]
@@ -139,7 +144,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             if t.get("is_ult", False) and not force_no_ult:
                 cur_ax = 0
     
-    total_dmg, cycle_time, ga_red_carry, omega_dmg_stack, assassin_spd_stack, caster_cd_stack, ra_cr_stack = 0.0, 0.0, 0.0, 0, 0, 0, 0
+    total_dmg, cycle_time, ga_red_carry, omega_dmg_stack, assassin_spd_stack, caster_cd_stack, ra_cr_stack = 0.0, 0.0, 0, 0, 0, 0, 0
     fx_carry = 0.0
     ex_basic_count = 0
     ex_total_cr = 0.0
@@ -158,6 +163,16 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     # Rosaria Ignition (업화)
     is_rosaria = "로자리아" in cname
     ros_ign_stack = 0
+
+    # v15.0 Dynamic Passive Stacks
+    p_stacks = {"claire_cr": 0, "lydia_atk": 0, "yumina_atk": 0, "assera_cd": 0}
+    is_yumina = "유미나" in cname
+    is_frey = "프레이" in cname
+    is_moon_party = "달속성파티" in cname
+    is_jackpot = False
+    y_is_1lv = "1lv" in cname
+    y_crit_ga = 0.09 if y_is_1lv else 0.15
+    y_atk_rate = 0.02 if y_is_1lv else 0.04
 
     action_idx = 0
     for t in rdata["turns"]:
@@ -204,28 +219,24 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             if is_ult:
                 ros_ign_stack = min(5, ros_ign_stack + 3)
         
-        # Frey Dynamic Mechanics
-        is_frey = "프레이" in cname
-        is_moon_party = "달속성파티" in cname
-        is_jackpot = False
-        if is_frey and is_basic and frey_hr >= 5:
-            is_jackpot = True
-            m_di += 1.00 + (frey_hr * 0.01) # 100% Fixed + Stack Bonus
-            frey_hr = 0
-            # AG +30% handled later
+        # Trigger Passives (v15.0 Dynamic Triggers)
+        
+        # 1. Turn-Start Triggers (Before time calculation)
+        if "클레어(바니걸)" in cname:
+            p_stacks["claire_cr"] = min(3, p_stacks["claire_cr"] + 1)
             
-        # Yumina Base config
-        is_yumina = "유미나" in cname
-        y_is_1lv = "1lv" in cname
-        y_atk_per_stack = 0.02 if y_is_1lv else 0.04
-        y_crit_ga = 0.09 if y_is_1lv else 0.15
-        
-        # Trigger Passives
+        # 2. Action-Start Triggers
         if "리디아" in cname:
-            lydia_atk_stack = min(5, lydia_atk_stack + (1 if not is_ult else 0)) # Ult might not stack if it's "Son-gil" only, but user says "after using Son-gil". We'll assume any action for now.
+            # Lydia: ATK +6% per action (max 5)
+            p_stacks["lydia_atk"] = min(5, p_stacks["lydia_atk"] + 1)
+        if "아세라" in cname and is_spec:
+            # Assera: CD +6% per Special (max 5)
+            p_stacks["assera_cd"] = min(5, p_stacks["assera_cd"] + 1)
         if is_yumina:
-            yumina_atk_stack = min(5, yumina_atk_stack + 1)
-        
+            # Yumina: ATK +4% per "Action/Hit" (simplified to per action for consistency, but user said hit)
+            # We'll use 1 stack per action here for now unless it's multi-hit.
+            p_stacks["yumina_atk"] = min(5, p_stacks["yumina_atk"] + 1)
+            
         # Buff Application (Starts after Spec, so if it was set in PREVIOUS end-of-turn, it's active now)
         cr_from_buff = 0.30 if (is_frey and frey_cr_turns > 0) else 0.0
             
@@ -254,29 +265,35 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         
         final_spd = char.get_stat(StatType.SPEED, dyn_mods) * t.get("spd_mult", 1.0)
         
-        # Extra Attack (TN+) Logic: If marked as extra_attack, this action consumes no time.
+        # Extra Attack (TN+) / Extra Turn (TN+1) Logic
         if not t.get("is_extra_attack", False):
-            turn_time = (1000.0 / final_spd) * (1.0 - ga_red_carry)
+            is_extra_turn = t.get("is_extra_turn", False)
+            if is_extra_turn:
+                turn_time = 0.0
+            else:
+                eff_ga = min(ga_red_carry, 0.99) # 음수 방지
+                turn_time = (1000.0 / final_spd) * (1.0 - eff_ga)
             cycle_time += turn_time
             ga_red_carry = 0.0 # Consume carry
             
-        # Register next AG reduction if applicable (Standard style only)
+        # Register next AG reduction if applicable
         if not force_no_ult:
-            ga_red_carry = t.get("ag_boost", 0.0)
-            if is_jackpot: ga_red_carry = 0.30
+            ga_red_carry += t.get("ag_boost", 0.0)
         
         if any(j.name == "허수의 개척자" for j in jrs):
             if is_spec: omega_dmg_stack = min(omega_dmg_stack + 1, 5)
 
-        coeff = t.get("coeff", 0) + t.get("extra_coeff", 0)
+        # Apply Character Passive Stacks to stat pools (v15.0)
+        dyn_atk_p_sum = 0.0
+        if "리디아" in cname: dyn_atk_p_sum += p_stacks["lydia_atk"] * 0.06
+        if is_yumina: 
+            y_atk_rate = 0.02 if y_is_1lv else 0.04
+            dyn_atk_p_sum += p_stacks["yumina_atk"] * y_atk_rate
         
-        # Apply Attribute (속성) Dynamic Stats
-        # (Attribute stacks and effects are now handled in the unified summation logic below)
-
+        # Collect DI and Buffs from turn data
         for k, v in t.items():
             if k.endswith("_di"): m_di += v
-            if k.endswith("_atk_p"): dyn_atk_p_sum += v # Add to sum
-            # lydia_stack/yumina_stack from JSON are now ignored in favor of dynamic engine
+            if k.endswith("_atk_p"): dyn_atk_p_sum += v
         
         # 1. Raw Pool (Stella Archive only)
         raw_pool = (cdata["기본_스탯"]["공격력"] + 1250)
@@ -301,26 +318,33 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         res_flat = res.get("정수", 0)
         resonance_val = (raw_pool * res_p + res_flat)
         
-        dyn_atk_p_sum = t.get("atk_buf", 0.0)
+        # dyn_atk_p_sum is already initialized and populated by passive stacks
         if has_ax:
             dyn_atk_p_sum += ax_stacks[action_idx] * 0.08
         
-        if "리디아" in cname:
-            dyn_atk_p_sum += lydia_atk_stack * 0.06
-        if is_yumina:
-            dyn_atk_p_sum += yumina_atk_stack * y_atk_per_stack
-            
         # Final multiplicative formula for dynamic buffs
         eff_atk = eff_base * (1.0 + dyn_atk_p_sum) + resonance_val
         
-        # 4. Crit Calculation
-        cr_dyn = ra_cr_stack * 0.05 + t.get("cr_buf", 0) + cr_from_buff
-        if action_idx < 2 and any(j.name == "친구들과의 산책" for j in jrs):
-            cr_dyn += 0.30
-        cd_dyn = caster_cd_stack * 0.10 + t.get("cd_buf", 0)
+        # Final Crit/CD Calculation including Passives (v15.0)
+        final_cr = char.get_stat(StatType.CRIT_RATE, []) + t.get("cr_buf", 0) + cr_from_buff
+        if "클레어(바니걸)" in cname: final_cr += p_stacks["claire_cr"] * 0.10
+        if any(j.name == "깊은 애도" for j in jrs): final_cr += ra_cr_stack * 0.05
         
-        cr_i = min(char.get_stat(StatType.CRIT_RATE, [Modifier(StatType.CRIT_RATE, cr_dyn)]) + res.get("치확_퍼센트", 0), 1.0)
-        cd_i = char.get_stat(StatType.CRIT_DAMAGE, [Modifier(StatType.CRIT_DAMAGE, cd_dyn)])
+        final_cd = char.get_stat(StatType.CRIT_DAMAGE, []) + t.get("cd_buf", 0) + caster_cd_stack * 0.10
+        if "아세라" in cname: final_cd += p_stacks["assera_cd"] * 0.06
+        
+        eff_cr = min(1.0, final_cr)
+        eff_cd = final_cd
+        
+        # Jackpot logic removed (handled by JSON)
+        # if is_frey and is_basic and frey_hr >= 5:
+        #     frey_hr = 0
+            
+        dmg_raw = eff_atk * coeff * (1.0 + m_di) * (1.1) # 1.1 = Final generic multiplier
+        
+        # 4. Crit Calculation (OLD - to be replaced by final_cr/final_cd)
+        cr_i = eff_cr
+        cd_i = eff_cd
         
         omega_boost = (omega_dmg_stack * 0.05) if (is_spec or t.get("omega_elig", False)) else 0.0
         total_di = t.get("di", 0) + m_di + omega_boost + fx_carry
@@ -344,7 +368,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         
         hits = t.get("hits", 4 if is_ult else 1)
         prob_crit_any = (1.0 - (1.0 - cr_i) ** hits)
-        ga_red_carry = 0.0
+        # ga_red_carry = 0.0 # REMOVED: This was overwriting JSON ag_boost!
         
         # FX Carry: Next turn DI +25% if Crit (Statistical: current_turn_cr * 0.25)
         if has_fx and t.get("coeff", 0) > 0:
@@ -377,7 +401,6 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         
         # Frey End-of-Turn & Ally Triggers
         if is_frey:
-            if is_jackpot: ga_red_carry += 0.30
             if is_ult: frey_hr = min(frey_hr + 3, 5)
             if is_moon_party:
                 ga_red_carry += 0.24 # 8% * 3 allies
@@ -403,52 +426,6 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
 
     return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg
 
-def solve_cd_threshold(cdata, char_name, char_class, jrs):
-    """Calculates the specific Crit Damage threshold for Insight 4set vs Attack 4set using v6 Engine Logic."""
-    # Build a temporary Character to get accurate Pool and Static ATK
-    res = cdata.get("공명", {})
-    raw_pool = (cdata["기본_스탯"]["공격력"] + 1250)
-    
-    # Static ATK% (Passive + Journey + Substats)
-    sa = cdata.get("패시브", {}).get("공격력_퍼센트", 0) + 0.1625 + 0.01
-    for jr in jrs:
-        for mod in jr.modifiers:
-            if mod.stat_type == StatType.ATK and mod.mod_type == ModifierType.PERCENT:
-                sa += mod.value
-    
-    # eff_base (Stella + Static + System)
-    eff_base = raw_pool * (1.0 + sa) + 1000
-    
-    # AX Multiplier (Average 15-turn stack estimate: ~3.0 for Rosaria, ~2.0 for others)
-    has_ax = any(jr.journey_type == "AX" for jr in jrs)
-    ax_mult = (1.0 + 3.0 * 0.08) if has_ax else 1.0 
-    
-    # ATK Gain from Attack Set (20%)
-    # In AX: it multiplies the whole eff_base
-    # In Non-AX: it's additive to sa
-    if has_ax:
-        Atk4_gain = eff_base * 0.20 * ax_mult
-    else:
-        Atk4_gain = raw_pool * 0.20
-    
-    # Effective Base Damage (Before Crit)
-    B = eff_base * ax_mult
-    
-    # Crit Rate
-    Cr_base = cdata["기본_스탯"]["치명타_확률"] + res.get("치확_퍼센트", 0)
-    for jr in jrs:
-        for mod in jr.modifiers:
-            if mod.stat_type == StatType.CRIT_RATE:
-                Cr_base += mod.value
-    
-    Cr_atk4 = min(1.0, Cr_base)
-    Cr_ins4 = min(1.0, Cr_base + 0.30)
-    
-    if Cr_ins4 <= Cr_atk4: return 999.9
-    
-    # Solve: (B + Atk4_gain) * (1 + Cr_atk4 * CD) = B * (1 + Cr_ins4 * CD)
-    # (B + G) + (B*Cr_a + G*Cr_a)*CD = B + B*Cr_i*CD
-    # G = [B*Cr_i - (B*Cr_a + G*Cr_a)] * CD
     # CD = G / (B*(Cr_i - Cr_a) - G*Cr_a)
     
     denom = B * (Cr_ins4 - Cr_atk4) - Atk4_gain * Cr_atk4
@@ -468,6 +445,10 @@ def solve_cd_threshold(cdata, char_name, char_class, jrs):
 def get_valid_journeys(char_name, char_class):
     valid = []
     for name, jr in JOURNEYS.items():
+        # 🚨 "어느 한 기사의 맹세" 사용 안함 처리
+        if name == "어느 한 기사의 맹세":
+            continue
+            
         rest = jr.restrict
         if not rest:
             valid.append(name)
@@ -480,10 +461,13 @@ def get_valid_journeys(char_name, char_class):
             continue
     return valid
 
-def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False):
+def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None):
     valid_names = get_valid_journeys(char_name, char_class)
     
-    # Journeys are purely common now
+    # Temporarily override EQUIPMENTS if substat_vars provided
+    local_eqs = None
+    if substat_vars:
+        local_eqs = setup_equipments(substat_vars)
     specials = ["AX", "FX", "EX"]
     commons = [s for s in valid_names if s not in specials]
     
@@ -506,13 +490,13 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False)
+            dps_s, total_s, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs)
             target_s = total_s if use_total_dmg else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std = target_s, list(combo), b_name
             
             # Test No-Ult
-            dps_n, total_n, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True)
+            dps_n, total_n, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs)
             target_n = total_n if use_total_dmg else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu = target_n, list(combo), b_name
@@ -528,8 +512,8 @@ def main():
     EQUIPMENTS = setup_equipments(substat_vars)
     use_total_dmg = (substat_vars.get("METRIC", 2) == 2)
 
-    with open("Data/characters.json", "r", encoding="utf-8") as f:
-        specs = json.load(f)
+    # 2. Specs
+    specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
     rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
     results = []
     
@@ -573,33 +557,66 @@ def main():
     
     with open("Results/optimization_guide.md", "w", encoding="utf-8") as f:
         f.write("# 스타 세이비어 캐릭터별 최적화 가이드 (Multi-Journey Edition)\n\n")
-        f.write("> **업데이트 일시**: 2026-03-25\n")
+        f.write("> **업데이트 일시**: 2026-03-26\n")
         f.write("> **설명**: 5개의 여정 조합을 최우선으로 고려한 베스트 빌드 리포트입니다.\n\n")
         
-        for label in df["Character"].unique():
+        # 📋 구원자 목록 (Saviors List) 자동 생성
+        f.write("### 📋 구원자 목록 (Saviors List)\n")
+        char_list = df["Character"].unique()
+        for i, label in enumerate(char_list):
+            anchor = label.replace("(", "").replace(")", "").replace(",", "").replace(" ", "-").lower() 
+            if i % 3 == 0: f.write("- ")
+            f.write(f"[{label}](#{anchor})")
+            if (i + 1) % 3 == 0: f.write("\n")
+            elif i < len(char_list) - 1: f.write(" | ")
+        if len(char_list) % 3 != 0: f.write("\n")
+        f.write("\n---\n\n")
+        
+        for label in char_list:
             f.write(f"## {label}\n\n")
             char_df = df[df["Character"] == label]
             
             # ### 1. Standard Strategy section
+            # 1. Standard Strategy (Ultimate Use)
             f.write("### 🔹 Standard Strategy (Ultimate Use)\n")
             f.write("> **공천**: 캐릭터 고유의 스킬 메커니즘을 100% 활용하는 권장 로테이션입니다.\n\n")
-            std_df = char_df[(char_df["Strategy"] == "Standard Rotation") & (char_df["Turns"] == 15)].sort_values("DPS", ascending=False).head(3)
+            
+            std_all = char_df[(char_df["Strategy"] == "Standard Rotation") & (char_df["Turns"] == 15)].sort_values("DPS", ascending=False)
+            
+            # Identify Best 1 per 4-piece category
+            categories = ["공격4", "통찰4", "파괴4", "체력4"]
+            best_per_cat = {}
+            for cat in categories:
+                cat_df = std_all[std_all["Equip"].str.startswith(cat)].head(1)
+                if not cat_df.empty:
+                    best_per_cat[cat] = cat_df.iloc[0]
             
             f.write("| 순위 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) |\n")
             f.write("| :--- | :--- | :--- | :--- | :--- |\n")
-            for i, row in enumerate(std_df.itertuples(), 1):
+            for i, row in enumerate(std_all.head(3).itertuples(), 1):
                 f.write(f"| {i} | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** |\n")
             
-            # Threshold Analysis (Linked to Top 1 Standard)
-            if not std_df.empty:
-                top1_s = std_df.iloc[0]
-                jrs_obj = [JOURNEYS[j] for j in top1_s.Journeys.split(" | ")]
-                if top1_s.Blessing != "None": jrs_obj.append(BLESSINGS[top1_s.Blessing])
-                cd_threshold = solve_cd_threshold(specs[label], label, specs[label].get("분류", "Unknown"), jrs_obj)
+            # Build Trajectory Analysis (v19.0)
+            if not std_all.empty:
+                f.write("\n#### 📈 빌드 진화 경로 (Optimal Build Trajectory)\n")
+                f.write("> 부옵션 성장(0%~50%)에 따른 실시간 최적 조합 변화입니다.\n\n")
                 
-                f.write("\n#### ⚖️ Standard 세팅 임계점 (Threshold Analysis)\n")
-                if cd_threshold > 9.0: f.write("- **통찰 4세트 교체**: 공격 세트 대비 효율 저하로 권장하지 않음.\n")
-                else: f.write(f"- **통찰 4세트 교체**: 공격 세트 대비 치명타 피해 부옵션 **+{cd_threshold:7.1%}** 이상 시 권장.\n")
+                cat_equip_names = [best_per_cat[c].Equip for c in categories if c in best_per_cat]
+                
+                for stype, label_ko in [(StatType.ATK, "공격력%"), (StatType.CRIT_DAMAGE, "치명타 피해"), (StatType.CRIT_RATE, "치명타 확률")]:
+                    f.write(f"- **{label_ko}** 성장 경로:\n")
+                    path = profile_stat_scaling(label, specs[label], rotations[label], cat_equip_names, stype, 0.5, 0.125, find_best_journeys)
+                    
+                    # Deduplicate and show transitions
+                    last_point = None
+                    for pt in path:
+                        # ✅ 장비, 축복, 여정 조합 중 하나라도 바뀌면 출력 (여정 변화도 감지)
+                        if not last_point or pt["equip"] != last_point["equip"] or pt["blessing"] != last_point["blessing"] or pt["journeys"] != last_point["journeys"]:
+                            # ✅ DPS 수치 추가
+                            f.write(f"  - **+{pt['increment']*100:4.1f}%**: {pt['equip']} ({pt['blessing']}) | **DPS: {pt['dps']:,.0f}** | {pt['journeys']}\n")
+                            last_point = pt
+                
+                f.write("\n> (주어전) **표기 방식**: 증가량: 장비세트 (축복) | 주요 여정 리스트\n")
 
             # ### 2. No-Ult Strategy section
             f.write("\n### 🔸 Alternative: No-Ult Strategy (AX Stacking)\n")
