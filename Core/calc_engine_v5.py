@@ -233,8 +233,9 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             
             # Dynamic HR (High-Roll) / Jackpot logic based on passive hr_확률
             hr_rate = cdata.get("패시브", {}).get("hr_확률", 0)
-            # Some units might have fixed hr_rate in metadata (like Moon Party variations)
-            if "달속성파티" in cname: hr_rate = 1.0
+            # Frey's HR is handled by the frey_hr stack system (line ~421).
+            # Setting hr_rate=0 here to prevent double-counting.
+            if is_frey: hr_rate = 0
             
             coeff = t.get("coeff", 0) + t.get("extra_coeff", 0) * hr_rate
             
