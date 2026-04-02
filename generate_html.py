@@ -585,6 +585,7 @@ simSelect.innerHTML = data.map(c => `<option value="${c.name}">${c.name}</option
 import sys
 import json
 import asyncio
+import datetime
 from js import document, console
 from pyodide.ffi import create_proxy
 
@@ -603,9 +604,11 @@ rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
 
 def log_status(msg, is_error=False):
     status_box = document.getElementById("simStatus")
+    if not status_box: return
     status_box.style.display = "block"
     color = "var(--red)" if is_error else "var(--text2)"
-    status_box.innerHTML = f"<span style='color:{color}'>[{calc_engine.datetime.datetime.now().strftime('%H:%M:%S')}] {msg}</span>"
+    now_str = datetime.datetime.now().strftime('%H:%M:%S')
+    status_box.innerHTML = f"<span style='color:{color}'>[{now_str}] {msg}</span>"
     print(f"DEBUG: {msg}")
 
 btn = document.getElementById("simBtn")
