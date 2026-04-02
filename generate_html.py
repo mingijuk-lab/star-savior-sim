@@ -783,13 +783,23 @@ async def run_simulation(e):
         log_status(f"데이터베이스 조회 키: {char_name}")
             
         cdata = specs.get(char_name)
-        rdata = rotations.get(char_name)
-        
         if not cdata:
-            # Try suffix-less fallback for cdata if rotations match
-            clean_search = base_name
-            cdata = specs.get(clean_search)
-            
+            # Fallback 1: Try stripping common environment/passive safe IDs
+            fallback_name = char_name.replace("-보스1인", "").replace("-일반3인", "")
+            cdata = specs.get(fallback_name)
+            if not cdata:
+                # Fallback 2: Try mapping back to original keys from characters.json
+                # (Simple contains check as a last resort)
+                for k in specs.keys():
+                    if k in char_name or char_name in k:
+                        cdata = specs[k]
+                        char_name = k # Use the one found
+                        break
+            else:
+                char_name = fallback_name
+
+        rdata = rotations.get(char_name) or rotations.get(char_name.replace("-보스1인", "").replace("-일반3인", ""))
+        
         if not cdata or not rdata:
             raise ValueError(f"캐릭터 '{char_name}'에 대한 핵심 데이터(스펙/로테이션)가 누락되었습니다.")
             
