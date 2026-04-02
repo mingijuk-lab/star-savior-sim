@@ -175,15 +175,15 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   packages = []
   [[fetch]]
   files = [
-      "./Core/__init__.py",
-      "./Core/calc_engine_v5.py",
-      "./Core/data_loader_v5.py",
-      "./Core/models_v5.py",
-      "./Core/gear_sensitivity_v5.py",
-      "./Data/characters.json",
-      "./Data/equipments.json",
-      "./Data/사이클_로테이션_마스터.md",
-      "./Data/캐릭터_스펙_마스터.md"
+      "Core/__init__.py",
+      "Core/calc_engine_v5.py",
+      "Core/data_loader_v5.py",
+      "Core/models_v5.py",
+      "Core/gear_sensitivity_v5.py",
+      "Data/characters.json",
+      "Data/equipments.json",
+      "Data/사이클_로테이션_마스터.md",
+      "Data/캐릭터_스펙_마스터.md"
   ]
 </py-config>
 <style>
@@ -466,8 +466,14 @@ function journeyTags(js) {
 function trajJourneyTags(js) {
   return js.map(j => `<span class="tj">${j}</span>`).join('');
 }
-function fmt(n) { return n.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}); }
-function fmtInt(n) { return n.toLocaleString(); }
+function fmt(n) { 
+  if (n === undefined || n === null || isNaN(n)) return "0.00";
+  return n.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}); 
+}
+function fmtInt(n) { 
+  if (n === undefined || n === null || isNaN(n)) return "0";
+  return n.toLocaleString(); 
+}
 
 function buildCard(char) {
   const stdId = `std-${char.id}`;
