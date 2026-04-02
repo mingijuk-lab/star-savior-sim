@@ -189,9 +189,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
 
     # v15.0 Dynamic Passive Stacks
     p_stacks = {"claire_cr": 0, "lydia_atk": 0, "yumina_atk": 0, "assera_cd": 0}
+    # Engine Environment Detection (Flexible matching for UI-sanitized names)
     is_yumina = "유미나" in cname
     is_frey = "프레이" in cname
-    is_moon_party = "달속성파티" in cname
+    is_moon_party = ("달속성파티" in cname) or ("moon" in cname.lower())
+    
+    # Debug trace for browser console
+    if is_frey:
+        print(f"[V5 Engine] Character: {cname} | MoonParty: {is_moon_party}")
+
     is_jackpot = False
     y_is_1lv = "1lv" in cname
     y_crit_ga = 0.09 if y_is_1lv else 0.15
@@ -410,16 +416,21 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if is_yumina_chain:
             cr_i = 0.0
             
-        if cr_i > 0:
-            if any(j.journey_type == "yumina_ex" for j in jrs):
-                chain_dmg += eff_atk * 0.05 # Catalyst (Yumina)
+        # 5. HR (High-Roll) Calculation for Frey / Moon Party
+        hr_prob = 0.0
+        if is_moon_party:
+            # Standard: 100%, 1lv: 50%
+            hr_prob = 0.5 if "1lv" in cname else 1.0
+        elif is_frey and frey_hr >= 5:
+            hr_prob = 1.0
+            frey_hr = 0
             
-        # Final Damage with Defense (v14.2)
-        turn_dmg = (eff_atk * coeff * (1.0 + total_di + cr_i * cd_i) + chain_dmg) * def_multiplier
+        # Final Damage with Defense (v15.0 - HR and Multipliers correctly integrated)
+        # HR adds a separate multiplicative term: hr_prob * coeff (where coeff is effectively extra_coeff)
+        turn_dmg = (eff_atk * coeff * (1.0 + total_di + cr_i * cd_i + hr_prob) + chain_dmg) * def_multiplier
         
-        # Max Hit: Assuming all hits in this turn are CRITICAL (cr_i = 1.0)
-        # Note: chain_dmg is already added if cr_i > 0, we use it as is since it represents crit-triggered dmg.
-        peak_turn_dmg = (eff_atk * coeff * (1.0 + total_di + cd_i) + chain_dmg) * def_multiplier
+        # Max Hit: Assuming all hits in this turn are CRITICAL (cr_i = 1.0) and HR (hr_prob = 1.0)
+        peak_turn_dmg = (eff_atk * coeff * (1.0 + total_di + cd_i + 1.0) + chain_dmg) * def_multiplier
         
         # Rosaria Extra Basic (Crit Peak)
         if rosaria_extra_basic:
