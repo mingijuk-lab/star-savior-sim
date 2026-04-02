@@ -589,6 +589,16 @@ import datetime
 from js import document, console
 from pyodide.ffi import create_proxy
 
+# VFS Diagnostic
+import os
+print(f"Current Working Directory: {os.getcwd()}")
+try:
+    for root, dirs, files in os.walk("/home/pyodide"):
+        for name in files:
+            print(f"VFS FILE: {os.path.join(root, name)}")
+except:
+    pass
+
 # Setup Engine
 import Core.calc_engine_v2 as calc_engine
 from Core.data_loader_v2 import extract_json_from_md
@@ -680,6 +690,12 @@ async def run_simulation(e):
                 log_status(f"연산 진행 중... ({i+1}/{len(eq_names)})")
                 await asyncio.sleep(0.01)
                 
+            # Lazy Re-init check
+            if not calc_engine.JOURNEYS or "Error" in calc_engine.JOURNEYS:
+                log_status("데이버 베이스 재연결 시도 중...", False)
+                calc_engine.JOURNEYS = calc_engine.setup_journeys()
+                calc_engine.BLESSINGS = calc_engine.setup_blessings()
+
             res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
             std_jrs, std_bless, std_val, std_max = res["standard"]
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs))

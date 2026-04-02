@@ -35,30 +35,40 @@ def get_interactive_substats():
         "METRIC": ask("최적화 기준 (1: DPS, 2: 총 데미지)", 2)
     }
 
+def get_vfs_path(rel_path):
+    import os
+    # Try root and /home/pyodide/
+    candidates = [rel_path, os.path.join("/home/pyodide", rel_path), os.path.join(os.getcwd(), rel_path)]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return rel_path
+
 def setup_equipments(substat_vars=None):
-    # Strip METRIC before passing to loader
     vars_only = {k:v for k,v in substat_vars.items() if k.startswith("$")} if substat_vars else None
+    path = get_vfs_path("Data/equipments.json")
     try:
-        registry = load_equipments_from_json("Data/equipments.json", vars_only)
+        registry = load_equipments_from_json(path, vars_only)
+        if not registry: print(f"Warning: No equipments loaded from {path}")
         return registry
     except Exception as e:
-        print(f"Warning: Could not load Data/equipments.json ({e}). Using hardcoded fallback.")
+        print(f"CRITICAL: Failed to load Equipments from {path}: {e}")
         return {
             "공격4세트": EquipmentSet("공격4세트", {"weapon": EquipmentPiece("weapon", "weapon", [Modifier(StatType.ATK, 0.20, ModifierType.PERCENT)])}),
-            "통찰4세트": EquipmentSet("통찰4세트", {"weapon": EquipmentPiece("weapon", "weapon", [Modifier(StatType.CRIT_RATE, 0.30, ModifierType.FLAT)])}),
-            "파괴4세트": EquipmentSet("파괴4세트", {"weapon": EquipmentPiece("weapon", "weapon", [Modifier(StatType.CRIT_DAMAGE, 0.40, ModifierType.FLAT)])}),
             "속도4세트": EquipmentSet("속도4세트", {"weapon": EquipmentPiece("weapon", "weapon", [Modifier(StatType.SPEED, 15, ModifierType.FLAT)])}),
-            "체력4세트": EquipmentSet("체력4세트", {"weapon": EquipmentPiece("weapon", "weapon", [Modifier(StatType.HP, 0.30, ModifierType.PERCENT)])}),
         }
 
 def setup_journeys():
+    path = get_vfs_path("Data/equipments.json")
     try:
         from Core.data_loader_v2 import load_journeys_from_json
-        return load_journeys_from_json("Data/equipments.json")
+        data = load_journeys_from_json(path)
+        if not data: print(f"Warning: Journey data is empty at {path}")
+        return data
     except Exception as e:
-        print(f"Warning: Could not load Journeys from Data/equipments.json ({e}). Using hardcoded fallback.")
+        print(f"CRITICAL: Failed to load Journeys from {path}: {e}")
         return {
-            "노페인 노게인": Journey("노페인 노게인", [Modifier(StatType.ATK, 0.06, ModifierType.PERCENT)], "EX"),
+            "Error": Journey("Error", [], "NONE", {}),
         }
 
 EQUIPMENTS = {} 
@@ -66,11 +76,14 @@ JOURNEYS = setup_journeys()
 BLESSINGS = {} # Populated in main or setup
 
 def setup_blessings():
+    path = get_vfs_path("Data/equipments.json")
     try:
         from Core.data_loader_v2 import load_blessings_from_json
-        return load_blessings_from_json("Data/equipments.json")
+        data = load_blessings_from_json(path)
+        if not data: print(f"Warning: Blessing data is empty at {path}")
+        return data
     except Exception as e:
-        print(f"Warning: Could not load Blessings ({e})")
+        print(f"CRITICAL: Failed to load Blessings from {path}: {e}")
         return {}
 
 BLESSINGS = setup_blessings()
