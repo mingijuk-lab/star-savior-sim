@@ -418,12 +418,10 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if is_yumina_chain:
             cr_i = 0.0
             
-        # 5. HR (High-Roll) Calculation for Frey / Moon Party
+        # 5. HR (High-Roll) Calculation for Frey
+        # HR triggers ONLY on basic attacks when stack is full (5)
         hr_prob = 0.0
-        if is_moon_party:
-            # Standard: 100%, 1lv: 50%
-            hr_prob = 0.5 if "1lv" in cname else 1.0
-        elif is_frey and frey_hr >= 5:
+        if is_frey and frey_hr >= 5 and is_basic:
             hr_prob = 1.0
             frey_hr = 0
             
