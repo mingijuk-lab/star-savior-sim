@@ -6473,12 +6473,12 @@ async def run_simulation(e):
         
         log_status(f"엔진 분석 시작 (타겟 수: {target_count}, 클래스: {char_class})")
 
-        # Get Substats
+        # Get Substats (divided by 6 to distribute across 6 equipment slots)
         sim_vars = {
-            "$ATK$": float(document.getElementById("simAtk").value) / 100.0,
-            "$CR$": float(document.getElementById("simCr").value) / 100.0,
-            "$CD$": float(document.getElementById("simCd").value) / 100.0,
-            "$SPD$": float(document.getElementById("simSpd").value)
+            "$ATK$": (float(document.getElementById("simAtk").value) / 100.0) / 6.0,
+            "$CR$": (float(document.getElementById("simCr").value) / 100.0) / 6.0,
+            "$CD$": (float(document.getElementById("simCd").value) / 100.0) / 6.0,
+            "$SPD$": float(document.getElementById("simSpd").value) / 6.0
         }
         
         log_status("장비 바인딩 및 서브스탯 적용 중...")
