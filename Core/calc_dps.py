@@ -3,6 +3,7 @@ import os
 import json
 import re
 import itertools
+import random
 from Core.models import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
 from Core.data_loader import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
 from Core.gear_sensitivity import profile_stat_scaling
@@ -453,7 +454,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # (Though most should be in t.get('attribute_stack'))
         
         # 6. Post-Action stack updates
-        is_crit = (np.random.rand() < eff_cr) # This is a statistical simulation, not a true random roll for a single run.
+        is_crit = (random.random() < eff_cr) # This is a statistical simulation, not a true random roll for a single run.
                                               # For average DPS, we assume average crit rate applies.
                                               # However, for conditional stacks like Blood Echo, we need a "crit" event.
                                               # For now, we'll use the effective crit rate as a probability.
