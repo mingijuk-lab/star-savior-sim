@@ -88,7 +88,7 @@ def setup_blessings():
 
 BLESSINGS = setup_blessings()
 
-def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None, target_count=3):
+def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None, target_count=3, force_moon_party=False):
     """
     Main simulation engine for damage calculation.
     Supports turns, hits, buffs, and dynamic passive stacking.
@@ -194,11 +194,11 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     cname_norm = cname.replace("(", "").replace(")", "").replace("-", "")
     is_yumina = "유미나" in cname_norm
     is_frey = "프레이" in cname_norm
-    is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower()
+    is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower() or force_moon_party
     
     # Debug trace for browser console
     if is_frey:
-        print(f"[V5 Engine] Character: {cname} | Normalized: {cname_norm} | MoonParty: {is_moon_party}")
+        print(f"[V5 Engine] Character: {cname} | Normalized: {cname_norm} | MoonParty: {is_moon_party} (Forced: {force_moon_party})")
 
     is_jackpot = False
     y_is_1lv = "1lv" in cname
@@ -534,7 +534,7 @@ def get_valid_journeys(char_name, char_class):
             continue
     return valid
 
-def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3):
+def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3, force_moon_party=False):
     valid_names = get_valid_journeys(char_name, char_class)
     
     # Temporarily override EQUIPMENTS if substat_vars provided
@@ -566,13 +566,13 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count)
+            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
             target_s = total_s if use_total_dmg else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = target_s, list(combo), b_name, max_h_s, stats_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count)
+            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
             target_n = total_n if use_total_dmg else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = target_n, list(combo), b_name, max_h_n, stats_n

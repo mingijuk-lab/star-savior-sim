@@ -2106,6 +2106,10 @@ async def run_simulation(e):
         best_results = []
         log_status(f"조합 탐색 시작 (전체 {len(eq_names)}개 세트 스캔)...")
         
+        # Detect Moon Party environment explicitly from UI
+        current_spec = document.getElementById('simSpec').value
+        force_moon_party = (current_spec == '달속성 파티')
+        
         for i, eq_name in enumerate(eq_names):
             if i % 2 == 0:
                 log_status(f"연산 진행 중... ({i+1}/{len(eq_names)})")
@@ -2117,7 +2121,7 @@ async def run_simulation(e):
                 calc_engine.JOURNEYS = calc_engine.setup_journeys()
                 calc_engine.BLESSINGS = calc_engine.setup_blessings()
 
-            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
+            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count, force_moon_party=force_moon_party)
             std_jrs, std_bless, std_val, std_max, std_stats = res["standard"]
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs, std_stats))
             
