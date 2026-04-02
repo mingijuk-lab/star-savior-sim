@@ -478,15 +478,19 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             if "행게+50%" in t["note"]: ga_red_carry += 0.50
         
         # Frey End-of-Turn & Ally Triggers
+        # [Turn-based]: Allies act on THEIR own turns between Frey's turns.
+        # So ally HR stacks apply every Frey turn, regardless of Frey's action type.
         if is_frey:
-            if is_ult: frey_hr = min(frey_hr + 3, 5)
+            hr_gain = 0
+            if is_ult:
+                hr_gain += 3  # Ult skill: HR+3
             if is_moon_party:
-                ga_red_carry += 0.24 # 8% * 3 allies
+                ga_red_carry += 0.24  # AG +8% x 3 allies
                 hr_chance = 0.5 if "1lv" in cname else 1.0
-                frey_hr = min(frey_hr + 3 * hr_chance, 5)
-            # Buff decrement (Every action consumes duration)
+                hr_gain += int(3 * hr_chance)  # +1 stack per ally, 3 allies
+            frey_hr = min(frey_hr + hr_gain, 5)  # Single cap at 5
+            # CR buff (separate from HR stack and cooldown)
             frey_cr_turns = max(0, frey_cr_turns - 1)
-            # Buff trigger (Special Skill sets duration to 3 for NEXT turns)
             if is_spec:
                 frey_cr_turns = 3
         
