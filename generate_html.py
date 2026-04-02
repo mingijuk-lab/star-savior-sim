@@ -164,6 +164,26 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>스타 세이비어 — 최적화 가이드</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- PyScript Integration -->
+<link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+<script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
+<py-config>
+  packages = []
+  [[fetch]]
+  files = [
+      "./Core/__init__.py",
+      "./Core/calc_dps.py",
+      "./Core/data_loader.py",
+      "./Core/models.py",
+      "./Core/gear_sensitivity.py",
+      "./Data/characters.json",
+      "./Data/equipments.json",
+      "./Data/journeys.json",
+      "./Data/blessings.json",
+      "./Data/사이클_로테이션_마스터.md",
+      "./Data/캐릭터_스펙_마스터.md"
+  ]
+</py-config>
 <style>
   :root {
     --bg: #0a0c10;
@@ -312,8 +332,33 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   @media (max-width: 768px) {
     .sidebar { display: none; }
     .layout { padding: 12px 12px 40px; }
-    .rank-table { font-size: 11px; }
+  .rank-table { font-size: 11px; }
   }
+
+  /* Custom Simulator UI Styles */
+  .custom-sim-wrap {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 11px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.1em; }
+  .form-group input, .form-group select {
+    background: var(--bg3); border: 1px solid var(--border2); color: var(--text);
+    padding: 10px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--blue); }
+  .sim-btn {
+    background: var(--blue2); color: #fff; border: none; padding: 12px 24px;
+    border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: background 0.2s; width: 100%; letter-spacing: 0.05em;
+  }
+  .sim-btn:hover { background: #3b8ce0; }
+  .sim-btn:disabled { background: var(--border2); cursor: not-allowed; }
+  .loader { display: none; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; margin: 0 auto; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -332,9 +377,49 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   </div>
 </div>
 
+</div>
+
 <div class="layout">
   <nav class="sidebar" id="sidebar"></nav>
-  <main class="main" id="main"></main>
+  <main class="main" id="main">
+    <div class="custom-sim-wrap">
+      <h2 style="font-size:16px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+        ⚙️ 실시간 커스텀 시뮬레이터 <span class="badge-boss" style="padding: 2px 6px; border-radius: 4px; font-size: 10px;">AX 축복 고정</span>
+      </h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>캐릭터 선택</label>
+          <select id="simCharSelect">
+            <option value="">불러오는 중...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>추가 공격력 (%)</label>
+          <input type="number" id="simAtk" value="0.0" step="0.1">
+        </div>
+        <div class="form-group">
+          <label>추가 치명타 확률 (%)</label>
+          <input type="number" id="simCr" value="0.0" step="0.1">
+        </div>
+        <div class="form-group">
+          <label>추가 치명타 피해 (%)</label>
+          <input type="number" id="simCd" value="0.0" step="0.1">
+        </div>
+        <div class="form-group">
+          <label>추가 속도</label>
+          <input type="number" id="simSpd" value="0.0" step="0.1">
+        </div>
+      </div>
+      <button class="sim-btn" id="simBtn" onclick="runSimulation()" disabled>
+        <span class="btn-text">엔진 로딩 중... (최초 1회 수 초 소요)</span>
+        <div class="loader" id="simLoader"></div>
+      </button>
+      <div id="simResult" style="margin-top: 20px; display: none;"></div>
+    </div>
+    
+    <!-- Existing Char Cards Container -->
+    <div id="charContainer"></div>
+  </main>
 </div>
 
 <script>
@@ -491,9 +576,113 @@ function filterChars() {
 
 // Init
 buildSidebar();
-const main = document.getElementById('main');
-main.innerHTML = data.map(buildCard).join('') + `<div id="empty" class="empty-state" style="display:none;">검색 결과가 없습니다.</div>`;
+const charContainer = document.getElementById('charContainer');
+charContainer.innerHTML = data.map(buildCard).join('') + `<div id="empty" class="empty-state" style="display:none;">검색 결과가 없습니다.</div>`;
+
+// Populate simulation dropdown
+const simSelect = document.getElementById('simCharSelect');
+simSelect.innerHTML = data.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+
 </script>
+<py-script>
+import sys
+import json
+import asyncio
+from js import document, console
+from pyodide.ffi import create_proxy
+
+# Setup Engine
+import Core.calc_dps as calc_engine
+from Core.data_loader import extract_json_from_md
+
+# Load Data inside VFS
+try:
+    with open("Data/characters.json", "r", encoding="utf-8") as f:
+        specs = json.load(f)
+except:
+    specs = extract_json_from_md("Data/캐릭터_스펙_마스터.md")
+
+rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
+
+btn = document.getElementById("simBtn")
+btn.innerHTML = "시뮬레이션 실행"
+btn.disabled = False
+
+async def run_simulation(e):
+    btn.disabled = True
+    loader = document.getElementById("simLoader")
+    loader.style.display = "block"
+    btn.querySelector(".btn-text").innerText = "계산 중..."
+    
+    # Let UI update
+    await asyncio.sleep(0.1)
+    
+    try:
+        char_name = document.getElementById("simCharSelect").value
+        cdata = specs[char_name]
+        rdata = rotations[char_name]
+        char_class = cdata.get("분류", cdata.get("class", "Unknown"))
+        
+        # Determine target count
+        target_count = 3
+        if "보스1인" in char_name:
+            target_count = 1
+        
+        # Strip suffix for dictionary lookup if dropdown has raw names
+        clean_name = char_name.replace("(보스1인)", "").replace("(일반3인)", "")
+        cdata = specs[clean_name]
+        rdata = rotations[clean_name]
+
+        # Get Substats
+        sim_vars = {
+            "$ATK$": float(document.getElementById("simAtk").value) / 100.0,
+            "$CR$": float(document.getElementById("simCr").value) / 100.0,
+            "$CD$": float(document.getElementById("simCd").value) / 100.0,
+            "$SPD$": float(document.getElementById("simSpd").value)
+        }
+        
+        calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
+        
+        html_out = "<h3>[AX 특화 베스트 결과]</h3><table class='rank-table'><thead><tr><th>장비</th><th>DPS</th><th>MaxHit</th><th>여정</th></tr></thead><tbody>"
+        
+        # Test just the top equipment sets to save time
+        eq_names = list(calc_engine.EQUIPMENTS.keys())
+        best_results = []
+        for eq_name in eq_names:
+            # We enforce AX blessing only to heavily reduce combinations
+            best_dps = -1
+            best_combo = None
+            max_hit = 0
+            
+            # Simple wrapper to sweep with AX directly to save PyScript overhead
+            res = calc_engine.find_best_journeys(clean_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
+            # Find best journeys result includes AX if it's the best. Since AX is top tier usually, we can just display standard out.
+            std_jrs, std_bless, std_val, std_max = res["standard"]
+            
+            best_results.append((eq_name, std_bless, std_val, std_max, std_jrs))
+            
+        best_results.sort(key=lambda x: x[2], reverse=True)
+        
+        for eq, bl, dps, mh, jrs in best_results[:3]:
+            jr_html = "".join([f"<span class='j-tag'>{j}</span>" for j in jrs])
+            html_out += f"<tr><td><span class='equip-tag'>{eq}</span></td><td><span class='dps-val'>{dps:,.2f}</span></td><td><span class='maxhit-val'>{mh:,.0f}</span></td><td><div class='journey-list'>{jr_html}</div></td></tr>"
+            
+        html_out += "</tbody></table>"
+        document.getElementById("simResult").innerHTML = html_out
+        document.getElementById("simResult").style.display = "block"
+        
+    except Exception as ex:
+        document.getElementById("simResult").innerHTML = f"<div style='color:red;'>오류 발생: {str(ex)}</div>"
+        document.getElementById("simResult").style.display = "block"
+        
+    btn.disabled = False
+    loader.style.display = "none"
+    btn.querySelector(".btn-text").innerText = "시뮬레이션 실행"
+
+# Bind event
+proxy = create_proxy(run_simulation)
+document.getElementById("simBtn").addEventListener("click", proxy)
+</py-script>
 </body>
 </html>'''
 

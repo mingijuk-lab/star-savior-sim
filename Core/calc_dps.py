@@ -6,8 +6,7 @@ import itertools
 from Core.models import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
 from Core.data_loader import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
 from Core.gear_sensitivity import profile_stat_scaling
-import numpy as np
-import pandas as pd
+
 
 if sys.stdout.encoding != 'utf-8':
     try:
@@ -538,6 +537,7 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     }
 
 def main():
+    import pandas as pd
     global EQUIPMENTS
     substat_vars = get_interactive_substats()
     EQUIPMENTS = setup_equipments(substat_vars)
