@@ -222,7 +222,13 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             is_ult = t.get("is_ult", False)
             is_extra = t.get("is_extra", False)
             is_spec = (not is_basic) and (not is_ult) and (not is_extra)
-            coeff = t.get("coeff", 0) + t.get("extra_coeff", 0)
+            
+            # Dynamic HR (High-Roll) / Jackpot logic based on passive hr_확률
+            hr_rate = cdata.get("패시브", {}).get("hr_확률", 0)
+            # Some units might have fixed hr_rate in metadata (like Moon Party variations)
+            if "달속성파티" in cname: hr_rate = 1.0
+            
+            coeff = t.get("coeff", 0) + t.get("extra_coeff", 0) * hr_rate
             
         curr_skill_type = "궁극기" if is_ult else ("기본기" if is_basic else "특수기")
         curr_skill = cdata.get("스킬", {}).get(curr_skill_type, {})
@@ -446,6 +452,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             
         if is_yumina:
             ga_red_carry += y_crit_ga * prob_crit_any
+        if is_moon_party:
+            ga_red_carry += 0.08
         if is_ult:
             if "로자리아" in cname: ga_red_carry += 0.50
             if "리디아" in cname: ga_red_carry += 0.30
