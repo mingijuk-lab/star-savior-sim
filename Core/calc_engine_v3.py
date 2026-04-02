@@ -637,7 +637,7 @@ def main():
     output_path = sys.argv[1] if len(sys.argv) > 1 else "Results/optimization_guide.md"
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("# 스타 세이비어 캐릭터별 최적화 가이드 (Multi-Journey Edition)\n\n")
-        f.write("> **업데이트 일시**: 2026-03-26\n")
+        f.write("> **업데이트 일시**: 2026-04-02\n")
         f.write("> **설명**: 5개의 여정 조합을 최우선으로 고려한 베스트 빌드 리포트입니다.\n\n")
         
         # 📋 구원자 목록 (Saviors List) 자동 생성
