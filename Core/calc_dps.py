@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import re
 import itertools
 from Core.models import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
 from Core.data_loader import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
@@ -659,7 +660,9 @@ def main():
                 
                 for stype, label_ko in [(StatType.ATK, "공격력%"), (StatType.CRIT_DAMAGE, "치명타 피해"), (StatType.CRIT_RATE, "치명타 확률")]:
                     f.write(f"- **{label_ko}** 성장 경로:\n")
-                    path = profile_stat_scaling(label, specs[label], rotations[label], cat_equip_names, stype, 0.5, 0.125, find_best_journeys)
+                    # Extract original cname by stripping suffix for specs/rotations lookup
+                    cname_key = re.sub(r'\(보스1인\)|\(일반3인\)', '', label)
+                    path = profile_stat_scaling(label, specs[cname_key], rotations[cname_key], cat_equip_names, stype, 0.5, 0.125, find_best_journeys)
                     
                     # Deduplicate and show transitions
                     last_point = None
