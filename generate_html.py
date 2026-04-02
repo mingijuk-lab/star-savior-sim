@@ -52,8 +52,10 @@ def parse_character_section(section: str) -> dict:
         if '바니걸' in p: badges.append('bunny')
         if '패시브1lv' in p or '패시브1lv' in p: badges.append('passive')
         if '궁극기미사용' in p: badges.append('noult')
+        if '보스1인' in p: badges.append('boss')
+        if '일반3인' in p: badges.append('normal')
 
-    # Sanitize ID
+    # Sanitize ID (Include suffixes to prevent card collision)
     safe_id = raw_name.replace('(', '-').replace(')', '').replace(',', '').replace(' ', '-').replace('1lv', '1lv')
 
     # Parse Standard Strategy table
@@ -247,6 +249,8 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   .badge-bunny { background: rgba(255,140,66,0.12); color: var(--orange); border: 1px solid rgba(255,140,66,0.25); }
   .badge-passive { background: rgba(158,165,180,0.1); color: var(--text2); border: 1px solid var(--border2); }
   .badge-noult { background: rgba(255,87,87,0.1); color: var(--red); border: 1px solid rgba(255,87,87,0.25); }
+  .badge-boss { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
+  .badge-normal { background: rgba(74,158,255,0.1); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
 
   .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
   .dps-label { font-size: 10px; color: var(--text3); margin-right: 4px; }
@@ -341,6 +345,8 @@ const badgeMap = {
   bunny: { cls:"badge-bunny", label:"바니걸" },
   passive: { cls:"badge-passive", label:"패시브 1lv" },
   noult: { cls:"badge-noult", label:"궁극기 미사용" },
+  boss: { cls:"badge-boss", label:"보스 1인" },
+  normal: { cls:"badge-normal", label:"일반 3인" },
 };
 
 function renderBadges(badges) {

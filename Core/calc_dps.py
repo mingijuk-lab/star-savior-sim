@@ -74,7 +74,7 @@ def setup_blessings():
 
 BLESSINGS = setup_blessings()
 
-def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None):
+def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None, target_count=3):
     """
     Main simulation engine for damage calculation.
     Supports turns, hits, buffs, and dynamic passive stacking.
@@ -206,11 +206,12 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         curr_skill = cdata.get("스킬", {}).get(curr_skill_type, {})
 
         
-        # Determine is_aoe from cdata (v26.0)
         is_aoe = "전체 공격" in curr_skill.get("부가", "")
-        # Yumina Catalyst Exception: If Yumina's basic attack is used with "경력직 용병", it becomes AoE.
+        # Yumina Catalyst Exception: If Yumina's basic attack is used with "경력직 용병", it becomes AoE (Chain Attack).
+        is_yumina_chain = False
         if "유미나" in cname and is_basic and any(j.name == "경력직 용병" for j in jrs):
             is_aoe = True
+            is_yumina_chain = True
 
         # Attribute Stack (Universal Rule: Basic +1)
         if is_basic:
@@ -377,6 +378,10 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
 
         # Special Journey Logic (e.g., Chain Damage)
         chain_dmg = 0
+        # Yumina Chain Attack: No Crit for AoE basic
+        if is_yumina_chain:
+            cr_i = 0.0
+            
         if cr_i > 0:
             if any(j.journey_type == "yumina_ex" for j in jrs):
                 chain_dmg += eff_atk * 0.05 # Catalyst (Yumina)
@@ -453,10 +458,12 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                                               # However, for conditional stacks like Blood Echo, we need a "crit" event.
                                               # For now, we'll use the effective crit rate as a probability.
         
-        # 피의 메아리 Stack Update (v27.0 - 4 Target Assumption)
-        TARGET_COUNT = 4
-        if any(j.name == "피의 메아리" for j in jrs) and is_aoe and is_crit:
-            rosa_atk_stack = min(5, rosa_atk_stack + TARGET_COUNT)
+        # 피의 메아리 Stack Update (target_count reflects Boss=1, Normal=3)
+        # Note: Yumina's catalyzed basic (is_yumina_chain) is a chain attack and cannot crit, 
+        # so it effectively skips this if is_crit is correctly calculated.
+        # But we force the check 'not is_yumina_chain' for safety.
+        if any(j.name == "피의 메아리" for j in jrs) and is_aoe and is_crit and (not is_yumina_chain):
+            rosa_atk_stack = min(5, rosa_atk_stack + target_count)
             
         # This `hits` list was likely intended for something else, but it's not used.
         # If it's meant to track individual hit damage for a more complex crit simulation,
@@ -484,7 +491,7 @@ def get_valid_journeys(char_name, char_class):
             continue
     return valid
 
-def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None):
+def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3):
     valid_names = get_valid_journeys(char_name, char_class)
     
     # Temporarily override EQUIPMENTS if substat_vars provided
@@ -513,13 +520,13 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _, max_h_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs)
+            dps_s, total_s, _, _, max_h_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count)
             target_s = total_s if use_total_dmg else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std, max_hit_std = target_s, list(combo), b_name, max_h_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs)
+            dps_n, total_n, _, _, max_h_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count)
             target_n = total_n if use_total_dmg else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu = target_n, list(combo), b_name, max_h_n
@@ -555,31 +562,47 @@ def main():
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
         if char_class == "디펜더": continue
         
-        for eq_name in EQUIPMENTS.keys():
-            # Meta-Sweep (Standard & No-Ult)
-            best_stats = find_best_journeys(cname, char_class, cdata, rdata, eq_name, 5, use_total_dmg)
+        # Determine if character has AoE and should be split (Except Yumina per request)
+        has_aoe_skill = False
+        for sk in cdata.get("스킬", {}).values():
+            if "전체 공격" in sk.get("부가", ""):
+                has_aoe_skill = True
+                break
+        
+        sim_configs = []
+        if has_aoe_skill and ("유미나" not in cname):
+            sim_configs = [(1, "(보스1인)"), (3, "(일반3인)")]
+        else:
+            sim_configs = [(3, "")] # Default target count is 3 (for consistency)
             
-            # 1. Standard Rotation
-            s_jrs, s_bless, s_val, s_max_h = best_stats["standard"]
-            for t_limit in [5, 10, 15]:
-                dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False)
-                results.append({
-                    "Character": cname, "Equip": eq_name, "Strategy": "Standard Rotation",
-                    "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                    "MaxHit": round(max_h, 2)
-                })
+        for t_count, suffix in sim_configs:
+            display_name = f"{cname}{suffix}"
             
-            # 2. No-Ult Alternative
-            n_jrs, n_bless, n_val, n_max_h = best_stats["no_ult"]
-            for t_limit in [5, 10, 15]:
-                dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True)
-                results.append({
-                    "Character": cname, "Equip": eq_name, "Strategy": "No-Ult AX Stacking",
-                    "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                    "MaxHit": round(max_h, 2)
-                })
-            
-            print(f" > {cname} | {eq_name}: Standard {s_val:,.0f} / No-Ult {n_val:,.0f}")
+            for eq_name in EQUIPMENTS.keys():
+                # Meta-Sweep (Standard & No-Ult)
+                best_stats = find_best_journeys(cname, char_class, cdata, rdata, eq_name, 5, use_total_dmg, target_count=t_count)
+                
+                # 1. Standard Rotation
+                s_jrs, s_bless, s_val, s_max_h = best_stats["standard"]
+                for t_limit in [5, 10, 15]:
+                    dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False, target_count=t_count)
+                    results.append({
+                        "Character": display_name, "Equip": eq_name, "Strategy": "Standard Rotation",
+                        "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2),
+                        "MaxHit": round(max_h, 2)
+                    })
+                
+                # 2. No-Ult Alternative
+                n_jrs, n_bless, n_val, n_max_h = best_stats["no_ult"]
+                for t_limit in [5, 10, 15]:
+                    dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True, target_count=t_count)
+                    results.append({
+                        "Character": display_name, "Equip": eq_name, "Strategy": "No-Ult AX Stacking",
+                        "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2),
+                        "MaxHit": round(max_h, 2)
+                    })
+                
+                print(f" > {display_name} | {eq_name}: Standard {s_val:,.0f} / No-Ult {n_val:,.0f}")
 
     # Generate Top 3 Summary Report
     df = pd.DataFrame(results)
