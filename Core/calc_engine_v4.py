@@ -583,7 +583,6 @@ def main():
     print(f" - Optimization Metric: {metric_label}")
     
     for cname, cdata in specs.items():
-        if "로자리아" not in cname: continue # QUICK BUILD FOR VERIFICATION
         if cname not in rotations: continue
         rdata = rotations[cname]
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
