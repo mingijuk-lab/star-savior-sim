@@ -193,6 +193,7 @@
     background: var(--blue2); color: #fff; border: none; padding: 12px 24px;
     border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer;
     transition: background 0.2s; width: 100%; letter-spacing: 0.05em;
+    margin-top: 8px;
   }
   .sim-btn:hover { background: #3b8ce0; }
   .sim-btn:disabled { background: var(--border2); cursor: not-allowed; }
@@ -225,25 +226,46 @@
       </h2>
       <div class="form-grid">
         <div class="form-group">
-          <label>캐릭터 선택</label>
-          <select id="simCharSelect">
+          <label>캐릭터</label>
+          <select id="simCharBase" onchange="updateSimDropdowns('base')">
             <option value="">불러오는 중...</option>
           </select>
         </div>
         <div class="form-group">
-          <label>추가 공격력 (%)</label>
+          <label>패시브/특수환경</label>
+          <select id="simSpec" onchange="updateSimDropdowns('spec')">
+            <option value="-">-</option>
+          </select>
+        </div>
+        <div class="form-group" id="simPassiveWrap" style="display:none;">
+           <label>패시브 레벨</label>
+           <select id="simPassive">
+             <option value="base">최대 (4lv)</option>
+           </select>
+        </div>
+        <div class="form-group">
+          <label>타겟 환경</label>
+          <select id="simTarget">
+            <option value="3">일반 모드 (3인)</option>
+            <option value="1">보스 모드 (1인)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
+        <div class="form-group">
+          <label>공격력 (%)</label>
           <input type="number" id="simAtk" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>추가 치명타 확률 (%)</label>
+          <label>치확 (%)</label>
           <input type="number" id="simCr" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>추가 치명타 피해 (%)</label>
+          <label>치피 (%)</label>
           <input type="number" id="simCd" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>추가 속도</label>
+          <label>속도</label>
           <input type="number" id="simSpd" value="0.0" step="0.1">
         </div>
       </div>
@@ -5581,14 +5603,99 @@ function filterChars() {
   }
 }
 
+// Simulation UI Grouping Logic
+const charVariants = {};
+
+function buildCharTree() {
+  data.forEach(c => {
+    const raw = c.id; // Original key name
+    const base = c.name; // Clean base name
+    
+    if (!charVariants[base]) {
+      charVariants[base] = {
+        name: base,
+        specs: {},
+        passives: new Set(),
+        targets: new Set()
+      };
+    }
+    
+    // Parse spec and level from raw if possible
+    let spec = 'Standard';
+    if (raw.includes('달속성파티')) spec = '달속성 파티';
+    if (raw.includes('바니걸')) spec = '바니걸';
+    if (raw.includes('궁극기미사용')) spec = '궁극기 미사용 (AX특화)';
+    
+    let lv = '4lv';
+    if (raw.includes('1lv')) lv = '1lv';
+    
+    let target = 'both';
+    if (raw.includes('보스1인')) target = '1';
+    if (raw.includes('일반3인')) target = '3';
+
+    if (!charVariants[base].specs[spec]) charVariants[base].specs[spec] = [];
+    charVariants[base].specs[spec].push({ raw, lv, target });
+    charVariants[base].passives.add(lv);
+    if (target !== 'both') charVariants[base].targets.add(target);
+  });
+}
+
+function updateSimDropdowns(trigger) {
+  const baseSelect = document.getElementById('simCharBase');
+  const specSelect = document.getElementById('simSpec');
+  const passSelect = document.getElementById('simPassive');
+  const targetSelect = document.getElementById('simTarget');
+  
+  const baseName = baseSelect.value;
+  if (!baseName) return;
+  
+  const char = charVariants[baseName];
+  
+  if (trigger === 'base') {
+    // Update Spec options
+    const specs = Object.keys(char.specs);
+    specSelect.innerHTML = specs.map(s => `<option value="${s}">${s}</option>`).join('');
+    
+    // Update Passive level visibility/options
+    const passWrap = document.getElementById('simPassiveWrap');
+    if (char.passives.has('1lv')) {
+      passWrap.style.display = 'flex';
+      passSelect.innerHTML = `<option value="4lv">최대 (4레벨)</option><option value="1lv">초기 (1레벨)</option>`;
+    } else {
+      passWrap.style.display = 'none';
+      passSelect.innerHTML = `<option value="4lv">최대 (4레벨)</option>`;
+    }
+  }
+  
+  // Update Target options based on selected Spec and Character
+  const currentSpec = specSelect.value;
+  const currentPass = passSelect.value;
+  const variants = char.specs[currentSpec] || [];
+  
+  // Filter versions that match current passive
+  const availableTargets = variants.filter(v => v.lv === currentPass).map(v => v.target);
+  
+  // Reset target select
+  let targetHtml = '';
+  if (availableTargets.includes('1') || availableTargets.includes('both')) 
+    targetHtml += `<option value="1">보스전 (1인)</option>`;
+  if (availableTargets.includes('3') || availableTargets.includes('both')) 
+    targetHtml += `<option value="3">일반전 (3인)</option>`;
+    
+  targetSelect.innerHTML = targetHtml || `<option value="3">기본 (3인)</option>`;
+}
+
 // Init
+buildCharTree();
 buildSidebar();
 const charContainer = document.getElementById('charContainer');
 charContainer.innerHTML = data.map(buildCard).join('') + `<div id="empty" class="empty-state" style="display:none;">검색 결과가 없습니다.</div>`;
 
-// Populate simulation dropdown
-const simSelect = document.getElementById('simCharSelect');
-simSelect.innerHTML = data.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+// Populate simulation dropdowns
+const simBaseSelect = document.getElementById('simCharBase');
+const baseNames = Object.keys(charVariants);
+simBaseSelect.innerHTML = baseNames.map(name => `<option value="${name}">${name}</option>`).join('');
+updateSimDropdowns('base');
 
 </script>
 <script type="py">
@@ -5651,29 +5758,53 @@ async def run_simulation(e):
         # Let UI update
         await asyncio.sleep(0.1)
         
-        char_name = document.getElementById("simCharSelect").value
-        log_status(f"선택된 캐릭터: {char_name}")
+        # Resolve selected character and parameters
+        base_name = document.getElementById("simCharBase").value
+        current_spec = document.getElementById("simSpec").value
+        current_pass = document.getElementById("simPassive").value
+        target_mode = int(document.getElementById("simTarget").value)
         
-        if not char_name:
-            raise ValueError("캐릭터를 선택해 주세요.")
+        log_status(f"선택 모델: {base_name} ({current_spec}, {current_pass}, {target_mode}인)")
+        
+        from js import charVariants as js_variants
+        # Convert JS object back if needed or use a safe lookup
+        variants_tree = js_variants.to_py()
+        char_node = variants_tree.get(base_name)
+        
+        if not char_node:
+            raise ValueError("캐릭터 정보를 찾을 수 없습니다.")
+            
+        # Find the matching RAW key
+        spec_list = char_node.get("specs", {}).get(current_spec, [])
+        match = None
+        for v in spec_list:
+            if v['lv'] == current_pass:
+                # If target is filtered, we need to match it or use 'both'
+                if v['target'] == 'both' or v['target'] == str(target_mode):
+                    match = v['raw']
+                    break
+        
+        if not match:
+            # Fallback to the first available in this spec if no exact match
+            if spec_list: match = spec_list[0]['raw']
+            else: raise ValueError("해당 조합의 데이터를 찾을 수 없습니다.")
+            
+        char_name = match
+        log_status(f"데이터베이스 조회 키: {char_name}")
             
         cdata = specs.get(char_name)
-        if not cdata:
-            # Try to handle the suffix-less lookup
-            clean_lookup = char_name.replace("(보스1인)", "").replace("(일반3인)", "")
-            cdata = specs.get(clean_lookup)
-            
-        rdata = rotations.get(char_name) or rotations.get(char_name.replace("(보스1인)", "").replace("(일반3인)", ""))
+        rdata = rotations.get(char_name)
         
+        if not cdata:
+            # Try suffix-less fallback for cdata if rotations match
+            clean_search = base_name
+            cdata = specs.get(clean_search)
+            
         if not cdata or not rdata:
-            raise ValueError(f"데이터 파일에서 캐릭터 '{char_name}' 정보를 찾을 수 없습니다.")
+            raise ValueError(f"캐릭터 '{char_name}'에 대한 핵심 데이터(스펙/로테이션)가 누락되었습니다.")
             
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
-        
-        # Determine target count
-        target_count = 3
-        if "보스1인" in char_name:
-            target_count = 1
+        target_count = target_mode
         
         log_status(f"엔진 분석 시작 (타겟 수: {target_count}, 클래스: {char_class})")
 
