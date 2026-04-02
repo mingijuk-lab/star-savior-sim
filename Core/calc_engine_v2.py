@@ -53,7 +53,7 @@ def setup_equipments(substat_vars=None):
 
 def setup_journeys():
     try:
-        from Core.data_loader import load_journeys_from_json
+        from Core.data_loader_v2 import load_journeys_from_json
         return load_journeys_from_json("Data/equipments.json")
     except Exception as e:
         print(f"Warning: Could not load Journeys from Data/equipments.json ({e}). Using hardcoded fallback.")
@@ -67,7 +67,7 @@ BLESSINGS = {} # Populated in main or setup
 
 def setup_blessings():
     try:
-        from Core.data_loader import load_blessings_from_json
+        from Core.data_loader_v2 import load_blessings_from_json
         return load_blessings_from_json("Data/equipments.json")
     except Exception as e:
         print(f"Warning: Could not load Blessings ({e})")
@@ -511,6 +511,9 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
                 combos.append([mandatory] + list(combo))
     elif len(commons) >= n:
         combos.extend(list(itertools.combinations(commons, n)))
+    
+    if not combos:
+        print(f"Warning: No journey combinations of size {n} found for {char_name} (Available: {len(commons)})")
     
     # SWEEP: Try both Standard and No-Ult configurations
     max_val_std, best_combo_std, best_bless_std, max_hit_std = -1, [], None, 0.0
