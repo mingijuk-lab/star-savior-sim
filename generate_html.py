@@ -406,10 +406,11 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
           <input type="number" id="simSpd" value="0.0" step="0.1">
         </div>
       </div>
-      <button class="sim-btn" id="simBtn" onclick="runSimulation()" disabled>
+      <button class="sim-btn" id="simBtn" disabled>
         <span class="btn-text">엔진 로딩 중... (최초 1회 수 초 소요)</span>
         <div class="loader" id="simLoader"></div>
       </button>
+      <div id="simStatus" style="margin-top: 10px; font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; display: none; padding: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px;"></div>
       <div id="simResult" style="margin-top: 20px; display: none;"></div>
     </div>
     
@@ -600,23 +601,46 @@ except:
 
 rotations = extract_json_from_md("Data/사이클_로테이션_마스터.md")
 
+def log_status(msg, is_error=False):
+    status_box = document.getElementById("simStatus")
+    status_box.style.display = "block"
+    color = "var(--red)" if is_error else "var(--text2)"
+    status_box.innerHTML = f"<span style='color:{color}'>[{calc_engine.datetime.datetime.now().strftime('%H:%M:%S')}] {msg}</span>"
+    print(f"DEBUG: {msg}")
+
 btn = document.getElementById("simBtn")
-btn.innerHTML = "시뮬레이션 실행"
+btn.querySelector(".btn-text").innerText = "시뮬레이션 실행"
 btn.disabled = False
+log_status("엔진 로드가 완료되었습니다. 준비 완료.")
 
 async def run_simulation(e):
-    btn.disabled = True
-    loader = document.getElementById("simLoader")
-    loader.style.display = "block"
-    btn.querySelector(".btn-text").innerText = "계산 중..."
-    
-    # Let UI update
-    await asyncio.sleep(0.1)
-    
     try:
+        log_status("사용자 클릭 감지 - 연산 시작 준비 중")
+        btn.disabled = True
+        loader = document.getElementById("simLoader")
+        loader.style.display = "block"
+        btn.querySelector(".btn-text").innerText = "계산 중..."
+        
+        # Let UI update
+        await asyncio.sleep(0.1)
+        
         char_name = document.getElementById("simCharSelect").value
-        cdata = specs[char_name]
-        rdata = rotations[char_name]
+        log_status(f"선택된 캐릭터: {char_name}")
+        
+        if not char_name:
+            raise ValueError("캐릭터를 선택해 주세요.")
+            
+        cdata = specs.get(char_name)
+        if not cdata:
+            # Try to handle the suffix-less lookup
+            clean_lookup = char_name.replace("(보스1인)", "").replace("(일반3인)", "")
+            cdata = specs.get(clean_lookup)
+            
+        rdata = rotations.get(char_name) or rotations.get(char_name.replace("(보스1인)", "").replace("(일반3인)", ""))
+        
+        if not cdata or not rdata:
+            raise ValueError(f"데이터 파일에서 캐릭터 '{char_name}' 정보를 찾을 수 없습니다.")
+            
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
         
         # Determine target count
@@ -624,10 +648,7 @@ async def run_simulation(e):
         if "보스1인" in char_name:
             target_count = 1
         
-        # Strip suffix for dictionary lookup if dropdown has raw names
-        clean_name = char_name.replace("(보스1인)", "").replace("(일반3인)", "")
-        cdata = specs[clean_name]
-        rdata = rotations[clean_name]
+        log_status(f"엔진 분석 시작 (타겟 수: {target_count}, 클래스: {char_class})")
 
         # Get Substats
         sim_vars = {
@@ -637,6 +658,7 @@ async def run_simulation(e):
             "$SPD$": float(document.getElementById("simSpd").value)
         }
         
+        log_status("장비 바인딩 및 서브스탯 적용 중...")
         calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
         
         html_out = "<h3>[AX 특화 베스트 결과]</h3><table class='rank-table'><thead><tr><th>장비</th><th>DPS</th><th>MaxHit</th><th>여정</th></tr></thead><tbody>"
@@ -644,20 +666,19 @@ async def run_simulation(e):
         # Test just the top equipment sets to save time
         eq_names = list(calc_engine.EQUIPMENTS.keys())
         best_results = []
-        for eq_name in eq_names:
-            # We enforce AX blessing only to heavily reduce combinations
-            best_dps = -1
-            best_combo = None
-            max_hit = 0
-            
-            # Simple wrapper to sweep with AX directly to save PyScript overhead
-            res = calc_engine.find_best_journeys(clean_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
-            # Find best journeys result includes AX if it's the best. Since AX is top tier usually, we can just display standard out.
+        log_status(f"조합 탐색 시작 (전체 {len(eq_names)}개 세트 스캔)...")
+        
+        for i, eq_name in enumerate(eq_names):
+            if i % 2 == 0:
+                log_status(f"연산 진행 중... ({i+1}/{len(eq_names)})")
+                await asyncio.sleep(0.01)
+                
+            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
             std_jrs, std_bless, std_val, std_max = res["standard"]
-            
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs))
             
         best_results.sort(key=lambda x: x[2], reverse=True)
+        log_status("연산 완료! 결과 렌더링 중...")
         
         for eq, bl, dps, mh, jrs in best_results[:3]:
             jr_html = ""
@@ -668,12 +689,15 @@ async def run_simulation(e):
         html_out += "</tbody></table>"
         document.getElementById("simResult").innerHTML = html_out
         document.getElementById("simResult").style.display = "block"
+        log_status("모든 프로세스가 성공적으로 완료되었습니다.")
         
     except Exception as ex:
+        log_status(f"CRITICAL ERROR: {str(ex)}", is_error=True)
         document.getElementById("simResult").innerHTML = f"<div style='color:red;'>오류 발생: {str(ex)}</div>"
         document.getElementById("simResult").style.display = "block"
         
     btn.disabled = False
+    loader = document.getElementById("simLoader")
     loader.style.display = "none"
     btn.querySelector(".btn-text").innerText = "시뮬레이션 실행"
 
