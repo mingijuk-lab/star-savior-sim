@@ -4,9 +4,9 @@ import json
 import re
 import itertools
 import random
-from Core.models import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
-from Core.data_loader import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
-from Core.gear_sensitivity import profile_stat_scaling
+from Core.models_v2 import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
+from Core.data_loader_v2 import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
+from Core.gear_sensitivity_v2 import profile_stat_scaling
 
 
 if sys.stdout.encoding != 'utf-8':
