@@ -168,7 +168,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
 <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
 <py-config>
-  packages = ["pandas"]
+  packages = []
   [[fetch]]
   files = [
       "./Core/__init__.py",

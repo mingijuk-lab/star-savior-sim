@@ -1,6 +1,6 @@
 import json
 import re
-import pandas as pd
+# import pandas as pd (Moved inside functions requiring it to optimize PyScript)
 from typing import Dict, List
 from Core.models import EquipmentPiece, EquipmentSet, Modifier, StatType, ModifierType, Arcana, Journey
 
@@ -84,10 +84,10 @@ def load_equipments_from_json(filepath: str, substat_vars: Dict[str, float] = No
         return load_combined_equipments(data, substat_vars)
     return load_equipments_from_list(data, substat_vars)
 
-def load_equipments_from_df(df: pd.DataFrame) -> Dict[str, EquipmentSet]:
+def load_equipments_from_df(df) -> Dict[str, EquipmentSet]:
+    import pandas as pd
     """
     Expects a DataFrame with columns: name, stat, value, type
-    Useful for loading from Excel/CSV.
     """
     registry = {}
     for name, group in df.groupby("name"):
