@@ -168,7 +168,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
 <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
 <py-config>
-  packages = []
+  packages = ["pandas"]
   [[fetch]]
   files = [
       "./Core/__init__.py",
@@ -178,8 +178,6 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
       "./Core/gear_sensitivity.py",
       "./Data/characters.json",
       "./Data/equipments.json",
-      "./Data/journeys.json",
-      "./Data/blessings.json",
       "./Data/사이클_로테이션_마스터.md",
       "./Data/캐릭터_스펙_마스터.md"
   ]
@@ -375,8 +373,6 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
     <span class="search-icon">🔍</span>
     <input type="text" id="searchInput" placeholder="캐릭터 이름으로 검색..." oninput="filterChars()">
   </div>
-</div>
-
 </div>
 
 <div class="layout">
@@ -584,7 +580,7 @@ const simSelect = document.getElementById('simCharSelect');
 simSelect.innerHTML = data.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
 
 </script>
-<py-script>
+<script type="py">
 import sys
 import json
 import asyncio
@@ -664,8 +660,10 @@ async def run_simulation(e):
         best_results.sort(key=lambda x: x[2], reverse=True)
         
         for eq, bl, dps, mh, jrs in best_results[:3]:
-            jr_html = "".join([f"<span class='j-tag'>{j}</span>" for j in jrs])
-            html_out += f"<tr><td><span class='equip-tag'>{eq}</span></td><td><span class='dps-val'>{dps:,.2f}</span></td><td><span class='maxhit-val'>{mh:,.0f}</span></td><td><div class='journey-list'>{jr_html}</div></td></tr>"
+            jr_html = ""
+            for j in jrs:
+                jr_html += "<span class='j-tag'>" + j + "</span>"
+            html_out += "<tr><td><span class='equip-tag'>" + eq + "</span></td><td><span class='dps-val'>" + f"{dps:,.2f}" + "</span></td><td><span class='maxhit-val'>" + f"{mh:,.0f}" + "</span></td><td><div class='journey-list'>" + jr_html + "</div></td></tr>"
             
         html_out += "</tbody></table>"
         document.getElementById("simResult").innerHTML = html_out
@@ -682,7 +680,7 @@ async def run_simulation(e):
 # Bind event
 proxy = create_proxy(run_simulation)
 document.getElementById("simBtn").addEventListener("click", proxy)
-</py-script>
+</script>
 </body>
 </html>'''
 
