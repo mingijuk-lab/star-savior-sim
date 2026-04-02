@@ -196,9 +196,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     is_frey = "프레이" in cname_norm
     is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower() or force_moon_party
     
-    # Debug trace for browser console
-    if is_frey:
-        print(f"[V5 Engine] Character: {cname} | Normalized: {cname_norm} | MoonParty: {is_moon_party} (Forced: {force_moon_party})")
+    # Debug trace removed — was printing on every calculate_dps call (tens of thousands during meta-sweep)
 
     is_jackpot = False
     y_is_1lv = "1lv" in cname
@@ -250,9 +248,22 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             is_aoe = True
             is_yumina_chain = True
 
-        # Attribute Stack (Universal Rule: Basic +1)
+        # 3. Attribute (Cooling) Stack Logic
+        # Universal Rule: Basic Attack +1, Frey/Epindel Special +3
+        # Strict 5-stack cap as requested.
+        attr_gain = 0
         if is_basic:
-            attr_stack = min(5, attr_stack + 1)
+            attr_gain = 1
+        elif (is_frey or "에핀델" in cname) and is_spec:
+            attr_gain = 3
+            
+        attr_stack = min(5, attr_stack + attr_gain)
+        
+        # Cooling Reset Logic (at 5 stacks)
+        # Frey: Manstack (5) triggers passive reset
+        # Claire: 5 stacks trigger Extra Attack (handled by JSON, engine resets here)
+        if (is_frey or "클레어" in cname) and attr_stack >= 5:
+            attr_stack = 0
         
         # Rosaria Specific Logic
         rosaria_extra_basic = False

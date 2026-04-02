@@ -7,7 +7,7 @@ import pandas as pd
 # Add project root to path
 sys.path.append(os.getcwd())
 
-import Core.calc_dps as calc_dps
+import Core.calc_engine_v5 as calc_dps
 
 def automated_main():
     # Mock interactive substats with 0.0 for standard baseline test
