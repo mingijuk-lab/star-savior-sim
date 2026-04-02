@@ -402,7 +402,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # if is_frey and is_basic and frey_hr >= 5:
         #     frey_hr = 0
             
-        dmg_raw = eff_atk * coeff * (1.0 + m_di) * (1.1) # 1.1 = Final generic multiplier
+        # (dmg_raw removed — was dead code, not used in final damage formula)
         
         # 4. Crit Calculation (OLD - to be replaced by final_cr/final_cd)
         cr_i = eff_cr
@@ -464,8 +464,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             
         if is_yumina:
             ga_red_carry += y_crit_ga * prob_crit_any
-        if is_moon_party:
-            ga_red_carry += 0.08
+        # Moon Party AG boost is handled below in the Frey-specific section (0.24 = 8% x 3 allies)
         if is_ult:
             if "로자리아" in cname: ga_red_carry += 0.50
             if "리디아" in cname: ga_red_carry += 0.30
