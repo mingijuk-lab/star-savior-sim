@@ -63,9 +63,9 @@ def parse_character_section(section: str) -> dict:
     std_traj = []
     alt_data = None
 
-    # Find Standard table rows: look for lines with "| 1 |", "| 2 |", "| 3 |"
+    # Find Standard table rows: now 10 columns
     table_pattern = re.compile(
-        r'\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|\s*\*\*([0-9,.]+)\*\*\s*\|\s*([0-9,.]+)\s*\|'
+        r'\|\s*(\d+)\s*\|\s*(.+?)\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|\s*\*\*([0-9,.]+)\*\*\s*\|\s*([0-9,.]+)\s*\|\s*([0-9,.]+)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*([0-9,.]+)\s*\|'
     )
     for line in lines:
         m = table_pattern.search(line)
@@ -76,22 +76,24 @@ def parse_character_section(section: str) -> dict:
             journeys_raw = m.group(4).strip()
             dps = float(m.group(5).replace(',', ''))
             max_hit = int(float(m.group(6).replace(',', '')))
+            
+            # New Stat Columns
+            atk = int(float(m.group(7).replace(',', '')))
+            cr = m.group(8).strip()
+            cd = m.group(9).strip()
+            spd = int(float(m.group(10).replace(',', '')))
 
-            # Parse journey names (separated by | within the cell)
+            # Parse journey names
             journeys = [j.strip() for j in journeys_raw.split('|') if j.strip()]
 
             std_ranks.append({
-                "rank": rank,
-                "equip": equip,
-                "bless": bless,
-                "journeys": journeys,
-                "dps": dps,
-                "maxHit": max_hit
+                "rank": rank, "equip": equip, "bless": bless, "journeys": journeys, 
+                "dps": dps, "maxHit": max_hit, "atk": atk, "cr": cr, "cd": cd, "spd": spd
             })
 
-    # Parse No-Ult peak row
+    # Parse No-Ult peak row: now 10 columns
     alt_pattern = re.compile(
-        r'\|\s*\*\*최고점\*\*\s*\|\s*(.+?)\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|\s*\*\*([0-9,.]+)\*\*\s*\|\s*([0-9,.]+)\s*\|'
+        r'\|\s*\*\*최고점\*\*\s*\|\s*(.+?)\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|\s*\*\*([0-9,.]+)\*\*\s*\|\s*([0-9,.]+)\s*\|\s*([0-9,.]+)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*([0-9,.]+)\s*\|'
     )
     for line in lines:
         m = alt_pattern.search(line)
@@ -101,14 +103,16 @@ def parse_character_section(section: str) -> dict:
             journeys_raw = m.group(3).strip()
             dps = float(m.group(4).replace(',', ''))
             max_hit = int(float(m.group(5).replace(',', '')))
+            atk = int(float(m.group(6).replace(',', '')))
+            cr = m.group(7).strip()
+            cd = m.group(8).strip()
+            spd = int(float(m.group(9).replace(',', '')))
+            
             journeys = [j.strip() for j in journeys_raw.split('|') if j.strip()]
 
             alt_data = {
-                "equip": equip,
-                "bless": bless,
-                "journeys": journeys,
-                "dps": dps,
-                "maxHit": max_hit
+                "equip": equip, "bless": bless, "journeys": journeys, "dps": dps, "maxHit": max_hit,
+                "atk": atk, "cr": cr, "cd": cd, "spd": spd
             }
 
     # Parse Build Trajectory
@@ -172,10 +176,10 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   [[fetch]]
   files = [
       "./Core/__init__.py",
-      "./Core/calc_engine_v3.py",
-      "./Core/data_loader_v3.py",
-      "./Core/models_v3.py",
-      "./Core/gear_sensitivity_v3.py",
+      "./Core/calc_engine_v4.py",
+      "./Core/data_loader_v4.py",
+      "./Core/models_v4.py",
+      "./Core/gear_sensitivity_v4.py",
       "./Data/characters.json",
       "./Data/equipments.json",
       "./Data/사이클_로테이션_마스터.md",
@@ -515,10 +519,25 @@ function buildCard(char) {
         <table class="rank-table">
           <thead>
             <tr>
-              <th>순위</th><th>장비 세트</th><th>축복</th><th>최적 여정 조합 (Top 5)</th><th>DPS (15T)</th><th>MaxHit</th>
+              <th>순위</th><th>장비 세트</th><th>축복</th><th>최적 여정 조합 (Top 5)</th><th>DPS</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th>
             </tr>
           </thead>
-          <tbody>${rankRows}</tbody>
+          <tbody>
+            ${char.std.ranks.map(r => `
+              <tr>
+                <td class="rank-num rank-${r.rank}">${r.rank}</td>
+                <td><span class="equip-tag">${r.equip}</span></td>
+                <td><span class="bless-tag">${r.bless}</span></td>
+                <td><div class="journey-list">${r.journeys.map(j => `<span class="j-tag">${j}</span>`).join('')}</div></td>
+                <td><span class="dps-val">${fmt(r.dps)}</span></td>
+                <td><span class="maxhit-val">${fmtInt(r.maxHit)}</span></td>
+                <td style="color:var(--text2);font-size:11px;">${fmtInt(r.atk)}</td>
+                <td style="color:var(--text2);font-size:11px;">${r.cr}</td>
+                <td style="color:var(--text2);font-size:11px;">${r.cd}</td>
+                <td style="color:var(--text2);font-size:11px;">${r.spd}</td>
+              </tr>
+            `).join('')}
+          </tbody>
         </table>
         <div class="traj-section">
           <div class="traj-title">빌드 진화 경로</div>
@@ -529,11 +548,18 @@ function buildCard(char) {
       <div class="strat-panel" id="${altId}">
         <div style="font-size:12px;color:var(--text3);margin-bottom:12px;">궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.</div>
         <div class="peak-box">
-          <span class="peak-label">최고점</span>
-          <span class="peak-equip"><span class="equip-tag">${char.alt.equip}</span>&nbsp;<span class="bless-tag">${char.alt.bless}</span></span>
-          <div class="traj-journeys" style="flex:1;margin-left:8px;">${trajJourneyTags(char.alt.journeys)}</div>
-          <span class="peak-maxhit">💥${fmtInt(char.alt.maxHit)}</span>
-          <span class="peak-dps">${fmt(char.alt.dps)}</span>
+          <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
+            <div style="display:flex; align-items:center; gap:8px;">
+               <span class="peak-label">최고점</span>
+               <span class="peak-equip"><span class="equip-tag">${char.alt.equip}</span>&nbsp;<span class="bless-tag">${char.alt.bless}</span></span>
+               <span class="peak-dps" style="margin-left:auto;">${fmt(char.alt.dps)}</span>
+            </div>
+            <div class="journey-list">${char.alt.journeys.map(j => `<span class="j-tag">${j}</span>`).join('')}</div>
+            <div style="font-size:11px; color:var(--text3); border-top:1px solid var(--border); padding-top:4px; display:flex; gap:12px;">
+               <span>ATK: ${fmtInt(char.alt.atk)}</span> | <span>CR: ${char.alt.cr}</span> | <span>CD: ${char.alt.cd}</span> | <span>SPD: ${char.alt.spd}</span>
+               <span style="margin-left:auto; color:var(--gold);">💥${fmtInt(char.alt.maxHit)}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -707,8 +733,8 @@ except:
     pass
 
 # Setup Engine
-import Core.calc_engine_v3 as calc_engine
-from Core.data_loader_v3 import extract_json_from_md
+import Core.calc_engine_v4 as calc_engine
+from Core.data_loader_v4 import extract_json_from_md
 
 # Load Data inside VFS
 try:

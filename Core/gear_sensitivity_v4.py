@@ -1,4 +1,4 @@
-from Core.models_v3 import StatType
+from Core.models_v4 import StatType
 from typing import Dict, List, Callable
 
 def profile_stat_scaling(
@@ -50,7 +50,7 @@ def profile_stat_scaling(
             # find_best_journeys 함수 호출 (5개 여정, 축복 최적화)
             res = find_best_func(char_name, char_class, cdata, rdata, eq_name, 5, False, vars)
             
-            std_jrs, std_bless, std_dps, std_max_h = res["standard"]
+            std_jrs, std_bless, std_dps, std_max_h, std_stats = res["standard"]
             
             if std_dps > best_dps:
                 best_dps = std_dps

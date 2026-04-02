@@ -4,9 +4,9 @@ import json
 import re
 import itertools
 import random
-from Core.models_v3 import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
-from Core.data_loader_v3 import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
-from Core.gear_sensitivity_v3 import profile_stat_scaling
+from Core.models_v4 import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
+from Core.data_loader_v4 import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
+from Core.gear_sensitivity_v4 import profile_stat_scaling
 
 
 if sys.stdout.encoding != 'utf-8':
@@ -61,7 +61,7 @@ def setup_equipments(substat_vars=None):
 def setup_journeys():
     path = get_vfs_path("Data/equipments.json")
     try:
-        from Core.data_loader_v3 import load_journeys_from_json
+        from Core.data_loader_v4 import load_journeys_from_json
         data = load_journeys_from_json(path)
         if not data: print(f"Warning: Journey data is empty at {path}")
         return data
@@ -78,7 +78,7 @@ BLESSINGS = {} # Populated in main or setup
 def setup_blessings():
     path = get_vfs_path("Data/equipments.json")
     try:
-        from Core.data_loader_v3 import load_blessings_from_json
+        from Core.data_loader_v4 import load_blessings_from_json
         data = load_blessings_from_json(path)
         if not data: print(f"Warning: Blessing data is empty at {path}")
         return data
@@ -583,6 +583,7 @@ def main():
     print(f" - Optimization Metric: {metric_label}")
     
     for cname, cdata in specs.items():
+        if "로자리아" not in cname: continue # QUICK BUILD FOR VERIFICATION
         if cname not in rotations: continue
         rdata = rotations[cname]
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
@@ -609,23 +610,23 @@ def main():
                 best_stats = find_best_journeys(cname, char_class, cdata, rdata, eq_name, 5, use_total_dmg, target_count=t_count)
                 
                 # 1. Standard Rotation
-                s_jrs, s_bless, s_val, s_max_h = best_stats["standard"]
+                s_jrs, s_bless, s_val, s_max_h, s_stats = best_stats["standard"]
                 for t_limit in [5, 10, 15]:
-                    dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False, target_count=t_count)
+                    dps, _, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False, target_count=t_count)
                     results.append({
                         "Character": display_name, "Equip": eq_name, "Strategy": "Standard Rotation",
                         "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                        "MaxHit": round(max_h, 2)
+                        "MaxHit": round(max_h, 2), "Stats": stats
                     })
                 
                 # 2. No-Ult Alternative
-                n_jrs, n_bless, n_val, n_max_h = best_stats["no_ult"]
+                n_jrs, n_bless, n_val, n_max_h, n_stats = best_stats["no_ult"]
                 for t_limit in [5, 10, 15]:
-                    dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True, target_count=t_count)
+                    dps, _, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True, target_count=t_count)
                     results.append({
                         "Character": display_name, "Equip": eq_name, "Strategy": "No-Ult AX Stacking",
                         "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                        "MaxHit": round(max_h, 2)
+                        "MaxHit": round(max_h, 2), "Stats": stats
                     })
                 
                 print(f" > {display_name} | {eq_name}: Standard {s_val:,.0f} / No-Ult {n_val:,.0f}")
@@ -671,10 +672,12 @@ def main():
                 if not cat_df.empty:
                     best_per_cat[cat] = cat_df.iloc[0]
             
-            f.write("| 순위 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit |\n")
-            f.write("| :--- | :--- | :--- | :--- | :--- | :--- |\n")
+            f.write("| 순위 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit | ATK | CR | CD | SPD |\n")
+            f.write("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n")
             for i, row in enumerate(std_all.head(3).itertuples(), 1):
-                f.write(f"| {i} | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} |\n")
+                st = row.Stats
+                f_cr, f_cd = f"{st['cr']*100:.1f}%", f"{st['cd']*100:.1f}%"
+                f.write(f"| {i} | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} | {st['atk']:,.0f} | {f_cr} | {f_cd} | {st['spd']:.0f} |\n")
             
             # Build Trajectory Analysis (v19.0)
             if not std_all.empty:
@@ -705,10 +708,12 @@ def main():
             f.write("> **참고**: 궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.\n\n")
             nu_df = char_df[(char_df["Strategy"] == "No-Ult AX Stacking") & (char_df["Turns"] == 15)].sort_values("DPS", ascending=False).head(1)
             
-            f.write("| 구분 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit |\n")
-            f.write("| :--- | :--- | :--- | :--- | :--- | :--- |\n")
+            f.write("| 구분 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit | ATK | CR | CD | SPD |\n")
+            f.write("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n")
             for row in nu_df.itertuples():
-                f.write(f"| **최고점** | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} |\n")
+                st = row.Stats
+                f_cr, f_cd = f"{st['cr']*100:.1f}%", f"{st['cd']*100:.1f}%"
+                f.write(f"| **최고점** | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} | {st['atk']:,.0f} | {f_cr} | {f_cd} | {st['spd']:.0f} |\n")
             
             f.write("\n---\n\n")
 

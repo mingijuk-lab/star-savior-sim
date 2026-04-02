@@ -2,7 +2,7 @@ import json
 import re
 # import pandas as pd (Moved inside functions requiring it to optimize PyScript)
 from typing import Dict, List
-from Core.models_v3 import EquipmentPiece, EquipmentSet, Modifier, StatType, ModifierType, Arcana, Journey
+from Core.models_v4 import EquipmentPiece, EquipmentSet, Modifier, StatType, ModifierType, Arcana, Journey
 
 def extract_json_from_md(filepath: str) -> Dict:
     """Extracts all JSON blocks from a markdown file and merges them."""
