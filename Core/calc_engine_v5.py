@@ -190,13 +190,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     # v15.0 Dynamic Passive Stacks
     p_stacks = {"claire_cr": 0, "lydia_atk": 0, "yumina_atk": 0, "assera_cd": 0}
     # Engine Environment Detection (Flexible matching for UI-sanitized names)
-    is_yumina = "유미나" in cname
-    is_frey = "프레이" in cname
-    is_moon_party = ("달속성파티" in cname) or ("moon" in cname.lower())
+    # Normalize cname for robust detection (remove parentheses/hyphens)
+    cname_norm = cname.replace("(", "").replace(")", "").replace("-", "")
+    is_yumina = "유미나" in cname_norm
+    is_frey = "프레이" in cname_norm
+    is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower()
     
     # Debug trace for browser console
     if is_frey:
-        print(f"[V5 Engine] Character: {cname} | MoonParty: {is_moon_party}")
+        print(f"[V5 Engine] Character: {cname} | Normalized: {cname_norm} | MoonParty: {is_moon_party}")
 
     is_jackpot = False
     y_is_1lv = "1lv" in cname

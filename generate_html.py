@@ -39,6 +39,7 @@ def parse_character_section(section: str) -> dict:
 
     # Generate ID and detect badges
     char_id = raw_name
+    rawName = raw_name
     name = raw_name
     badges = []
 
@@ -149,6 +150,7 @@ def parse_character_section(section: str) -> dict:
 
     return {
         "id": safe_id,
+        "rawName": rawName,
         "name": name,
         "badges": badges,
         "peakDPS": peak_dps,
@@ -630,8 +632,9 @@ window.charVariants = {};
 
 function buildCharTree() {
   data.forEach(c => {
-    const raw = c.id; // Original key name
-    const base = c.name; // Clean base name
+    const raw = c.rawName; // Use Original Raw Name for Simulation lookup
+    const id = c.id;       // Use Sanitized ID for HTML elements
+    const base = c.name;   // Clean base name
     
     if (!charVariants[base]) {
       charVariants[base] = {

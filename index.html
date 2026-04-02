@@ -286,6 +286,7 @@
 const data = [
   {
     "id": "프레이",
+    "rawName": "프레이",
     "name": "프레이",
     "badges": [],
     "peakDPS": 3597.99,
@@ -450,6 +451,7 @@ const data = [
   },
   {
     "id": "프레이-달속성파티",
+    "rawName": "프레이(달속성파티)",
     "name": "프레이",
     "badges": [
       "moon"
@@ -629,6 +631,7 @@ const data = [
   },
   {
     "id": "프레이-달속성파티-1lv",
+    "rawName": "프레이(달속성파티, 1lv)",
     "name": "프레이",
     "badges": [
       "moon"
@@ -795,6 +798,7 @@ const data = [
   },
   {
     "id": "로자리아-보스1인",
+    "rawName": "로자리아(보스1인)",
     "name": "로자리아",
     "badges": [
       "boss"
@@ -1065,6 +1069,7 @@ const data = [
   },
   {
     "id": "로자리아-일반3인",
+    "rawName": "로자리아(일반3인)",
     "name": "로자리아",
     "badges": [
       "normal"
@@ -1322,6 +1327,7 @@ const data = [
   },
   {
     "id": "로자리아-패시브1lv-보스1인",
+    "rawName": "로자리아(패시브1lv)(보스1인)",
     "name": "로자리아",
     "badges": [
       "passive",
@@ -1580,6 +1586,7 @@ const data = [
   },
   {
     "id": "로자리아-패시브1lv-일반3인",
+    "rawName": "로자리아(패시브1lv)(일반3인)",
     "name": "로자리아",
     "badges": [
       "passive",
@@ -1870,8 +1877,9 @@ window.charVariants = {};
 
 function buildCharTree() {
   data.forEach(c => {
-    const raw = c.id; // Original key name
-    const base = c.name; // Clean base name
+    const raw = c.rawName; // Use Original Raw Name for Simulation lookup
+    const id = c.id;       // Use Sanitized ID for HTML elements
+    const base = c.name;   // Clean base name
     
     if (!charVariants[base]) {
       charVariants[base] = {
