@@ -4,9 +4,9 @@ import json
 import re
 import itertools
 import random
-from Core.models_v2 import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
-from Core.data_loader_v2 import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
-from Core.gear_sensitivity_v2 import profile_stat_scaling
+from Core.models_v3 import Modifier, ModifierType, StatType, EquipmentPiece, EquipmentSet, Journey, Character
+from Core.data_loader_v3 import load_equipments_from_json, load_journeys_from_json, load_blessings_from_json, extract_json_from_md
+from Core.gear_sensitivity_v3 import profile_stat_scaling
 
 
 if sys.stdout.encoding != 'utf-8':
@@ -61,7 +61,7 @@ def setup_equipments(substat_vars=None):
 def setup_journeys():
     path = get_vfs_path("Data/equipments.json")
     try:
-        from Core.data_loader_v2 import load_journeys_from_json
+        from Core.data_loader_v3 import load_journeys_from_json
         data = load_journeys_from_json(path)
         if not data: print(f"Warning: Journey data is empty at {path}")
         return data
@@ -78,7 +78,7 @@ BLESSINGS = {} # Populated in main or setup
 def setup_blessings():
     path = get_vfs_path("Data/equipments.json")
     try:
-        from Core.data_loader_v2 import load_blessings_from_json
+        from Core.data_loader_v3 import load_blessings_from_json
         data = load_blessings_from_json(path)
         if not data: print(f"Warning: Blessing data is empty at {path}")
         return data

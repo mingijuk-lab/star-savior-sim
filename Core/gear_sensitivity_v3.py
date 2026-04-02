@@ -1,4 +1,4 @@
-from Core.models_v2 import StatType
+from Core.models_v3 import StatType
 from typing import Dict, List, Callable
 
 def profile_stat_scaling(

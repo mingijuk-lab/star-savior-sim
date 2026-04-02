@@ -172,10 +172,10 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   [[fetch]]
   files = [
       "./Core/__init__.py",
-      "./Core/calc_engine_v2.py",
-      "./Core/data_loader_v2.py",
-      "./Core/models_v2.py",
-      "./Core/gear_sensitivity_v2.py",
+      "./Core/calc_engine_v3.py",
+      "./Core/data_loader_v3.py",
+      "./Core/models_v3.py",
+      "./Core/gear_sensitivity_v3.py",
       "./Data/characters.json",
       "./Data/equipments.json",
       "./Data/사이클_로테이션_마스터.md",
@@ -600,8 +600,8 @@ except:
     pass
 
 # Setup Engine
-import Core.calc_engine_v2 as calc_engine
-from Core.data_loader_v2 import extract_json_from_md
+import Core.calc_engine_v3 as calc_engine
+from Core.data_loader_v3 import extract_json_from_md
 
 # Load Data inside VFS
 try:
