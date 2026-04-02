@@ -143,6 +143,14 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if "치피_퍼센트" in p:
             char.add_permanent_modifier(Modifier(StatType.CRIT_DAMAGE, p["치피_퍼센트"], ModifierType.FLAT, "PassiveCD"))
 
+    # Capture final stats before dynamic stacking starts
+    final_stats = {
+        "atk": char.get_stat(StatType.ATK),
+        "spd": char.get_stat(StatType.SPEED),
+        "cr": char.get_stat(StatType.CRIT_RATE),
+        "cd": char.get_stat(StatType.CRIT_DAMAGE)
+    }
+
     # Initial Stats (Check for AX in ANY journey)
     has_ax = (blessing_name == "AX")
     has_fx = (blessing_name == "FX")
@@ -487,7 +495,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         #     hits.append(dmg_raw * (1.0 + cd_i))
 
 
-    return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg, max_hit_dmg
+    return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg, max_hit_dmg, final_stats
 
 
 def get_valid_journeys(char_name, char_class):
@@ -529,28 +537,28 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
         print(f"Warning: No journey combinations of size {n} found for {char_name} (Available: {len(commons)})")
     
     # SWEEP: Try both Standard and No-Ult configurations
-    max_val_std, best_combo_std, best_bless_std, max_hit_std = -1, [], None, 0.0
-    max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu = -1, [], None, 0.0
+    max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = -1, [], None, 0.0, {}
+    max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = -1, [], None, 0.0, {}
     
     available_blessings = [None] + [b for b in BLESSINGS.keys()]
     
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _, max_h_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count)
+            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count)
             target_s = total_s if use_total_dmg else dps_s
             if target_s > max_val_std:
-                max_val_std, best_combo_std, best_bless_std, max_hit_std = target_s, list(combo), b_name, max_h_s
+                max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = target_s, list(combo), b_name, max_h_s, stats_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count)
+            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count)
             target_n = total_n if use_total_dmg else dps_n
             if target_n > max_val_nu:
-                max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu = target_n, list(combo), b_name, max_h_n
+                max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = target_n, list(combo), b_name, max_h_n, stats_n
 
     return {
-        "standard": (best_combo_std, best_bless_std, max_val_std, max_hit_std),
-        "no_ult": (best_combo_nu, best_bless_nu, max_val_nu, max_hit_nu)
+        "standard": (best_combo_std, best_bless_std, max_val_std, max_hit_std, best_stats_std),
+        "no_ult": (best_combo_nu, best_bless_nu, max_val_nu, max_hit_nu, best_stats_nu)
     }
 
 def main():

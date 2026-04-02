@@ -819,7 +819,7 @@ async def run_simulation(e):
         log_status("장비 바인딩 및 서브스탯 적용 중...")
         calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
         
-        html_out = "<h3>[AX 특화 베스트 결과]</h3><table class='rank-table'><thead><tr><th>장비</th><th>DPS</th><th>MaxHit</th><th>여정</th></tr></thead><tbody>"
+        html_out = "<h3>[AX 특화 베스트 결과]</h3><table class='rank-table'><thead><tr><th>장비</th><th>DPS</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>여정</th></tr></thead><tbody>"
         
         # Test just the top equipment sets to save time
         eq_names = list(calc_engine.EQUIPMENTS.keys())
@@ -838,17 +838,24 @@ async def run_simulation(e):
                 calc_engine.BLESSINGS = calc_engine.setup_blessings()
 
             res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count)
-            std_jrs, std_bless, std_val, std_max = res["standard"]
-            best_results.append((eq_name, std_bless, std_val, std_max, std_jrs))
+            std_jrs, std_bless, std_val, std_max, std_stats = res["standard"]
+            best_results.append((eq_name, std_bless, std_val, std_max, std_jrs, std_stats))
             
         best_results.sort(key=lambda x: x[2], reverse=True)
         log_status("연산 완료! 결과 렌더링 중...")
         
-        for eq, bl, dps, mh, jrs in best_results[:3]:
+        for eq, bl, dps, mh, jrs, stats in best_results[:3]:
             jr_html = ""
             for j in jrs:
                 jr_html += "<span class='j-tag'>" + j + "</span>"
-            html_out += "<tr><td><span class='equip-tag'>" + eq + "</span></td><td><span class='dps-val'>" + f"{dps:,.2f}" + "</span></td><td><span class='maxhit-val'>" + f"{mh:,.0f}" + "</span></td><td><div class='journey-list'>" + jr_html + "</div></td></tr>"
+            
+            # Formatting stats
+            f_atk = f"{stats.get('atk', 0):,.0f}"
+            f_cr = f"{stats.get('cr', 0)*100:4.1f}%"
+            f_cd = f"{stats.get('cd', 0)*100:4.1f}%"
+            f_spd = f"{stats.get('spd', 0):.0f}"
+            
+            html_out += f"<tr><td><span class='equip-tag'>{eq}</span></td><td><span class='dps-val'>{dps:,.2f}</span></td><td><span class='maxhit-val'>{mh:,.0f}</span></td><td>{f_atk}</td><td>{f_cr}</td><td>{f_cd}</td><td>{f_spd}</td><td><div class='journey-list'>{jr_html}</div></td></tr>"
             
         html_out += "</tbody></table>"
         document.getElementById("simResult").innerHTML = html_out
