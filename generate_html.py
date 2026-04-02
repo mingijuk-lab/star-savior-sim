@@ -176,10 +176,10 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   [[fetch]]
   files = [
       "./Core/__init__.py",
-      "./Core/calc_engine_v4.py",
-      "./Core/data_loader_v4.py",
-      "./Core/models_v4.py",
-      "./Core/gear_sensitivity_v4.py",
+      "./Core/calc_engine_v5.py",
+      "./Core/data_loader_v5.py",
+      "./Core/models_v5.py",
+      "./Core/gear_sensitivity_v5.py",
       "./Data/characters.json",
       "./Data/equipments.json",
       "./Data/사이클_로테이션_마스터.md",
