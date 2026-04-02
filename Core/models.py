@@ -31,6 +31,14 @@ class EquipmentPiece:
     modifiers: List[Modifier] = field(default_factory=list)
 
 @dataclass
+class Equipment:
+    name: str
+    modifiers: List[Modifier] = field(default_factory=list)
+
+    def get_all_modifiers(self) -> List[Modifier]:
+        return self.modifiers
+
+@dataclass
 class EquipmentSet:
     name: str
     pieces: Dict[str, EquipmentPiece] = field(default_factory=dict)

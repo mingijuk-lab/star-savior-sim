@@ -145,6 +145,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                 cur_ax = 0
     
     total_dmg, cycle_time, ga_red_carry, omega_dmg_stack, assassin_spd_stack, caster_cd_stack, ra_cr_stack = 0.0, 0.0, 0, 0, 0, 0, 0
+    max_hit_dmg = 0.0
     fx_carry = 0.0
     ex_basic_count = 0
     ex_total_cr = 0.0
@@ -187,6 +188,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         
         # 0. Prep action data
         t = turns[action_idx]
+        m_di = 0.0 # Initialize Damage Increase for the current action
         
         is_ult = t.get("is_ult", False)
         if force_no_ult and is_ult:
@@ -196,13 +198,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         else:
             is_basic = t.get("is_basic", False)
             is_ult = t.get("is_ult", False)
-            is_spec = (not is_basic) and (not is_ult) and (not t.get("is_extra", False))
             is_extra = t.get("is_extra", False)
+            is_spec = (not is_basic) and (not is_ult) and (not is_extra)
             coeff = t.get("coeff", 0) + t.get("extra_coeff", 0)
-        
-        # Determine is_aoe from cdata (v26.0)
+            
         curr_skill_type = "궁극기" if is_ult else ("기본기" if is_basic else "특수기")
         curr_skill = cdata.get("스킬", {}).get(curr_skill_type, {})
+
+        
+        # Determine is_aoe from cdata (v26.0)
         is_aoe = "전체 공격" in curr_skill.get("부가", "")
         # Yumina Catalyst Exception: If Yumina's basic attack is used with "경력직 용병", it becomes AoE.
         if "유미나" in cname and is_basic and any(j.name == "경력직 용병" for j in jrs):
@@ -275,7 +279,6 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         def_multiplier = 1.0 - (effective_def / (effective_def + 3000.0))
 
         # Dynamic ATK Multipliers (now primarily in t['atk_buf'])
-        m_di = 0.0
 
         dyn_mods = []
         if assassin_spd_stack > 0: dyn_mods.append(Modifier(StatType.SPEED, assassin_spd_stack * 10, ModifierType.FLAT, "AssassinStack"))
@@ -381,11 +384,18 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # Final Damage with Defense (v14.2)
         turn_dmg = (eff_atk * coeff * (1.0 + total_di + cr_i * cd_i) + chain_dmg) * def_multiplier
         
-        # Rosaria Extra Basic (TN+)
+        # Max Hit: Assuming all hits in this turn are CRITICAL (cr_i = 1.0)
+        # Note: chain_dmg is already added if cr_i > 0, we use it as is since it represents crit-triggered dmg.
+        peak_turn_dmg = (eff_atk * coeff * (1.0 + total_di + cd_i) + chain_dmg) * def_multiplier
+        
+        # Rosaria Extra Basic (Crit Peak)
         if rosaria_extra_basic:
+            ros_peak = (eff_atk * 1.50 * (1.0 + total_di + cd_i)) * def_multiplier
+            peak_turn_dmg += ros_peak
             turn_dmg += (eff_atk * 1.50 * (1.0 + total_di + cr_i * cd_i)) * def_multiplier
         
         total_dmg += turn_dmg
+        max_hit_dmg = max(max_hit_dmg, peak_turn_dmg)
         
         hits = t.get("hits", 4 if is_ult else 1)
         prob_crit_any = (1.0 - (1.0 - cr_i) ** hits)
@@ -456,16 +466,12 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         #     hits.append(dmg_raw * (1.0 + cd_i))
 
 
-    return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg
+    return (total_dmg / cycle_time) if cycle_time > 0 else 0, total_dmg, cycle_time, total_dmg, max_hit_dmg
 
 
 def get_valid_journeys(char_name, char_class):
     valid = []
     for name, jr in JOURNEYS.items():
-        # 🚨 "어느 한 기사의 맹세" 사용 안함 처리
-        if name == "어느 한 기사의 맹세":
-            continue
-            
         rest = jr.restrict
         if not rest:
             valid.append(name)
@@ -499,28 +505,28 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
         combos.extend(list(itertools.combinations(commons, n)))
     
     # SWEEP: Try both Standard and No-Ult configurations
-    max_val_std, best_combo_std, best_bless_std = -1, [], None
-    max_val_nu, best_combo_nu, best_bless_nu = -1, [], None
+    max_val_std, best_combo_std, best_bless_std, max_hit_std = -1, [], None, 0.0
+    max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu = -1, [], None, 0.0
     
     available_blessings = [None] + [b for b in BLESSINGS.keys()]
     
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs)
+            dps_s, total_s, _, _, max_h_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs)
             target_s = total_s if use_total_dmg else dps_s
             if target_s > max_val_std:
-                max_val_std, best_combo_std, best_bless_std = target_s, list(combo), b_name
+                max_val_std, best_combo_std, best_bless_std, max_hit_std = target_s, list(combo), b_name, max_h_s
             
             # Test No-Ult
-            dps_n, total_n, _, _ = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs)
+            dps_n, total_n, _, _, max_h_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs)
             target_n = total_n if use_total_dmg else dps_n
             if target_n > max_val_nu:
-                max_val_nu, best_combo_nu, best_bless_nu = target_n, list(combo), b_name
+                max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu = target_n, list(combo), b_name, max_h_n
 
     return {
-        "standard": (best_combo_std, best_bless_std, max_val_std),
-        "no_ult": (best_combo_nu, best_bless_nu, max_val_nu)
+        "standard": (best_combo_std, best_bless_std, max_val_std, max_hit_std),
+        "no_ult": (best_combo_nu, best_bless_nu, max_val_nu, max_hit_nu)
     }
 
 def main():
@@ -554,21 +560,23 @@ def main():
             best_stats = find_best_journeys(cname, char_class, cdata, rdata, eq_name, 5, use_total_dmg)
             
             # 1. Standard Rotation
-            s_jrs, s_bless, s_val = best_stats["standard"]
+            s_jrs, s_bless, s_val, s_max_h = best_stats["standard"]
             for t_limit in [5, 10, 15]:
-                dps, _, _, _ = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False)
+                dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False)
                 results.append({
                     "Character": cname, "Equip": eq_name, "Strategy": "Standard Rotation",
-                    "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2)
+                    "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2),
+                    "MaxHit": round(max_h, 2)
                 })
             
             # 2. No-Ult Alternative
-            n_jrs, n_bless, n_val = best_stats["no_ult"]
+            n_jrs, n_bless, n_val, n_max_h = best_stats["no_ult"]
             for t_limit in [5, 10, 15]:
-                dps, _, _, _ = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True)
+                dps, _, _, _, max_h = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True)
                 results.append({
                     "Character": cname, "Equip": eq_name, "Strategy": "No-Ult AX Stacking",
-                    "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2)
+                    "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2),
+                    "MaxHit": round(max_h, 2)
                 })
             
             print(f" > {cname} | {eq_name}: Standard {s_val:,.0f} / No-Ult {n_val:,.0f}")
@@ -577,7 +585,8 @@ def main():
     df = pd.DataFrame(results)
     df.to_csv("Results/dps_results.csv", index=False, encoding="utf-8-sig")
     
-    with open("Results/optimization_guide.md", "w", encoding="utf-8") as f:
+    output_path = sys.argv[1] if len(sys.argv) > 1 else "Results/optimization_guide.md"
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write("# 스타 세이비어 캐릭터별 최적화 가이드 (Multi-Journey Edition)\n\n")
         f.write("> **업데이트 일시**: 2026-03-26\n")
         f.write("> **설명**: 5개의 여정 조합을 최우선으로 고려한 베스트 빌드 리포트입니다.\n\n")
@@ -613,10 +622,10 @@ def main():
                 if not cat_df.empty:
                     best_per_cat[cat] = cat_df.iloc[0]
             
-            f.write("| 순위 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) |\n")
-            f.write("| :--- | :--- | :--- | :--- | :--- |\n")
+            f.write("| 순위 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit |\n")
+            f.write("| :--- | :--- | :--- | :--- | :--- | :--- |\n")
             for i, row in enumerate(std_all.head(3).itertuples(), 1):
-                f.write(f"| {i} | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** |\n")
+                f.write(f"| {i} | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} |\n")
             
             # Build Trajectory Analysis (v19.0)
             if not std_all.empty:
@@ -634,8 +643,8 @@ def main():
                     for pt in path:
                         # ✅ 장비, 축복, 여정 조합 중 하나라도 바뀌면 출력 (여정 변화도 감지)
                         if not last_point or pt["equip"] != last_point["equip"] or pt["blessing"] != last_point["blessing"] or pt["journeys"] != last_point["journeys"]:
-                            # ✅ DPS 수치 추가
-                            f.write(f"  - **+{pt['increment']*100:4.1f}%**: {pt['equip']} ({pt['blessing']}) | **DPS: {pt['dps']:,.0f}** | {pt['journeys']}\n")
+                            # ✅ DPS 및 MaxHit 수치 추가
+                            f.write(f"  - **+{pt['increment']*100:4.1f}%**: {pt['equip']} ({pt['blessing']}) | **DPS: {pt['dps']:,.0f}** | **MaxHit: {pt['max_hit']:,.0f}** | {pt['journeys']}\n")
                             last_point = pt
                 
                 f.write("\n> (주어전) **표기 방식**: 증가량: 장비세트 (축복) | 주요 여정 리스트\n")
@@ -645,10 +654,10 @@ def main():
             f.write("> **참고**: 궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.\n\n")
             nu_df = char_df[(char_df["Strategy"] == "No-Ult AX Stacking") & (char_df["Turns"] == 15)].sort_values("DPS", ascending=False).head(1)
             
-            f.write("| 구분 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) |\n")
-            f.write("| :--- | :--- | :--- | :--- | :--- |\n")
+            f.write("| 구분 | 장비 세트 | 축복 | 최적 여정 조합 (Top 5) | DPS (15T) | MaxHit |\n")
+            f.write("| :--- | :--- | :--- | :--- | :--- | :--- |\n")
             for row in nu_df.itertuples():
-                f.write(f"| **최고점** | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** |\n")
+                f.write(f"| **최고점** | {row.Equip} | **{row.Blessing}** | {row.Journeys} | **{row.DPS:,.2f}** | {row.MaxHit:,.0f} |\n")
             
             f.write("\n---\n\n")
 

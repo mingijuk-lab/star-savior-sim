@@ -35,14 +35,20 @@ def profile_stat_scaling(
         vars[target_var] = current_increment / 6.0 
         
         best_dps = -1.0
-        best_build = {}
+        best_build = {
+            "increment": current_increment,
+            "equip": "N/A",
+            "blessing": "N/A",
+            "journeys": "None",
+            "dps": 0.0
+        }
         
         # 현재 스탯 증가량에서 모든 장비 세트를 순회하며 1위를 찾음
         for eq_name in equip_names:
             # find_best_journeys 함수 호출 (5개 여정, 축복 최적화)
             res = find_best_func(char_name, char_class, cdata, rdata, eq_name, 5, False, vars)
             
-            std_jrs, std_bless, std_dps = res["standard"]
+            std_jrs, std_bless, std_dps, std_max_h = res["standard"]
             
             if std_dps > best_dps:
                 best_dps = std_dps
@@ -51,7 +57,8 @@ def profile_stat_scaling(
                     "equip": eq_name,
                     "blessing": std_bless or "None",
                     "journeys": " | ".join(std_jrs),
-                    "dps": best_dps
+                    "dps": best_dps,
+                    "max_hit": std_max_h
                 }
                 
         results.append(best_build)
