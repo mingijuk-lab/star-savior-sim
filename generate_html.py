@@ -594,7 +594,7 @@ function filterChars() {
 }
 
 // Simulation UI Grouping Logic
-const charVariants = {};
+window.charVariants = {};
 
 function buildCharTree() {
   data.forEach(c => {
@@ -756,9 +756,9 @@ async def run_simulation(e):
         
         log_status(f"선택 모델: {base_name} ({current_spec}, {current_pass}, {target_mode}인)")
         
-        from js import charVariants as js_variants
-        # Convert JS object back if needed or use a safe lookup
-        variants_tree = js_variants.to_py()
+        # Access global JS object correctly
+        import js
+        variants_tree = js.window.charVariants.to_py()
         char_node = variants_tree.get(base_name)
         
         if not char_node:
