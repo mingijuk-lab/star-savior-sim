@@ -662,7 +662,7 @@ def main():
                     f.write(f"- **{label_ko}** 성장 경로:\n")
                     # Extract original cname by stripping suffix for specs/rotations lookup
                     cname_key = re.sub(r'\(보스1인\)|\(일반3인\)', '', label)
-                    path = profile_stat_scaling(label, specs[cname_key], rotations[cname_key], cat_equip_names, stype, 0.5, 0.125, find_best_journeys)
+                    path = profile_stat_scaling(label, specs[cname_key], rotations[cname_key], cat_equip_names, stype, 0.5, 0.125, find_best_journeys, substat_vars)
                     
                     # Deduplicate and show transitions
                     last_point = None

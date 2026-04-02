@@ -9,7 +9,8 @@ def profile_stat_scaling(
     stat_type: StatType, 
     max_increment: float, 
     step: float, 
-    find_best_func: Callable
+    find_best_func: Callable,
+    base_vars: Dict = None
 ) -> List[Dict]:
     """
     특정 스탯(공격력, 치확, 치피)이 0%부터 max_increment까지 step 단위로 증가할 때,
@@ -30,9 +31,10 @@ def profile_stat_scaling(
     # 0.0부터 max_increment까지 step 간격으로 반복 (예: 0%, 10%, 20%...)
     current_increment = 0.0
     while current_increment <= max_increment + 1e-9: # 부동소수점 오차 방지
-        vars = {"$ATK$": 0.0, "$SPD$": 0.0, "$CR$": 0.0, "$CD$": 0.0}
-        # 6개 부위에 스탯을 균등 분배
-        vars[target_var] = current_increment / 6.0 
+        # Use baseline stats instead of resetting to 0.0
+        vars = base_vars.copy() if base_vars else {"$ATK$": 0.0, "$SPD$": 0.0, "$CR$": 0.0, "$CD$": 0.0}
+        # Add the increment to the baseline (distributed across 6 pieces as per engine convention)
+        vars[target_var] = vars.get(target_var, 0.0) + (current_increment / 6.0) 
         
         best_dps = -1.0
         best_build = {
