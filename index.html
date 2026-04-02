@@ -247,7 +247,7 @@
           <input type="number" id="simSpd" value="0.0" step="0.1">
         </div>
       </div>
-      <button class="sim-btn" id="simBtn" disabled>
+      <button class="sim-btn" id="simBtn" py-click="run_simulation" disabled>
         <span class="btn-text">엔진 로딩 중... (최초 1회 수 초 소요)</span>
         <div class="loader" id="simLoader"></div>
       </button>
@@ -5626,10 +5626,14 @@ log_status("엔진 로드가 완료되었습니다. 준비 완료.")
 async def run_simulation(e):
     try:
         log_status("사용자 클릭 감지 - 연산 시작 준비 중")
-        btn.disabled = True
+        btn = document.getElementById("simBtn")
+        if btn: btn.disabled = True
+        
         loader = document.getElementById("simLoader")
-        loader.style.display = "block"
-        btn.querySelector(".btn-text").innerText = "계산 중..."
+        if loader: loader.style.display = "block"
+        
+        btn_text = document.querySelector("#simBtn .btn-text")
+        if btn_text: btn_text.innerText = "계산 중..."
         
         # Let UI update
         await asyncio.sleep(0.1)
@@ -5706,14 +5710,14 @@ async def run_simulation(e):
         document.getElementById("simResult").innerHTML = f"<div style='color:red;'>오류 발생: {str(ex)}</div>"
         document.getElementById("simResult").style.display = "block"
         
-    btn.disabled = False
+    if btn: btn.disabled = False
     loader = document.getElementById("simLoader")
-    loader.style.display = "none"
-    btn.querySelector(".btn-text").innerText = "시뮬레이션 실행"
+    if loader: loader.style.display = "none"
+    btn_text = document.querySelector("#simBtn .btn-text")
+    if btn_text: btn_text.innerText = "시뮬레이션 실행"
 
-# Bind event
-proxy = create_proxy(run_simulation)
-document.getElementById("simBtn").addEventListener("click", proxy)
+# PyScript auto-binds helper if using py-click
+pass
 </script>
 </body>
 </html>
