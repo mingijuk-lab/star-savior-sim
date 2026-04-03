@@ -547,7 +547,7 @@ def get_valid_journeys(char_name, char_class):
             continue
     return valid
 
-def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3, force_moon_party=False):
+def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3, force_moon_party=False, max_actions=15):
     valid_names = get_valid_journeys(char_name, char_class)
     
     # Temporarily override EQUIPMENTS if substat_vars provided
@@ -578,18 +578,15 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     
     for b_name in available_blessings:
         for combo in combos:
-            # Determine limit: if Gauntlet (4인) is in suffix, use 3 turns for finding best
-            test_limit = 3 if any(kw in char_name for kw in ["건틀릿", "Gauntlet"]) else 15
-            
             # Test Standard
-            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, test_limit, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
-            target_s = total_s if (use_total_dmg or test_limit <= 5) else dps_s
+            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            target_s = total_s if (use_total_dmg or max_actions <= 5) else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = target_s, list(combo), b_name, max_h_s, stats_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, test_limit, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
-            target_n = total_n if (use_total_dmg or test_limit <= 5) else dps_n
+            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            target_n = total_n if (use_total_dmg or max_actions <= 5) else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = target_n, list(combo), b_name, max_h_n, stats_n
 
