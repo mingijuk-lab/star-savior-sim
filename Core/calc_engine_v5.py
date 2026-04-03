@@ -578,15 +578,18 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     
     for b_name in available_blessings:
         for combo in combos:
+            # Determine limit: if Gauntlet (4인) is in suffix, use 3 turns for finding best
+            test_limit = 3 if any(kw in char_name for kw in ["건틀릿", "Gauntlet"]) else 15
+            
             # Test Standard
-            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
-            target_s = total_s if use_total_dmg else dps_s
+            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, test_limit, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            target_s = total_s if (use_total_dmg or test_limit <= 5) else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = target_s, list(combo), b_name, max_h_s, stats_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, 15, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
-            target_n = total_n if use_total_dmg else dps_n
+            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, test_limit, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            target_n = total_n if (use_total_dmg or test_limit <= 5) else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = target_n, list(combo), b_name, max_h_n, stats_n
 
@@ -631,7 +634,7 @@ def main():
         
         sim_configs = []
         if has_aoe_skill and ("유미나" not in cname):
-            sim_configs = [(1, "(보스1인)"), (3, "(일반3인)")]
+            sim_configs = [(1, "(보스1인)"), (3, "(일반3인)"), (4, "(건틀릿4인)")]
         else:
             sim_configs = [(3, "")] # Default target count is 3 (for consistency)
             
@@ -644,22 +647,24 @@ def main():
                 
                 # 1. Standard Rotation
                 s_jrs, s_bless, s_val, s_max_h, s_stats = best_stats["standard"]
-                for t_limit in [5, 10, 15]:
-                    dps, _, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False, target_count=t_count)
+                # For Gauntlet, we ONLY care about 3T and Total Damage
+                t_limits = [3] if "건틀릿" in suffix else [5, 10, 15]
+                for t_limit in t_limits:
+                    dps, total, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, s_jrs, s_bless, t_limit, False, target_count=t_count)
                     results.append({
                         "Character": display_name, "Equip": eq_name, "Strategy": "Standard Rotation",
-                        "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                        "MaxHit": round(max_h, 2), "Stats": stats
+                        "Blessing": s_bless or "None", "Journeys": " | ".join(s_jrs), "Turns": t_limit, "DPS": round(total if t_limit==3 else dps, 2),
+                        "TotalDmg": round(total, 2), "MaxHit": round(max_h, 2), "Stats": stats
                     })
                 
                 # 2. No-Ult Alternative
                 n_jrs, n_bless, n_val, n_max_h, n_stats = best_stats["no_ult"]
-                for t_limit in [5, 10, 15]:
-                    dps, _, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True, target_count=t_count)
+                for t_limit in t_limits:
+                    dps, total, _, _, max_h, stats = calculate_dps(cname, cdata, rotations[cname], eq_name, n_jrs, n_bless, t_limit, True, target_count=t_count)
                     results.append({
                         "Character": display_name, "Equip": eq_name, "Strategy": "No-Ult AX Stacking",
-                        "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(dps, 2),
-                        "MaxHit": round(max_h, 2), "Stats": stats
+                        "Blessing": n_bless or "None", "Journeys": " | ".join(n_jrs), "Turns": t_limit, "DPS": round(total if t_limit==3 else dps, 2),
+                        "TotalDmg": round(total, 2), "MaxHit": round(max_h, 2), "Stats": stats
                     })
                 
                 print(f" > {display_name} | {eq_name}: Standard {s_val:,.0f} / No-Ult {n_val:,.0f}")

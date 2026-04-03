@@ -67,6 +67,9 @@ def parse_character_section(section: str) -> dict:
         if '일반3인' in p: 
             badges.append('normal')
             has_target = True
+        if '건틀릿4인' in p: 
+            badges.append('gauntlet')
+            has_target = True
 
     # Defaults for better clarity
     if not has_passive:
@@ -297,6 +300,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   .badge-noult { background: rgba(255,87,87,0.1); color: var(--red); border: 1px solid rgba(255,87,87,0.25); }
   .badge-boss { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
   .badge-normal { background: rgba(74,158,255,0.1); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
+  .badge-gauntlet { background: rgba(255,87,87,0.15); color: #ff3e3e; border: 1px solid rgba(255,87,87,0.4); }
 
   .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
   .dps-label { font-size: 10px; color: var(--text3); margin-right: 4px; }
@@ -480,6 +484,7 @@ const badgeMap = {
   noult: { cls:"badge-noult", label:"궁극기 미사용" },
   boss: { cls:"badge-boss", label:"보스 1인" },
   normal: { cls:"badge-normal", label:"일반 3인" },
+  gauntlet: { cls:"badge-gauntlet", label:"건틀릿 4인" },
 };
 
 function renderBadges(badges) {
@@ -536,7 +541,7 @@ function buildCard(char) {
       <span class="char-name">${char.name}</span>
       ${renderBadges(char.badges)}
       <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
-        <span class="dps-label">최고 DPS</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
+        <span class="dps-label">${char.badges.includes('gauntlet') ? '최고 Total Dmg (3T)' : '최고 DPS'}</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
         <span class="chevron">▼</span>
       </div>
     </div>
