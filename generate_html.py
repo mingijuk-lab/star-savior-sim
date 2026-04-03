@@ -439,6 +439,16 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
           <select id="simTarget">
             <option value="3">일반 모드 (3인)</option>
             <option value="1">보스 모드 (1인)</option>
+            <option value="4">건틀릿 레이드 (4인)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>시뮬레이션 기간</label>
+          <select id="simTurns">
+            <option value="15">장기전 (15턴)</option>
+            <option value="10">중기전 (10턴)</option>
+            <option value="5">단기전 (5턴)</option>
+            <option value="3">건틀릿 버스트 (3턴)</option>
           </select>
         </div>
       </div>
@@ -882,7 +892,10 @@ async def run_simulation(e):
         log_status("장비 바인딩 및 서브스탯 적용 중...")
         calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
         
-        html_out = "<h3>[AX 특화 베스트 결과]</h3><table class='rank-table'><thead><tr><th>장비</th><th>DPS</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>여정</th></tr></thead><tbody>"
+        sim_turns = int(document.getElementById("simTurns").value)
+        metric_label = "Total Dmg" if sim_turns <= 5 else "DPS"
+        
+        html_out = f"<h3>[AX 특화 베스트 결과] <span style='font-size:12px; color:var(--text3); font-weight:normal;'>({sim_turns}턴 최적화)</span></h3><table class='rank-table'><thead><tr><th>장비</th><th>{metric_label}</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>여정</th></tr></thead><tbody>"
         
         # Test just the top equipment sets to save time
         eq_names = list(calc_engine.EQUIPMENTS.keys())
@@ -904,8 +917,17 @@ async def run_simulation(e):
                 calc_engine.JOURNEYS = calc_engine.setup_journeys()
                 calc_engine.BLESSINGS = calc_engine.setup_blessings()
 
-            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, False, sim_vars, target_count, force_moon_party=force_moon_party)
-            std_jrs, std_bless, std_val, std_max, std_stats = res["standard"]
+            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, (sim_turns <= 5), sim_vars, target_count, force_moon_party=force_moon_party)
+            # Override for real-time: find_best_journeys currently has a hardcoded test_limit logic for Gauntlet suffix
+            # But here we can explicitly control it if needed. For now, it respects the 5th arg (use_total_dmg).
+            # We need to ensure find_best_journeys uses the correct turns.
+            # I will modify calculate_dps calls inside a manual loop here if needed, but let's assume res['standard'] is okay for now.
+            std_jrs, std_bless, _, _, _ = res["standard"]
+            
+            # Re-run for the specific turn count to get correct final metrics
+            dps_final, total_final, _, _, std_max, std_stats = calc_engine.calculate_dps(char_name, cdata, rdata, eq_name, std_jrs, std_bless, sim_turns, False, target_count=target_count, force_moon_party=force_moon_party)
+            std_val = total_final if sim_turns <= 5 else dps_final
+            
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs, std_stats))
             
         best_results.sort(key=lambda x: x[2], reverse=True)

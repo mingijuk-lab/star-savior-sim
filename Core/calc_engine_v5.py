@@ -634,7 +634,7 @@ def main():
         
         sim_configs = []
         if has_aoe_skill and ("유미나" not in cname):
-            sim_configs = [(1, "(보스1인)"), (3, "(일반3인)"), (4, "(건틀릿4인)")]
+            sim_configs = [(1, "(보스1인)"), (3, "(일반3인)")]
         else:
             sim_configs = [(3, "")] # Default target count is 3 (for consistency)
             
