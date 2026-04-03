@@ -47,14 +47,35 @@ def parse_character_section(section: str) -> dict:
     base = re.sub(r'\(.*?\)', '', raw_name).strip()
     name = base
 
+    has_passive = False
+    has_target = False
+
     paren_content = re.findall(r'\(([^)]+)\)', raw_name)
     for p in paren_content:
+        # Normalize p
+        p_clean = p.replace(' ', '').lower()
+        
         if '달속성파티' in p: badges.append('moon')
         if '바니걸' in p: badges.append('bunny')
-        if '패시브1lv' in p or '패시브1lv' in p: badges.append('passive')
+        if '1lv' in p_clean: 
+            badges.append('passive')
+            has_passive = True
         if '궁극기미사용' in p: badges.append('noult')
-        if '보스1인' in p: badges.append('boss')
-        if '일반3인' in p: badges.append('normal')
+        if '보스1인' in p: 
+            badges.append('boss')
+            has_target = True
+        if '일반3인' in p: 
+            badges.append('normal')
+            has_target = True
+
+    # Defaults for better clarity
+    if not has_passive:
+        badges.append('passive4')
+    if not has_target:
+        # If not specified, it's usually the 'Base' or 'Single' target mode for non-AoE
+        # But we'll only label it if it's explicitly 'General' in some cases.
+        # For now, let's just ensure Passive is always clear as requested.
+        pass
 
     # Sanitize ID (Include suffixes to prevent card collision)
     safe_id = raw_name.replace('(', '-').replace(')', '').replace(',', '').replace(' ', '-').replace('1lv', '1lv')
@@ -272,6 +293,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   .badge-moon { background: rgba(155,114,255,0.15); color: var(--purple); border: 1px solid rgba(155,114,255,0.3); }
   .badge-bunny { background: rgba(255,140,66,0.12); color: var(--orange); border: 1px solid rgba(255,140,66,0.25); }
   .badge-passive { background: rgba(158,165,180,0.1); color: var(--text2); border: 1px solid var(--border2); }
+  .badge-passive4 { background: rgba(62,207,142,0.1); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
   .badge-noult { background: rgba(255,87,87,0.1); color: var(--red); border: 1px solid rgba(255,87,87,0.25); }
   .badge-boss { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
   .badge-normal { background: rgba(74,158,255,0.1); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
@@ -454,6 +476,7 @@ const badgeMap = {
   moon: { cls:"badge-moon", label:"달속성 파티" },
   bunny: { cls:"badge-bunny", label:"바니걸" },
   passive: { cls:"badge-passive", label:"패시브 1lv" },
+  passive4: { cls:"badge-passive4", label:"패시브 4lv (최대)" },
   noult: { cls:"badge-noult", label:"궁극기 미사용" },
   boss: { cls:"badge-boss", label:"보스 1인" },
   normal: { cls:"badge-normal", label:"일반 3인" },

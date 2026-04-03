@@ -1,68 +1,139 @@
-# Star Savior DPS Simulation System (v14.1 Unified Engine)
+# Star Savior DPS Simulation System (v29.0)
 
-이 프로젝트는 스타 세이비어 캐릭터들의 성능을 v14.1 최신 데미지 공식 및 기믹에 따라 정밀하게 시뮬레이션하고 최적화하기 위한 통합 엔진입니다.
+스타 세이비어 캐릭터들의 성능을 최신 데미지 공식 및 기믹에 따라 정밀하게 시뮬레이션하고 최적화하기 위한 통합 엔진입니다.
 
-## 🚀 주요 기능 및 반영 사항 (v14.1)
+> **최종 갱신**: 2026-04-03
 
-### 1. 정밀 기믹 동기화
-- **프레이(바니걸)**: 하이롤러(HR) 스택 시스템 완벽 구현. 궁극기(+3) 및 아군 행동(+1/턴)을 추적하며, HR 5스택 시 **강제 협상(DI +100%)** 트리거와 행동 게이지 보너스를 자동으로 적용합니다.
-- **샤를(바니걸)**: 특수기 사용 시 공격력 +30% 버프 및 점화 스택 복구를 반영하여 실제 성능과 일치시켰습니다.
-- **클레어(바니걸)**: 장비 세트별 치확/치피 임계점 분석에 맞춘 최적화 로직 적용.
+## 🚀 주요 기능
 
-### 2. 전략별 리포트 분리 (Standard vs No-Ult)
-- **Standard Strategy**: 캐릭터 본연의 스킬 사이클을 활용하는 권장 빌드 (Top 3 노출).
-- **No-Ult Strategy**: AX 스택 효율을 극대화한 특수 상황용 피크 빌드 (최고점 1개 노출).
+### 1. 턴 기반 정밀 DPS 시뮬레이션
+- **5개 여정(Journey) + 축복(Blessing)** 조합 전수 탐색으로 캐릭터별 최적 빌드 도출
+- **Standard(궁극기 사용)** / **No-Ult(AX 스택 특화)** 두 가지 전략을 병렬 비교
+- 5턴/10턴/15턴 구간별 DPS 추적
 
-### 3. 고도화된 감사(Audit) 시스템
-- **로테이션 마스터**: 모든 턴의 **ATK, CR, CD, SPD** 변화를 테이블 형식으로 기록하여 버프 중첩 및 만료 시점을 정밀 검증할 수 있습니다.
-- **필수 여정 강제**: 어쌔신 클래스에 대해 **`키라만큼 귀여워`** 여정을 필수 조건으로 걸어 최적 조합을 산출하는 기능을 포함합니다.
+### 2. 하이-피델리티 메커니즘 구현
+- **프레이**: HR(하이롤) + 냉각(Cooling) 독립 스택, 달속성파티 동맹 HR 가속, 강제 협상(DI +100%)
+- **로자리아**: 업화(Ignition) 확률 누적 + 발화(3스택 추가 기본기), 궁극기 AG+50%
+- **유미나**: 출혈 DOT, 치명타→행게+15%, 카탈리스트(경력직 용병) AoE 기본기
+- **샤를(바니걸)**: 점화 스택 기반 궁극기 DI + 쿨타임 초기화
+- **클레어(바니걸)**: 냉각 5→특수기 추가타, 턴당 치확+10% 패시브
+
+### 3. 빌드 진화 경로 (Scaling Profile)
+- 부옵션 0%~50% 성장에 따른 실시간 최적 빌드(장비+여정+축복) 변화 추적
+- 공격력%/치피/치확 3개 스탯별 전환점 포착 + DPS/MaxHit 수치 표기
+
+### 4. 방어력 통합 계산
+- DEF Penetration + DEF Reduction(스마일 궁극기 30%) 반영
+- 유효 방어력 기반 실전 DPS 산출
+
+### 5. GitHub Pages 인터랙티브 대시보드
+- PyScript 기반 브라우저 내 실시간 시뮬레이터 (커스텀 부옵 입력)
+- 캐릭터 검색, 카드 펼치기/접기, 전략 탭 전환
 
 ## 📁 프로젝트 구조
 
 ```text
 📁 Star/
 │
-├── 📁 Core/ (핵심 엔진)
-│   ├── 📄 models.py              ← 데이터 도메인 핵심 모델 (v6 Standard)
-│   ├── 📄 data_loader.py          ← JSON 데이터 로더
-│   ├── 📄 calc_dps.py            ← [핵심] 5개 여정 최적화 및 전략별 분석 엔진 (v14.1)
-│   └── 📄 gear_sensitivity.py    ← 부옵션 성장에 따른 세트 전환점 분석기
+├── 📁 Core/ (핵심 엔진 — 모든 파일 _v5 접미사)
+│   ├── 📄 models_v5.py              ← 데이터 도메인 모델 (StatType, Modifier, Character, Journey)
+│   ├── 📄 data_loader_v5.py         ← JSON/MD 데이터 로더 (4+2 조합, 여정, 축복 파서)
+│   ├── 📄 calc_engine_v5.py         ← [핵심] 턴 기반 DPS 시뮬레이션 + 5여정 최적화 엔진
+│   └── 📄 gear_sensitivity_v5.py    ← 부옵션 성장 Scaling Profile 분석기
 │
 ├── 📁 Data/ (마스터 데이터)
-│   ├── 📄 캐릭터_스펙_마스터.md   ← 캐릭터 기본 스탯, 버프 속성 및 스킬 계수
-│   ├── 📄 characters.json        ← [엔진용] 추출된 통합 캐릭터 데이터
-│   ├── 📄 사이클_로테이션_마스터.md ← 스킬 순서, 버프 감사 테이블 및 JSON (v14.1)
-│   └── 📄 equipments.json         ← 장비 세트 및 5여정 통합 데이터 (v14.1)
+│   ├── 📄 characters.json           ← [엔진용] 캐릭터 스탯/스킬/패시브 통합 데이터
+│   ├── 📄 equipments.json           ← 장비(4+2), 여정(12+), 축복(AX/FX/EX/속도) 통합 데이터
+│   ├── 📄 캐릭터_스펙_마스터.md      ← [작성용] 캐릭터별 상세 스탯·스킬 계수
+│   └── 📄 사이클_로테이션_마스터.md   ← [엔진/감사용] 턴별 행동·버프 테이블 + JSON
+│
+├── 📁 Docs/ (참조 문서)
+│   ├── 📄 파일_관리_인덱스.md        ← 파일 구조 + 상황별 업데이트 가이드
+│   ├── 📄 시뮬레이션_가이드라인_v14.md ← 통합 시뮬레이션 규칙 마스터
+│   ├── 📄 아르카나_엔진_구현_가이드.md ← 여정/축복 ↔ 엔진 변수 매핑
+│   ├── 📄 공식_디테일_가이드.md       ← 대미지 공식 상세
+│   ├── 📄 시각화_가이드.md            ← HTML 대시보드 파이프라인
+│   └── 📄 여정 특수 잠재.md           ← AX/FX/EX 상세 레퍼런스
 │
 ├── 📁 Results/ (분석 결과)
-│   ├── 📄 dps_results.csv         ← 시뮬레이션 로우 데이터
-│   └── 📄 optimization_guide.md   ← [최종 보고서] 캐릭터별 전략별 최적 빌드 가이드
+│   ├── 📄 dps_results.csv            ← 시뮬 로우 데이터
+│   ├── 📄 optimization_guide.md      ← [최종 리포트] 캐릭터별 최적 빌드 가이드
+│   └── 📄 optimization_guide.html    ← HTML 대시보드
 │
-└── 📁 Tools/ (유틸리티)
-    ├── 📄 update_rotations.py    ← 캐릭터 스펙 기반 자동 로테이션/버프 생성기
-    └── 📄 extract_characters.py   ← MD 마스터에서 JSON 데이터 추출 도구
+├── 📁 Tools/ (유틸리티)
+│   ├── 📄 extract_characters.py      ← MD → characters.json 추출기
+│   ├── 📄 update_rotations.py        ← characters.json → 로테이션 MD 자동 생성기
+│   └── 📄 generate_saviors.py        ← 공식 데이터 → 스펙 마스터 초기 엔트리 생성기
+│
+├── 📄 automated_run.py               ← 부옵 0 기본값 자동 시뮬 실행기
+├── 📄 generate_html.py               ← MD → HTML 변환기 (PyScript 포함)
+├── 📄 verify_engine.py               ← 엔진 스택 로직 검증 스크립트
+└── 📄 index.html                     ← GitHub Pages 배포용
 ```
 
 ## 🛠️ 사용 방법
 
-### 0. 데이터 동기화 (필수)
-`Data/캐릭터_스펙_마스터.md` 수정 후 반드시 실행하여 JSON을 갱신하십시오.
+### 0. 환경 설정
 ```bash
-python Tools/extract_characters.py
+pip install -r requirements.txt  # pandas
 ```
 
-### 1. 로테이션 갱신 (캐릭터 스펙 변경 시)
-실행 시 `Data/캐릭터_스펙_마스터.md`의 버프와 계수를 파싱하여 `Data/사이클_로테이션_마스터.md`를 업데이트합니다.
+### 1. 데이터 동기화 (캐릭터 스펙 변경 시)
 ```bash
+# 스펙 마스터 MD → characters.json 추출
+python Tools/extract_characters.py
+
+# characters.json → 로테이션 MD 자동 생성
 $env:PYTHONPATH="."; python Tools/update_rotations.py
 ```
 
-### 2. 최적 빌드 시뮬레이션 (리포트 생성)
-모든 장비/여정 조합을 전수 조사하여 최종 `optimization_guide.md`를 생성합니다.
+### 2. 최적 빌드 시뮬레이션 (대화형)
 ```bash
-$env:PYTHONPATH="."; python -m Core.calc_dps
+# 부옵션 직접 입력
+$env:PYTHONPATH="."; python -m Core.calc_engine_v5
 ```
 
+### 3. 자동 시뮬레이션 (기본값)
+```bash
+# 부옵 0 기본값으로 자동 실행
+$env:PYTHONPATH="."; python automated_run.py
+```
+
+### 4. HTML 대시보드 생성
+```bash
+python generate_html.py
+# → Results/optimization_guide.html + index.html 생성
+```
+
+### 5. 엔진 검증
+```bash
+$env:PYTHONPATH="."; python verify_engine.py
+```
+
+## 📊 현재 등록 캐릭터 (18명)
+
+| 캐릭터 | 분류 | 주요 메커니즘 |
+|--------|------|-------------|
+| 프레이 | 캐스터 | HR + 냉각 스택, 달속성파티 변형(3종) |
+| 로자리아 | 레인저 | 업화 + 격동, 추가 기본기 (패시브1lv 변형) |
+| 유미나 | 레인저 | 도약 스택, 출혈 DOT, 치명타→AG (패시브1lv 변형) |
+| 힐데 | 디펜더 | 점화 스택, 체력 계수 |
+| 루나 | 캐스터 | 궁극기 치피+20% |
+| 리디아 | 레인저 | 약화 상태 공격력+6%×5 |
+| 릴리 | 캐스터 | 행게+10%, 토끼씨 수사자문 |
+| 뮤리엘 | 캐스터 | 연소, 전체 공격 |
+| 샤를 | 스트라이커 | 럭키 토큰, 점화 |
+| 스마일 | 레인저 | 방감30%, 트리거 특수기 |
+| 스칼렛(바니걸) | 레인저 | 세븐볼, 치확+15% |
+| 아세라 | 스트라이커 | 특수기당 치피+6%×5 |
+| 에핀델 | 어쌔신 | 냉각5 DI+20% |
+| 클레어(바니걸) | 스트라이커 | 냉각5→추가타, 턴당 치확+10%×3 |
+| 키라 | 어쌔신 | 행게+10% (계수 미상) |
+| 레이시 | 레인저 | 꿈결 DI+20% |
+| 샤를(바니걸) | 어쌔신 | 점화 궁쿨 초기화 (3종 변형) |
+| 벨리스 | 레인저 | 도약 스택, 전체 공격, 행게+50% |
+
 ## ⚠️ 환경 및 유의사항
-- **Python 3.10+**: `itertools`, `pandas`, `multiprocessing` 라이브러리 필요.
-- **PYTHONPATH**: 모듈 임포트를 위해 반드시 프로젝트 루트에서 가상환경 및 PYTHONPATH를 설정한 후 실행하세요.
+- **Python 3.10+** 필요
+- **PYTHONPATH**: 모듈 임포트를 위해 반드시 프로젝트 루트에서 `$env:PYTHONPATH="."`를 설정한 후 실행
+- **핵심 파일은 _v5 접미사**: `calc_engine_v5.py`, `models_v5.py`, `data_loader_v5.py`, `gear_sensitivity_v5.py`
