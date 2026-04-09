@@ -6599,6 +6599,49 @@ import base64
 from js import document, console
 from pyodide.ffi import create_proxy
 
+# I18n for Simulator
+LANG = "ko"
+SIM_STRINGS = {
+    "ko": {
+        "res_title": "[AX 특화 베스트 결과]",
+        "res_opt": "최적화",
+        "th_gear": "장비",
+        "th_journey": "여정",
+        "status_ready": "연산 시작 준비 중",
+        "status_calculating": "계산 중...",
+        "status_done": "모든 프로세스가 성공적으로 완료되었습니다.",
+        "status_error": "오류 발생",
+        "sim_run_btn": "시뮬레이션 실행"
+    },
+    "en": {
+        "res_title": "[Best AX-Spec Results]",
+        "res_opt": "Opt.",
+        "th_gear": "Gear Set",
+        "th_journey": "Journey",
+        "status_ready": "Preparing calculation...",
+        "status_calculating": "Calculating...",
+        "status_done": "All processes completed successfully.",
+        "status_error": "Process Failed",
+        "sim_run_btn": "Run Simulation"
+    }
+}
+S = SIM_STRINGS.get(LANG, SIM_STRINGS["ko"])
+
+# Translation Helper for Simulator
+EQUIP_MAP = {"파괴": "Destruction", "공격": "Attack", "투지": "Valor", "보조": "Support", "장벽": "Barrier", "통찰": "Insight", "체력": "HP", "속도": "Speed"}
+JOURNEY_MAP = {"노페인 노게인": "No Pain No Gain", "누각 위, 유리달 맞이": "Crystal Moon on Pavilion", "하늘의 심판": "Judgment from Above", "메이드 바이 페트라": "Made by Petra", "어느 한 기사의 맹세": "Oath of a Knight", "불굴의 역작": "Indomitable Masterpiece", "깊은 애도": "Deep Mourning", "친구들과의 산책": "Stroll with Friends", "키라만큼 귀여워": "Cute as Kira", "허수의 개척자": "Pioneer of Imaginary", "완벽한 바니걸": "Perfect Bunny Girl", "경력직 용병": "Veteran Mercenary", "피의 메아리": "Blood Echo"}
+
+def t_eq(name):
+    if LANG != "en": return name
+    for k, v in EQUIP_MAP.items():
+        name = name.replace(k, v)
+    return name
+
+def t_jr(name):
+    if LANG != "en": return name
+    return JOURNEY_MAP.get(name, name)
+
+
 # VFS Manual Injection (Bypass CORS for file:// protocol)
 def setup_vfs():
     print("Initializing Virtual Filesystem...")
@@ -6661,7 +6704,7 @@ async def run_simulation(e):
         if loader: loader.style.display = "block"
         
         btn_text = document.querySelector("#simBtn .btn-text")
-        if btn_text: btn_text.innerText = "계산 중..."
+        if btn_text: btn_text.innerText = S["status_calculating"]
         
         # Let UI update
         await asyncio.sleep(0.1)
@@ -6672,7 +6715,7 @@ async def run_simulation(e):
         current_pass = document.getElementById("simPassive").value
         target_mode = int(document.getElementById("simTarget").value)
         
-        log_status(f"선택 모델: {base_name} ({current_spec}, {current_pass}, {target_mode}인)")
+        log_status(f"Character: {base_name} ({current_spec}, {current_pass}, {target_mode}U)")
         
         # Access global JS object correctly
         import js
@@ -6698,7 +6741,7 @@ async def run_simulation(e):
             else: raise ValueError("해당 조합의 데이터를 찾을 수 없습니다.")
             
         char_name = match
-        log_status(f"데이터베이스 조회 키: {char_name}")
+        log_status(f"Search Key: {char_name}")
             
         cdata = specs.get(char_name)
         if not cdata:
@@ -6719,12 +6762,12 @@ async def run_simulation(e):
         rdata = rotations.get(char_name) or rotations.get(char_name.replace("-보스1인", "").replace("-일반3인", ""))
         
         if not cdata or not rdata:
-            raise ValueError(f"캐릭터 '{char_name}'에 대한 핵심 데이터(스펙/로테이션)가 누락되었습니다.")
+            raise ValueError(f"Data Missing for: {char_name}")
             
         char_class = cdata.get("분류", cdata.get("class", "Unknown"))
         target_count = target_mode
         
-        log_status(f"엔진 분석 시작 (타겟 수: {target_count}, 클래스: {char_class})")
+        log_status(f"Simulating... (T:{target_count}, C:{char_class})")
 
         # Get Substats (divided by 6 to distribute across 6 equipment slots)
         sim_vars = {
@@ -6734,13 +6777,13 @@ async def run_simulation(e):
             "$SPD$": float(document.getElementById("simSpd").value) / 6.0
         }
         
-        log_status("장비 바인딩 및 서브스탯 적용 중...")
+        log_status("Binding gear...")
         calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
         
         sim_turns = int(document.getElementById("simTurns").value)
         metric_label = "Total Dmg" if sim_turns <= 5 else "DPS"
         
-        html_out = f"<h3>[AX 특화 베스트 결과] <span style='font-size:12px; color:var(--text3); font-weight:normal;'>({sim_turns}턴 최적화)</span></h3><table class='rank-table'><thead><tr><th>장비</th><th>{metric_label}</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>여정</th></tr></thead><tbody>"
+        html_out = f"<h3>{S['res_title']} <span style='font-size:12px; color:var(--text3); font-weight:normal;'>({sim_turns}T {S['res_opt']})</span></h3><table class='rank-table'><thead><tr><th>{S['th_gear']}</th><th>{metric_label}</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>{S['th_journey']}</th></tr></thead><tbody>"
         
         # Test just the top equipment sets to save time
         eq_names = list(calc_engine.EQUIPMENTS.keys())
@@ -6778,7 +6821,7 @@ async def run_simulation(e):
         for eq, bl, dps, mh, jrs, stats in best_results[:3]:
             jr_html = ""
             for j in jrs:
-                jr_html += "<span class='j-tag'>" + j + "</span>"
+                jr_html += "<span class='j-tag'>" + t_jr(j) + "</span>"
             
             # Formatting stats
             f_atk = f"{stats.get('atk', 0):,.0f}"
@@ -6786,23 +6829,23 @@ async def run_simulation(e):
             f_cd = f"{stats.get('cd', 0)*100:4.1f}%"
             f_spd = f"{stats.get('spd', 0):.0f}"
             
-            html_out += f"<tr><td><span class='equip-tag'>{eq}</span></td><td><span class='dps-val'>{dps:,.2f}</span></td><td><span class='maxhit-val'>{mh:,.0f}</span></td><td>{f_atk}</td><td>{f_cr}</td><td>{f_cd}</td><td>{f_spd}</td><td><div class='journey-list'>{jr_html}</div></td></tr>"
+            html_out += f"<tr><td><span class='equip-tag'>{t_eq(eq)}</span></td><td><span class='dps-val'>{dps:,.2f}</span></td><td><span class='maxhit-val'>{mh:,.0f}</span></td><td>{f_atk}</td><td>{f_cr}</td><td>{f_cd}</td><td>{f_spd}</td><td><div class='journey-list'>{jr_html}</div></td></tr>"
             
         html_out += "</tbody></table>"
         document.getElementById("simResult").innerHTML = html_out
         document.getElementById("simResult").style.display = "block"
-        log_status("모든 프로세스가 성공적으로 완료되었습니다.")
+        log_status(S["status_done"])
         
     except Exception as ex:
-        log_status(f"CRITICAL ERROR: {str(ex)}", is_error=True)
-        document.getElementById("simResult").innerHTML = f"<div style='color:red;'>오류 발생: {str(ex)}</div>"
+        log_status(f"{S['status_error']}: {str(ex)}", is_error=True)
+        document.getElementById("simResult").innerHTML = f"<div style='color:red;'>{S['status_error']}: {str(ex)}</div>"
         document.getElementById("simResult").style.display = "block"
         
     if btn: btn.disabled = False
     loader = document.getElementById("simLoader")
     if loader: loader.style.display = "none"
     btn_text = document.querySelector("#simBtn .btn-text")
-    if btn_text: btn_text.innerText = "시뮬레이션 실행"
+    if btn_text: btn_text.innerText = S["sim_run_btn"] if "sim_run_btn" in S else "Simulate"
 
 # PyScript auto-binds helper if using py-click
 pass
