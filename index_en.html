@@ -58,6 +58,12 @@
   .logo { font-size: 14px; font-weight: 800; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; white-space: nowrap; }
   .logo::before { content: '■'; color: var(--blue); margin-right: 8px; }
   .header-sep { flex: 1; }
+  .lang-btn {
+    text-decoration: none; font-size: 11px; font-weight: 700; color: var(--text2);
+    padding: 6px 12px; border: 1px solid var(--border); border-radius: 4px;
+    transition: all 0.2s; margin-right: 16px;
+  }
+  .lang-btn:hover { border-color: var(--blue); color: var(--text); background: rgba(0, 125, 187, 0.1); }
   .update-badge { font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; opacity: 0.8; }
 
   .search-wrap { padding: 24px 24px 0; max-width: 1400px; margin: 0 auto; }
@@ -209,6 +215,7 @@
   <div class="logo">⭐ Star Savior</div>
   <span style="color:var(--text3);font-size:13px;">Savior Optimization Guide</span>
   <div class="header-sep"></div>
+  <a href="index.html" class="lang-btn">KO 한국어</a>
   <div class="update-badge">Updated: 2026-04-02</div>
 </header>
 

@@ -240,7 +240,9 @@ TRANSLATIONS = {
             "boss": {"cls":"badge-boss", "label":"보스 1인"},
             "normal": {"cls":"badge-normal", "label":"일반 3인"},
             "gauntlet": {"cls":"badge-gauntlet", "label":"건틀릿 4인"}
-        }
+        },
+        "lang_name": "EN English",
+        "lang_link": "index_en.html"
     },
     "en": {
         "title": "Star Savior — Optimization Guide",
@@ -292,7 +294,9 @@ TRANSLATIONS = {
             "boss": {"cls":"badge-boss", "label":"Boss (S)"},
             "normal": {"cls":"badge-normal", "label":"General (T)"},
             "gauntlet": {"cls":"badge-gauntlet", "label":"Gauntlet (Q)"}
-        }
+        },
+        "lang_name": "KO 한국어",
+        "lang_link": "index.html"
     }
 }
 
@@ -485,6 +489,12 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   .logo { font-size: 14px; font-weight: 800; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; white-space: nowrap; }
   .logo::before { content: '■'; color: var(--blue); margin-right: 8px; }
   .header-sep { flex: 1; }
+  .lang-btn {
+    text-decoration: none; font-size: 11px; font-weight: 700; color: var(--text2);
+    padding: 6px 12px; border: 1px solid var(--border); border-radius: 4px;
+    transition: all 0.2s; margin-right: 16px;
+  }
+  .lang-btn:hover { border-color: var(--blue); color: var(--text); background: rgba(0, 125, 187, 0.1); }
   .update-badge { font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; opacity: 0.8; }
 
   .search-wrap { padding: 24px 24px 0; max-width: 1400px; margin: 0 auto; }
@@ -636,6 +646,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   <div class="logo">⭐ Star Savior</div>
   <span style="color:var(--text3);font-size:13px;">{{HEADER_SUB}}</span>
   <div class="header-sep"></div>
+  <a href="{{LANG_LINK}}" class="lang-btn">{{LANG_NAME}}</a>
   <div class="update-badge">{{UPDATE}}: %%UPDATE_DATE%%</div>
 </header>
 
@@ -1313,6 +1324,8 @@ def generate_html(md_path: str, output_path: str, lang: str = "ko"):
     html = html.replace('{{TRAJ_TITLE}}', t["traj_title"])
     html = html.replace('{{ALT_DESC}}', t["alt_desc"])
     html = html.replace('{{PEAK_BUILD}}', t["peak_build"])
+    html = html.replace('{{LANG_NAME}}', t["lang_name"])
+    html = html.replace('{{LANG_LINK}}', t["lang_link"])
     html = html.replace('{{LANG}}', lang)
 
     with open(output_path, "w", encoding="utf-8") as f:
