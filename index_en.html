@@ -6307,7 +6307,7 @@ const data = [
 ];
 const LANG = "en";
 
-const badgeMap = {"moon": "Moon Team", "bunny": "Bunny Girl", "passive": "Passive Lv.1", "passive4": "Passive Lv.4 (Max)", "noult": "No Ult", "boss": "Boss (S)", "normal": "General (T)", "gauntlet": "Gauntlet (Q)"};
+const badgeMap = {"moon": {"cls": "badge-moon", "label": "Moon Team"}, "bunny": {"cls": "badge-bunny", "label": "Bunny Girl"}, "passive": {"cls": "badge-passive", "label": "Passive Lv.1"}, "passive4": {"cls": "badge-passive4", "label": "Passive Lv.4 (Max)"}, "noult": {"cls": "badge-noult", "label": "No Ult"}, "boss": {"cls": "badge-boss", "label": "Boss (S)"}, "normal": {"cls": "badge-normal", "label": "General (T)"}, "gauntlet": {"cls": "badge-gauntlet", "label": "Gauntlet (Q)"}};
 
 function renderBadges(badges) {
   return badges.map(b => `<span class="char-badge ${badgeMap[b].cls}">${badgeMap[b].label}</span>`).join('');

@@ -6307,7 +6307,7 @@ const data = [
 ];
 const LANG = "ko";
 
-const badgeMap = {"moon": "달속성 파티", "bunny": "바니걸", "passive": "패시브 1lv", "passive4": "패시브 4lv (최대)", "noult": "궁극기 미사용", "boss": "보스 1인", "normal": "일반 3인", "gauntlet": "건틀릿 4인"};
+const badgeMap = {"moon": {"cls": "badge-moon", "label": "달속성 파티"}, "bunny": {"cls": "badge-bunny", "label": "바니걸"}, "passive": {"cls": "badge-passive", "label": "패시브 1lv"}, "passive4": {"cls": "badge-passive4", "label": "패시브 4lv (최대)"}, "noult": {"cls": "badge-noult", "label": "궁극기 미사용"}, "boss": {"cls": "badge-boss", "label": "보스 1인"}, "normal": {"cls": "badge-normal", "label": "일반 3인"}, "gauntlet": {"cls": "badge-gauntlet", "label": "건틀릿 4인"}};
 
 function renderBadges(badges) {
   return badges.map(b => `<span class="char-badge ${badgeMap[b].cls}">${badgeMap[b].label}</span>`).join('');

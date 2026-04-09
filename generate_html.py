@@ -232,14 +232,14 @@ TRANSLATIONS = {
         "alt_desc": "궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.",
         "peak_build": "최고점",
         "badges": {
-            "moon": "달속성 파티",
-            "bunny": "바니걸",
-            "passive": "패시브 1lv",
-            "passive4": "패시브 4lv (최대)",
-            "noult": "궁극기 미사용",
-            "boss": "보스 1인",
-            "normal": "일반 3인",
-            "gauntlet": "건틀릿 4인"
+            "moon": {"cls":"badge-moon", "label":"달속성 파티"},
+            "bunny": {"cls":"badge-bunny", "label":"바니걸"},
+            "passive": {"cls":"badge-passive", "label":"패시브 1lv"},
+            "passive4": {"cls":"badge-passive4", "label":"패시브 4lv (최대)"},
+            "noult": {"cls":"badge-noult", "label":"궁극기 미사용"},
+            "boss": {"cls":"badge-boss", "label":"보스 1인"},
+            "normal": {"cls":"badge-normal", "label":"일반 3인"},
+            "gauntlet": {"cls":"badge-gauntlet", "label":"건틀릿 4인"}
         }
     },
     "en": {
@@ -284,14 +284,14 @@ TRANSLATIONS = {
         "alt_desc": "A high-peak build specialized in AX stack damage instead of Ultimate.",
         "peak_build": "Peak Build",
         "badges": {
-            "moon": "Moon Team",
-            "bunny": "Bunny Girl",
-            "passive": "Passive Lv.1",
-            "passive4": "Passive Lv.4 (Max)",
-            "noult": "No Ult",
-            "boss": "Boss (S)",
-            "normal": "General (T)",
-            "gauntlet": "Gauntlet (Q)"
+            "moon": {"cls":"badge-moon", "label":"Moon Team"},
+            "bunny": {"cls":"badge-bunny", "label":"Bunny Girl"},
+            "passive": {"cls":"badge-passive", "label":"Passive Lv.1"},
+            "passive4": {"cls":"badge-passive4", "label":"Passive Lv.4 (Max)"},
+            "noult": {"cls":"badge-noult", "label":"No Ult"},
+            "boss": {"cls":"badge-boss", "label":"Boss (S)"},
+            "normal": {"cls":"badge-normal", "label":"General (T)"},
+            "gauntlet": {"cls":"badge-gauntlet", "label":"Gauntlet (Q)"}
         }
     }
 }
