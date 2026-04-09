@@ -25,26 +25,26 @@
 </py-config>
 <style>
   :root {
-    --bg: #0a0c10;
-    --bg2: #0f1218;
-    --bg3: #161b24;
-    --bg4: #1d2330;
-    --border: #242c3a;
-    --border2: #2e3a4e;
-    --gold: #f0b429;
-    --gold2: #e8a000;
-    --blue: #4a9eff;
-    --blue2: #2b7fe0;
-    --red: #ff5757;
-    --green: #3ecf8e;
-    --purple: #9b72ff;
-    --orange: #ff8c42;
-    --text: #e8ecf1;
-    --text2: #9aa5b4;
+    --bg: #051C2C;           /* McKinsey Deep Blue */
+    --bg2: #0E2B3E;          /* Card Background */
+    --bg3: #16364D;          /* Section Background */
+    --bg4: #1E4660;          /* Hover Background */
+    --border: #244C6A;       /* Subtle Border */
+    --border2: #2E5C7D;      /* Stronger Border */
+    --gold: #E6B01E;         /* Corporate Gold (Accent) */
+    --gold2: #C59618;
+    --blue: #007DBB;         /* Professional Blue */
+    --blue2: #005A87;
+    --red: #C52A1A;          /* Corporate Red */
+    --green: #168B16;        /* Stable Green */
+    --purple: #6A5ACD;
+    --orange: #E66E19;
+    --text: #FFFFFF;         /* Primary White */
+    --text2: #9199A3;        /* Professional Gray */
     --text3: #637285;
-    --rank1: #f0b429;
-    --rank2: #9aa5b4;
-    --rank3: #cd7c3e;
+    --rank1: #E6B01E;
+    --rank2: #9199A3;
+    --rank3: #CD7F32;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,101 +52,112 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.5;
   }
 
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,12,16,0.92);
+    background: rgba(5, 28, 44, 0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--blue);
     padding: 0 24px;
-    display: flex; align-items: center; gap: 16px; height: 56px;
+    display: flex; align-items: center; gap: 16px; height: 64px;
   }
-  .logo { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; white-space: nowrap; }
+  .logo { font-size: 14px; font-weight: 800; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; white-space: nowrap; }
+  .logo::before { content: '■'; color: var(--blue); margin-right: 8px; }
   .header-sep { flex: 1; }
-  .update-badge { font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  .update-badge { font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; opacity: 0.8; }
 
-  .search-wrap { padding: 20px 24px 0; max-width: 1400px; margin: 0 auto; }
+  .search-wrap { padding: 24px 24px 0; max-width: 1400px; margin: 0 auto; }
   .search-box { position: relative; width: 100%; max-width: 480px; }
   .search-box input {
-    width: 100%; background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--text); padding: 10px 16px 10px 40px; border-radius: 8px;
-    font-size: 14px; font-family: 'Noto Sans KR', sans-serif; outline: none;
-    transition: border-color 0.2s;
+    width: 100%; hide-focus: outline;
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); padding: 12px 16px 12px 40px; border-radius: 4px;
+    font-size: 14px; font-family: 'Inter', sans-serif; outline: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .search-box input:focus { border-color: var(--blue); }
+  .search-box input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0, 125, 187, 0.2); }
   .search-box input::placeholder { color: var(--text3); }
-  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 16px; pointer-events: none; }
+  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 16px; pointer-events: none; }
 
-  .layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 20px 24px 60px; gap: 24px; align-items: flex-start; }
+  .layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 24px 24px 80px; gap: 32px; align-items: flex-start; }
 
   .sidebar {
-    width: 220px; flex-shrink: 0; position: sticky; top: 72px;
-    max-height: calc(100vh - 90px); overflow-y: auto;
-    scrollbar-width: thin; scrollbar-color: var(--border2) transparent;
+    width: 240px; flex-shrink: 0; position: sticky; top: 88px;
+    max-height: calc(100vh - 120px); overflow-y: auto;
+    padding-right: 8px;
   }
   .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-track { background: transparent; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-  .sidebar-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); font-weight: 700; padding: 0 0 10px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
-  .nav-item { display: block; padding: 6px 10px; border-radius: 6px; font-size: 13px; color: var(--text2); cursor: pointer; transition: all 0.15s; line-height: 1.4; border: none; background: none; text-align: left; width: 100%; }
-  .nav-item:hover { background: var(--bg3); color: var(--text); }
-  .nav-item.active { background: rgba(74,158,255,0.12); color: var(--blue); }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .sidebar-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text2); font-weight: 800; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin-bottom: 12px; }
+  .nav-item { 
+    display: block; padding: 10px 12px; border-radius: 4px; font-size: 13px; color: var(--text2); cursor: pointer; transition: all 0.2s; 
+    line-height: 1.4; border: none; background: none; text-align: left; width: 100%;
+    border-left: 3px solid transparent; margin-bottom: 4px;
+  }
+  .nav-item:hover { background: var(--bg4); color: var(--text); }
+  .nav-item.active { background: rgba(0, 125, 187, 0.1); color: var(--blue); border-left-color: var(--blue); font-weight: 600; }
 
   .main { flex: 1; min-width: 0; }
 
-  .char-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .char-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 24px; overflow: hidden; transition: box-shadow 0.3s ease; }
+  .char-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
   .char-card.hidden { display: none; }
-  .char-header { display: flex; align-items: center; padding: 16px 20px; cursor: pointer; gap: 12px; user-select: none; background: var(--bg3); transition: background 0.15s; }
+  .char-header { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; user-select: none; background: var(--bg3); border-bottom: 1px solid var(--border); }
   .char-header:hover { background: var(--bg4); }
-  .char-name { font-size: 17px; font-weight: 700; flex: 1; }
-  .char-badge { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 500; letter-spacing: 0.04em; }
-  .badge-moon { background: rgba(155,114,255,0.15); color: var(--purple); border: 1px solid rgba(155,114,255,0.3); }
-  .badge-bunny { background: rgba(255,140,66,0.12); color: var(--orange); border: 1px solid rgba(255,140,66,0.25); }
-  .badge-passive { background: rgba(158,165,180,0.1); color: var(--text2); border: 1px solid var(--border2); }
-  .badge-passive4 { background: rgba(62,207,142,0.1); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
-  .badge-noult { background: rgba(255,87,87,0.1); color: var(--red); border: 1px solid rgba(255,87,87,0.25); }
-  .badge-boss { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
-  .badge-normal { background: rgba(74,158,255,0.1); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
-  .badge-gauntlet { background: rgba(255,87,87,0.15); color: #ff3e3e; border: 1px solid rgba(255,87,87,0.4); }
+  .char-name { font-size: 18px; font-weight: 800; flex: 1; letter-spacing: -0.02em; }
+  .char-badge { font-size: 10px; padding: 4px 10px; border-radius: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-moon { background: rgba(106, 90, 205, 0.15); color: #9B9AFF; border: 1px solid rgba(106, 90, 205, 0.3); }
+  .badge-bunny { background: rgba(230, 110, 25, 0.12); color: var(--orange); border: 1px solid rgba(230, 110, 25, 0.25); }
+  .badge-passive { background: rgba(145, 153, 163, 0.1); color: var(--text2); border: 1px solid var(--border2); }
+  .badge-passive4 { background: rgba(22, 139, 22, 0.15); color: #4CAF50; border: 1px solid rgba(22, 139, 22, 0.3); }
+  .badge-noult { background: rgba(197, 42, 26, 0.1); color: #FF6B6B; border: 1px solid rgba(197, 42, 26, 0.25); }
+  .badge-boss { background: rgba(230, 176, 30, 0.1); color: var(--gold); border: 1px solid rgba(230, 176, 30, 0.3); }
+  .badge-normal { background: rgba(0, 125, 187, 0.15); color: var(--blue-light); border: 1px solid rgba(0, 125, 187, 0.3); }
+  .badge-gauntlet { background: rgba(197, 42, 26, 0.15); color: #FF4D4D; border: 1px solid rgba(197, 42, 26, 0.3); }
 
-  .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
-  .dps-label { font-size: 10px; color: var(--text3); margin-right: 4px; }
-  .chevron { font-size: 12px; color: var(--text3); transition: transform 0.2s; }
-  .char-card.open .chevron { transform: rotate(180deg); }
-  .char-body { display: none; padding: 0 20px 20px; }
+  .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800; color: var(--gold); }
+  .dps-label { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 6px; }
+  .chevron { font-size: 12px; color: var(--text3); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .char-card.open .chevron { transform: rotate(180deg); color: var(--blue); }
+  .char-body { display: none; padding: 24px; background: var(--bg2); }
   .char-card.open .char-body { display: block; }
 
-  .strat-tabs { display: flex; gap: 4px; margin: 16px 0 12px; background: var(--bg); border-radius: 8px; padding: 4px; width: fit-content; }
-  .strat-tab { padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; border: none; background: none; color: var(--text3); letter-spacing: 0.03em; }
-  .strat-tab.active-std { background: rgba(74,158,255,0.15); color: var(--blue); }
-  .strat-tab.active-alt { background: rgba(255,87,87,0.12); color: var(--red); }
-  .strat-tab:not(.active-std):not(.active-alt):hover { color: var(--text2); background: var(--bg3); }
-  .strat-panel { display: none; }
+  .strat-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+  .strat-tab { padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; border: none; background: none; color: var(--text3); position: relative; }
+  .strat-tab::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background: transparent; transition: all 0.2s; }
+  .strat-tab.active-std { color: var(--blue); }
+  .strat-tab.active-std::after { background: var(--blue); }
+  .strat-tab.active-alt { color: var(--orange); }
+  .strat-tab.active-alt::after { background: var(--orange); }
+  .strat-tab:hover { color: var(--text); }
+
+  .strat-panel { display: none; animation: fadeIn 0.3s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
   .strat-panel.visible { display: block; }
 
-  .rank-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
-  .rank-table th { padding: 8px 10px; text-align: left; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); font-weight: 600; border-bottom: 1px solid var(--border); }
-  .rank-table td { padding: 10px 10px; border-bottom: 1px solid rgba(36,44,58,0.5); vertical-align: middle; }
-  .rank-table tr:last-child td { border-bottom: none; }
-  .rank-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .rank-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; }
+  .rank-table th { padding: 12px 10px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text2); font-weight: 800; border-bottom: 2px solid var(--border); }
+  .rank-table td { padding: 14px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .rank-table tr:hover td { background: rgba(255,255,255,0.03); }
 
-  .rank-num { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; width: 32px; }
+  .rank-num { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; width: 40px; }
   .rank-1 { color: var(--rank1); }
   .rank-2 { color: var(--rank2); }
   .rank-3 { color: var(--rank3); }
 
-  .equip-tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--bg4); color: var(--text2); font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
-  .bless-tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; background: rgba(240,180,41,0.1); color: var(--gold); font-weight: 700; border: 1px solid rgba(240,180,41,0.2); }
+  .equip-tag { display: inline-block; font-size: 11px; padding: 3px 8px; border-radius: 2px; background: var(--bg3); color: var(--text); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
+  .bless-tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 2px; background: rgba(230, 176, 30, 0.08); color: var(--gold); font-weight: 800; border: 1px solid rgba(230, 176, 30, 0.2); }
 
-  .journey-list { display: flex; flex-wrap: wrap; gap: 4px; }
-  .j-tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: rgba(74,158,255,0.08); color: var(--blue); border: 1px solid rgba(74,158,255,0.18); white-space: nowrap; }
+  .journey-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .j-tag { font-size: 11px; padding: 2px 8px; border-radius: 3px; background: rgba(0, 125, 187, 0.08); color: var(--blue-light); border: 1px solid rgba(0, 125, 187, 0.2); }
 
-  .dps-val { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--green); white-space: nowrap; }
-  .maxhit-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+  .dps-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; color: #4CAF50; }
+  .maxhit-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
 
   .traj-section { margin-top: 12px; }
   .traj-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
@@ -243,6 +254,7 @@
            <label>패시브 레벨</label>
            <select id="simPassive">
              <option value="base">최대 (4lv)</option>
+             <option value="1lv">초기 (1lv)</option>
            </select>
         </div>
         <div class="form-group">
@@ -282,7 +294,7 @@
         </div>
       </div>
       <button class="sim-btn" id="simBtn" py-click="run_simulation" disabled>
-        <span class="btn-text">엔진 로딩 중... (최초 1회 수 초 소요)</span>
+        <span class="btn-text">엔진 로딩 중...</span>
         <div class="loader" id="simLoader"></div>
       </button>
       <div id="simStatus" style="margin-top: 10px; font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; display: none; padding: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px;"></div>
@@ -6499,17 +6511,9 @@ const data = [
     }
   }
 ];
+const LANG = "ko";
 
-const badgeMap = {
-  moon: { cls:"badge-moon", label:"달속성 파티" },
-  bunny: { cls:"badge-bunny", label:"바니걸" },
-  passive: { cls:"badge-passive", label:"패시브 1lv" },
-  passive4: { cls:"badge-passive4", label:"패시브 4lv (최대)" },
-  noult: { cls:"badge-noult", label:"궁극기 미사용" },
-  boss: { cls:"badge-boss", label:"보스 1인" },
-  normal: { cls:"badge-normal", label:"일반 3인" },
-  gauntlet: { cls:"badge-gauntlet", label:"건틀릿 4인" },
-};
+const badgeMap = {"moon": "달속성 파티", "bunny": "바니걸", "passive": "패시브 1lv", "passive4": "패시브 4lv (최대)", "noult": "궁극기 미사용", "boss": "보스 1인", "normal": "일반 3인", "gauntlet": "건틀릿 4인"};
 
 function renderBadges(badges) {
   return badges.map(b => `<span class="char-badge ${badgeMap[b].cls}">${badgeMap[b].label}</span>`).join('');
@@ -6698,10 +6702,13 @@ function buildCharTree() {
     }
     
     // Parse spec and level from raw if possible
-    let spec = 'Standard';
-    if (raw.includes('달속성파티')) spec = '달속성 파티';
-    if (raw.includes('바니걸')) spec = '바니걸';
-    if (raw.includes('궁극기미사용')) spec = '궁극기 미사용 (AX특화)';
+    const isEn = (LANG === 'en');
+    let spec = isEn ? 'Standard' : 'Standard'; // Just a placeholder, we use mapping below
+    
+    if (raw.includes('달속성파티')) spec = isEn ? 'Moon Team' : '달속성 파티';
+    else if (raw.includes('바니걸')) spec = isEn ? 'Bunny Girl' : '바니걸';
+    else if (raw.includes('궁극기미사용')) spec = isEn ? 'No Ult (AX Spec)' : '궁극기 미사용 (AX특화)';
+    else spec = isEn ? 'Standard' : '일반';
     
     let lv = '4lv';
     if (raw.includes('1lv')) lv = '1lv';
@@ -6754,12 +6761,18 @@ function updateSimDropdowns(trigger) {
   
   // Reset target select
   let targetHtml = '';
-  if (availableTargets.includes('1') || availableTargets.includes('both')) 
-    targetHtml += `<option value="1">보스전 (1인)</option>`;
-  if (availableTargets.includes('3') || availableTargets.includes('both')) 
-    targetHtml += `<option value="3">일반전 (3인)</option>`;
+  const isEn = (LANG === 'en');
+  
+  if (availableTargets.includes('1') || availableTargets.includes('both')) {
+    const label = isEn ? "Boss Mode (1 Unit)" : "보스전 (1인)";
+    targetHtml += `<option value="1">${label}</option>`;
+  }
+  if (availableTargets.includes('3') || availableTargets.includes('both')) {
+    const label = isEn ? "Normal Mode (3 Units)" : "일반전 (3인)";
+    targetHtml += `<option value="3">${label}</option>`;
+  }
     
-  targetSelect.innerHTML = targetHtml || `<option value="3">기본 (3인)</option>`;
+  targetSelect.innerHTML = targetHtml || `<option value="3">${isEn ? 'Basic (3 Units)' : '기본 (3인)'}</option>`;
 }
 
 // Init

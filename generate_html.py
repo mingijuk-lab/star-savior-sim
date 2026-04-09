@@ -183,8 +183,245 @@ def parse_character_section(section: str) -> dict:
             "ranks": std_ranks,
             "traj": std_traj
         },
-        "alt": alt_data or {"equip": "N/A", "bless": "N/A", "journeys": [], "dps": 0, "maxHit": 0}
+        "alt": alt_data or {"equip": "N/A", "bless": "N/A", "journeys": [], "dps": 0, "maxHit": 0, "atk": 0, "cr": "0%", "cd": "0%", "spd": 0}
     }
+
+
+# I18n Mappings
+TRANSLATIONS = {
+    "ko": {
+        "title": "스타 세이비어 — 최적화 가이드",
+        "header_sub": "구원자 최적화 가이드",
+        "update": "업데이트",
+        "search_ph": "캐릭터 이름으로 검색...",
+        "sim_title": "실시간 커스텀 시뮬레이터",
+        "sim_ax_badge": "AX 축복 고정",
+        "sim_char": "캐릭터",
+        "sim_spec": "패시브/특수환경",
+        "sim_passive_lv": "패시브 레벨",
+        "sim_lv4": "최대 (4lv)",
+        "sim_lv1": "초기 (1lv)",
+        "sim_target": "타겟 환경",
+        "sim_normal": "일반 모드 (3인)",
+        "sim_boss": "보스 모드 (1인)",
+        "sim_gauntlet": "건틀릿 레이드 (4인)",
+        "sim_duration": "시뮬레이션 기간",
+        "sim_long": "장기전 (15턴)",
+        "sim_mid": "중기전 (10턴)",
+        "sim_short": "단기전 (5턴)",
+        "sim_burst": "건틀릿 버스트 (3턴)",
+        "sim_atk": "공격력 (%)",
+        "sim_cr": "치확 (%)",
+        "sim_cd": "치피 (%)",
+        "sim_spd": "속도",
+        "sim_loading": "엔진 로딩 중...",
+        "sim_run": "시뮬레이션 실행",
+        "sidebar_title": "구원자 목록",
+        "label_peak_dps": "최고 DPS",
+        "label_peak_total": "최고 Total Dmg (3T)",
+        "tab_std": "🔹 일반 전략 (궁극기 사용)",
+        "tab_alt": "🔸 노울트 전략 (AX 특화)",
+        "th_rank": "순위",
+        "th_gear": "장비 세트",
+        "th_bless": "축복",
+        "th_journey": "최적 여정 조합 (Top 5)",
+        "th_dps": "DPS",
+        "th_maxhit": "MaxHit",
+        "traj_title": "빌드 진화 경로",
+        "alt_desc": "궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.",
+        "peak_build": "최고점",
+        "badges": {
+            "moon": "달속성 파티",
+            "bunny": "바니걸",
+            "passive": "패시브 1lv",
+            "passive4": "패시브 4lv (최대)",
+            "noult": "궁극기 미사용",
+            "boss": "보스 1인",
+            "normal": "일반 3인",
+            "gauntlet": "건틀릿 4인"
+        }
+    },
+    "en": {
+        "title": "Star Savior — Optimization Guide",
+        "header_sub": "Savior Optimization Guide",
+        "update": "Updated",
+        "search_ph": "Search by savior name...",
+        "sim_title": "Real-time Custom Simulator",
+        "sim_ax_badge": "AX Blessing Fixed",
+        "sim_char": "Savior",
+        "sim_spec": "Passive / Special",
+        "sim_passive_lv": "Passive Level",
+        "sim_lv4": "Max (Lv.4)",
+        "sim_lv1": "Base (Lv.1)",
+        "sim_target": "Target Environment",
+        "sim_normal": "Normal Mode (3 Units)",
+        "sim_boss": "Boss Mode (1 Unit)",
+        "sim_gauntlet": "Gauntlet Raid (4 Units)",
+        "sim_duration": "Simulation Duration",
+        "sim_long": "Long Battle (15 Turns)",
+        "sim_mid": "Mid Battle (10 Turns)",
+        "sim_short": "Short Battle (5 Turns)",
+        "sim_burst": "Gauntlet Burst (3 Turns)",
+        "sim_atk": "ATK (%)",
+        "sim_cr": "Crit Rate (%)",
+        "sim_cd": "Crit Dmg (%)",
+        "sim_spd": "Speed",
+        "sim_loading": "Loading Engine...",
+        "sim_run": "Run Simulation",
+        "sidebar_title": "Savior List",
+        "label_peak_dps": "Peak DPS",
+        "label_peak_total": "Peak Total Dmg (3T)",
+        "tab_std": "🔹 Standard (With Ult)",
+        "tab_alt": "🔸 AX Specialized (No Ult)",
+        "th_rank": "Rank",
+        "th_gear": "Gear Set",
+        "th_bless": "Bless",
+        "th_journey": "Best Journey Setup (Top 5)",
+        "th_dps": "DPS",
+        "th_maxhit": "MaxHit",
+        "traj_title": "Build Evolution Path",
+        "alt_desc": "A high-peak build specialized in AX stack damage instead of Ultimate.",
+        "peak_build": "Peak Build",
+        "badges": {
+            "moon": "Moon Team",
+            "bunny": "Bunny Girl",
+            "passive": "Passive Lv.1",
+            "passive4": "Passive Lv.4 (Max)",
+            "noult": "No Ult",
+            "boss": "Boss (S)",
+            "normal": "General (T)",
+            "gauntlet": "Gauntlet (Q)"
+        }
+    }
+}
+
+# Data Content Translations
+DATA_TRANSLATIONS = {
+    "en": {
+        "characters": {
+            "프레이": "Frey",
+            "로자리아": "Rosaria",
+            "유미나": "Yumina",
+            "힐데": "Hilde",
+            "루나": "Luna",
+            "리디아": "Lydia",
+            "릴리": "Lily",
+            "샤를": "Charles",
+            "에핀델": "Epindel",
+            "클레어": "Claire",
+            "스마일": "Smile",
+            "스칼렛": "Scarlet",
+            "키라": "Kira",
+            "레이시": "Lacey",
+            "뮤리엘": "Muriel",
+            "아세라": "Asera"
+        },
+        "equipments": {
+            "파괴": "Destruction",
+            "공격": "Attack",
+            "투지": "Valor",
+            "보조": "Support",
+            "장벽": "Barrier",
+            "통찰": "Insight",
+            "체력": "HP",
+            "속도": "Speed"
+        },
+        "journeys": {
+            "노페인 노게인": "No Pain No Gain",
+            "누각 위, 유리달 맞이": "Crystal Moon on Pavilion",
+            "하늘의 심판": "Judgment from Above",
+            "메이드 바이 페트라": "Made by Petra",
+            "어느 한 기사의 맹세": "Oath of a Knight",
+            "불굴의 역작": "Indomitable Masterpiece",
+            "깊은 애도": "Deep Mourning",
+            "친구들과의 산책": "Stroll with Friends",
+            "키라만큼 귀여워": "Cute as Kira",
+            "허수의 개척자": "Pioneer of Imaginary",
+            "완벽한 바니걸": "Perfect Bunny Girl",
+            "경력직 용병": "Veteran Mercenary",
+            "피의 메아리": "Blood Echo"
+        },
+        "misc": {
+            "달속성파티": "Moon Team",
+            "바니걸": "Bunny Girl",
+            "궁극기미사용": "No Ult",
+            "궁극기 미사용 (AX특화)": "No Ult (AX Spec)",
+            "패시브1lv": "Passive Lv.1",
+            "보스1인": "Boss (Single)",
+            "일반3인": "General (3-Target)",
+            "건틀릿4인": "Gauntlet (4-Target)",
+            "빌드 진화 경로": "Build Path",
+            "공격력%": "ATK%",
+            "치명타 피해": "Crit Dmg",
+            "치명타 확률": "Crit Rate"
+        }
+    }
+}
+
+
+def translate_text(text: str, lang: str) -> str:
+    if lang != "en":
+        return text
+    
+    mapping = DATA_TRANSLATIONS["en"]
+    
+    # 1. Handle exact matches in journeys (complex names)
+    if text in mapping["journeys"]:
+        return mapping["journeys"][text]
+    
+    # 2. Handle Equipment sets (e.g., "파괴4+투지2")
+    # Replace set names
+    processed = text
+    for ko, en in mapping["equipments"].items():
+        processed = processed.replace(ko, en)
+        
+    # 3. Handle specific character names and their suffixes
+    # Example: "프레이(달속성파티, 1lv)"
+    for ko, en in mapping["characters"].items():
+        if ko in processed:
+            processed = processed.replace(ko, en)
+            
+    # 4. Handle Misc terms (badges/suffixes inside parentheses)
+    for ko, en in mapping["misc"].items():
+        # Handle cases like "달속성파티" or "1lv" -> "Lv.1"
+        processed = processed.replace(ko, en)
+        
+    # Cleanup formatting if needed
+    processed = processed.replace(", 1lv", ", Lv.1").replace("1lv", "Lv.1")
+    
+    return processed
+
+def translate_data_recursive(obj, lang: str):
+    if lang != "en":
+        return obj
+    
+    if isinstance(obj, list):
+        return [translate_data_recursive(item, lang) for item in obj]
+    
+    if isinstance(obj, dict):
+        new_dict = {}
+        for k, v in obj.items():
+            # 기술적인 키(Key)는 그대로 유지하고, 표시용 값(Value)만 선별적으로 번역
+            if k in ["name", "equip", "bless", "stat"]:
+                new_dict[k] = translate_text(v, lang)
+            elif k in ["badges", "journeys", "js"]:
+                if isinstance(v, list):
+                    new_dict[k] = [translate_text(x, lang) for x in v if isinstance(x, str)]
+                else:
+                    new_dict[k] = v
+            elif k == "rawName":
+                # 시뮬레이션 엔진이 참조하는 원본 이름은 절대로 번역하지 않음
+                new_dict[k] = v 
+            else:
+                # 그 외 구조적 데이터(id, dps, maxHit 등)는 그대로 재귀 탐색
+                new_dict[k] = translate_data_recursive(v, lang)
+        return new_dict
+    
+    if isinstance(obj, str):
+        # 최상위 레벨 문자열이 전달될 경우 처리 (보통 list/dict 내부에서 처리됨)
+        return translate_text(obj, lang)
+        
+    return obj
 
 
 HTML_TEMPLATE = r'''<!DOCTYPE html>
@@ -198,42 +435,31 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
 <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
 <py-config>
-  packages = []
-  [[fetch]]
-  files = [
-      "Core/__init__.py",
-      "Core/calc_engine_v5.py",
-      "Core/data_loader_v5.py",
-      "Core/models_v5.py",
-      "Core/gear_sensitivity_v5.py",
-      "Data/characters.json",
-      "Data/equipments.json",
-      "Data/사이클_로테이션_마스터.md",
-      "Data/캐릭터_스펙_마스터.md"
-  ]
+  packages = ["pandas"]
 </py-config>
+<script id="vfs-bundled" type="application/json">%%VFS_DATA%%</script>
 <style>
   :root {
-    --bg: #0a0c10;
-    --bg2: #0f1218;
-    --bg3: #161b24;
-    --bg4: #1d2330;
-    --border: #242c3a;
-    --border2: #2e3a4e;
-    --gold: #f0b429;
-    --gold2: #e8a000;
-    --blue: #4a9eff;
-    --blue2: #2b7fe0;
-    --red: #ff5757;
-    --green: #3ecf8e;
-    --purple: #9b72ff;
-    --orange: #ff8c42;
-    --text: #e8ecf1;
-    --text2: #9aa5b4;
+    --bg: #051C2C;           /* McKinsey Deep Blue */
+    --bg2: #0E2B3E;          /* Card Background */
+    --bg3: #16364D;          /* Section Background */
+    --bg4: #1E4660;          /* Hover Background */
+    --border: #244C6A;       /* Subtle Border */
+    --border2: #2E5C7D;      /* Stronger Border */
+    --gold: #E6B01E;         /* Corporate Gold (Accent) */
+    --gold2: #C59618;
+    --blue: #007DBB;         /* Professional Blue */
+    --blue2: #005A87;
+    --red: #C52A1A;          /* Corporate Red */
+    --green: #168B16;        /* Stable Green */
+    --purple: #6A5ACD;
+    --orange: #E66E19;
+    --text: #FFFFFF;         /* Primary White */
+    --text2: #9199A3;        /* Professional Gray */
     --text3: #637285;
-    --rank1: #f0b429;
-    --rank2: #9aa5b4;
-    --rank3: #cd7c3e;
+    --rank1: #E6B01E;
+    --rank2: #9199A3;
+    --rank3: #CD7F32;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -241,101 +467,112 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.5;
   }
 
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,12,16,0.92);
+    background: rgba(5, 28, 44, 0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--blue);
     padding: 0 24px;
-    display: flex; align-items: center; gap: 16px; height: 56px;
+    display: flex; align-items: center; gap: 16px; height: 64px;
   }
-  .logo { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; white-space: nowrap; }
+  .logo { font-size: 14px; font-weight: 800; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; white-space: nowrap; }
+  .logo::before { content: '■'; color: var(--blue); margin-right: 8px; }
   .header-sep { flex: 1; }
-  .update-badge { font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  .update-badge { font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; opacity: 0.8; }
 
-  .search-wrap { padding: 20px 24px 0; max-width: 1400px; margin: 0 auto; }
+  .search-wrap { padding: 24px 24px 0; max-width: 1400px; margin: 0 auto; }
   .search-box { position: relative; width: 100%; max-width: 480px; }
   .search-box input {
-    width: 100%; background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--text); padding: 10px 16px 10px 40px; border-radius: 8px;
-    font-size: 14px; font-family: 'Noto Sans KR', sans-serif; outline: none;
-    transition: border-color 0.2s;
+    width: 100%; hide-focus: outline;
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); padding: 12px 16px 12px 40px; border-radius: 4px;
+    font-size: 14px; font-family: 'Inter', sans-serif; outline: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .search-box input:focus { border-color: var(--blue); }
+  .search-box input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0, 125, 187, 0.2); }
   .search-box input::placeholder { color: var(--text3); }
-  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 16px; pointer-events: none; }
+  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 16px; pointer-events: none; }
 
-  .layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 20px 24px 60px; gap: 24px; align-items: flex-start; }
+  .layout { display: flex; max-width: 1400px; margin: 0 auto; padding: 24px 24px 80px; gap: 32px; align-items: flex-start; }
 
   .sidebar {
-    width: 220px; flex-shrink: 0; position: sticky; top: 72px;
-    max-height: calc(100vh - 90px); overflow-y: auto;
-    scrollbar-width: thin; scrollbar-color: var(--border2) transparent;
+    width: 240px; flex-shrink: 0; position: sticky; top: 88px;
+    max-height: calc(100vh - 120px); overflow-y: auto;
+    padding-right: 8px;
   }
   .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-track { background: transparent; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-  .sidebar-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); font-weight: 700; padding: 0 0 10px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
-  .nav-item { display: block; padding: 6px 10px; border-radius: 6px; font-size: 13px; color: var(--text2); cursor: pointer; transition: all 0.15s; line-height: 1.4; border: none; background: none; text-align: left; width: 100%; }
-  .nav-item:hover { background: var(--bg3); color: var(--text); }
-  .nav-item.active { background: rgba(74,158,255,0.12); color: var(--blue); }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .sidebar-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text2); font-weight: 800; padding-bottom: 12px; border-bottom: 2px solid var(--border); margin-bottom: 12px; }
+  .nav-item { 
+    display: block; padding: 10px 12px; border-radius: 4px; font-size: 13px; color: var(--text2); cursor: pointer; transition: all 0.2s; 
+    line-height: 1.4; border: none; background: none; text-align: left; width: 100%;
+    border-left: 3px solid transparent; margin-bottom: 4px;
+  }
+  .nav-item:hover { background: var(--bg4); color: var(--text); }
+  .nav-item.active { background: rgba(0, 125, 187, 0.1); color: var(--blue); border-left-color: var(--blue); font-weight: 600; }
 
   .main { flex: 1; min-width: 0; }
 
-  .char-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .char-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 24px; overflow: hidden; transition: box-shadow 0.3s ease; }
+  .char-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
   .char-card.hidden { display: none; }
-  .char-header { display: flex; align-items: center; padding: 16px 20px; cursor: pointer; gap: 12px; user-select: none; background: var(--bg3); transition: background 0.15s; }
+  .char-header { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; user-select: none; background: var(--bg3); border-bottom: 1px solid var(--border); }
   .char-header:hover { background: var(--bg4); }
-  .char-name { font-size: 17px; font-weight: 700; flex: 1; }
-  .char-badge { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 500; letter-spacing: 0.04em; }
-  .badge-moon { background: rgba(155,114,255,0.15); color: var(--purple); border: 1px solid rgba(155,114,255,0.3); }
-  .badge-bunny { background: rgba(255,140,66,0.12); color: var(--orange); border: 1px solid rgba(255,140,66,0.25); }
-  .badge-passive { background: rgba(158,165,180,0.1); color: var(--text2); border: 1px solid var(--border2); }
-  .badge-passive4 { background: rgba(62,207,142,0.1); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
-  .badge-noult { background: rgba(255,87,87,0.1); color: var(--red); border: 1px solid rgba(255,87,87,0.25); }
-  .badge-boss { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
-  .badge-normal { background: rgba(74,158,255,0.1); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
-  .badge-gauntlet { background: rgba(255,87,87,0.15); color: #ff3e3e; border: 1px solid rgba(255,87,87,0.4); }
+  .char-name { font-size: 18px; font-weight: 800; flex: 1; letter-spacing: -0.02em; }
+  .char-badge { font-size: 10px; padding: 4px 10px; border-radius: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-moon { background: rgba(106, 90, 205, 0.15); color: #9B9AFF; border: 1px solid rgba(106, 90, 205, 0.3); }
+  .badge-bunny { background: rgba(230, 110, 25, 0.12); color: var(--orange); border: 1px solid rgba(230, 110, 25, 0.25); }
+  .badge-passive { background: rgba(145, 153, 163, 0.1); color: var(--text2); border: 1px solid var(--border2); }
+  .badge-passive4 { background: rgba(22, 139, 22, 0.15); color: #4CAF50; border: 1px solid rgba(22, 139, 22, 0.3); }
+  .badge-noult { background: rgba(197, 42, 26, 0.1); color: #FF6B6B; border: 1px solid rgba(197, 42, 26, 0.25); }
+  .badge-boss { background: rgba(230, 176, 30, 0.1); color: var(--gold); border: 1px solid rgba(230, 176, 30, 0.3); }
+  .badge-normal { background: rgba(0, 125, 187, 0.15); color: var(--blue-light); border: 1px solid rgba(0, 125, 187, 0.3); }
+  .badge-gauntlet { background: rgba(197, 42, 26, 0.15); color: #FF4D4D; border: 1px solid rgba(197, 42, 26, 0.3); }
 
-  .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
-  .dps-label { font-size: 10px; color: var(--text3); margin-right: 4px; }
-  .chevron { font-size: 12px; color: var(--text3); transition: transform 0.2s; }
-  .char-card.open .chevron { transform: rotate(180deg); }
-  .char-body { display: none; padding: 0 20px 20px; }
+  .dps-peak { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800; color: var(--gold); }
+  .dps-label { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 6px; }
+  .chevron { font-size: 12px; color: var(--text3); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .char-card.open .chevron { transform: rotate(180deg); color: var(--blue); }
+  .char-body { display: none; padding: 24px; background: var(--bg2); }
   .char-card.open .char-body { display: block; }
 
-  .strat-tabs { display: flex; gap: 4px; margin: 16px 0 12px; background: var(--bg); border-radius: 8px; padding: 4px; width: fit-content; }
-  .strat-tab { padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; border: none; background: none; color: var(--text3); letter-spacing: 0.03em; }
-  .strat-tab.active-std { background: rgba(74,158,255,0.15); color: var(--blue); }
-  .strat-tab.active-alt { background: rgba(255,87,87,0.12); color: var(--red); }
-  .strat-tab:not(.active-std):not(.active-alt):hover { color: var(--text2); background: var(--bg3); }
-  .strat-panel { display: none; }
+  .strat-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+  .strat-tab { padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; border: none; background: none; color: var(--text3); position: relative; }
+  .strat-tab::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background: transparent; transition: all 0.2s; }
+  .strat-tab.active-std { color: var(--blue); }
+  .strat-tab.active-std::after { background: var(--blue); }
+  .strat-tab.active-alt { color: var(--orange); }
+  .strat-tab.active-alt::after { background: var(--orange); }
+  .strat-tab:hover { color: var(--text); }
+
+  .strat-panel { display: none; animation: fadeIn 0.3s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
   .strat-panel.visible { display: block; }
 
-  .rank-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
-  .rank-table th { padding: 8px 10px; text-align: left; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); font-weight: 600; border-bottom: 1px solid var(--border); }
-  .rank-table td { padding: 10px 10px; border-bottom: 1px solid rgba(36,44,58,0.5); vertical-align: middle; }
-  .rank-table tr:last-child td { border-bottom: none; }
-  .rank-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .rank-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; }
+  .rank-table th { padding: 12px 10px; text-align: left; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text2); font-weight: 800; border-bottom: 2px solid var(--border); }
+  .rank-table td { padding: 14px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .rank-table tr:hover td { background: rgba(255,255,255,0.03); }
 
-  .rank-num { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; width: 32px; }
+  .rank-num { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; width: 40px; }
   .rank-1 { color: var(--rank1); }
   .rank-2 { color: var(--rank2); }
   .rank-3 { color: var(--rank3); }
 
-  .equip-tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--bg4); color: var(--text2); font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
-  .bless-tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; background: rgba(240,180,41,0.1); color: var(--gold); font-weight: 700; border: 1px solid rgba(240,180,41,0.2); }
+  .equip-tag { display: inline-block; font-size: 11px; padding: 3px 8px; border-radius: 2px; background: var(--bg3); color: var(--text); border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
+  .bless-tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 2px; background: rgba(230, 176, 30, 0.08); color: var(--gold); font-weight: 800; border: 1px solid rgba(230, 176, 30, 0.2); }
 
-  .journey-list { display: flex; flex-wrap: wrap; gap: 4px; }
-  .j-tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: rgba(74,158,255,0.08); color: var(--blue); border: 1px solid rgba(74,158,255,0.18); white-space: nowrap; }
+  .journey-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .j-tag { font-size: 11px; padding: 2px 8px; border-radius: 3px; background: rgba(0, 125, 187, 0.08); color: var(--blue-light); border: 1px solid rgba(0, 125, 187, 0.2); }
 
-  .dps-val { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--green); white-space: nowrap; }
-  .maxhit-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+  .dps-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; color: #4CAF50; }
+  .maxhit-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
 
   .traj-section { margin-top: 12px; }
   .traj-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
@@ -396,15 +633,15 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 
 <header>
   <div class="logo">⭐ Star Savior</div>
-  <span style="color:var(--text3);font-size:13px;">구원자 최적화 가이드</span>
+  <span style="color:var(--text3);font-size:13px;">{{HEADER_SUB}}</span>
   <div class="header-sep"></div>
-  <div class="update-badge">업데이트: %%UPDATE_DATE%%</div>
+  <div class="update-badge">{{UPDATE}}: %%UPDATE_DATE%%</div>
 </header>
 
 <div class="search-wrap">
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="캐릭터 이름으로 검색..." oninput="filterChars()">
+    <input type="text" id="searchInput" placeholder="{{SEARCH_PH}}" oninput="filterChars()">
   </div>
 </div>
 
@@ -413,65 +650,66 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
   <main class="main" id="main">
     <div class="custom-sim-wrap">
       <h2 style="font-size:16px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
-        ⚙️ 실시간 커스텀 시뮬레이터 <span class="badge-boss" style="padding: 2px 6px; border-radius: 4px; font-size: 10px;">AX 축복 고정</span>
+        ⚙️ {{SIM_TITLE}} <span class="badge-boss" style="padding: 2px 6px; border-radius: 4px; font-size: 10px;">{{SIM_AX_BADGE}}</span>
       </h2>
       <div class="form-grid">
         <div class="form-group">
-          <label>캐릭터</label>
+          <label>{{SIM_CHAR}}</label>
           <select id="simCharBase" onchange="updateSimDropdowns('base')">
             <option value="">불러오는 중...</option>
           </select>
         </div>
         <div class="form-group">
-          <label>패시브/특수환경</label>
+          <label>{{SIM_SPEC}}</label>
           <select id="simSpec" onchange="updateSimDropdowns('spec')">
             <option value="-">-</option>
           </select>
         </div>
         <div class="form-group" id="simPassiveWrap" style="display:none;">
-           <label>패시브 레벨</label>
+           <label>{{SIM_PASSIVE_LV}}</label>
            <select id="simPassive">
-             <option value="base">최대 (4lv)</option>
+             <option value="base">{{SIM_LV4}}</option>
+             <option value="1lv">{{SIM_LV1}}</option>
            </select>
         </div>
         <div class="form-group">
-          <label>타겟 환경</label>
+          <label>{{SIM_TARGET}}</label>
           <select id="simTarget">
-            <option value="3">일반 모드 (3인)</option>
-            <option value="1">보스 모드 (1인)</option>
-            <option value="4">건틀릿 레이드 (4인)</option>
+            <option value="3">{{SIM_NORMAL}}</option>
+            <option value="1">{{SIM_BOSS}}</option>
+            <option value="4">{{SIM_GAUNTLET}}</option>
           </select>
         </div>
         <div class="form-group">
-          <label>시뮬레이션 기간</label>
+          <label>{{SIM_DURATION}}</label>
           <select id="simTurns">
-            <option value="15">장기전 (15턴)</option>
-            <option value="10">중기전 (10턴)</option>
-            <option value="5">단기전 (5턴)</option>
-            <option value="3">건틀릿 버스트 (3턴)</option>
+            <option value="15">{{SIM_LONG}}</option>
+            <option value="10">{{SIM_MID}}</option>
+            <option value="5">{{SIM_SHORT}}</option>
+            <option value="3">{{SIM_BURST}}</option>
           </select>
         </div>
       </div>
       <div class="form-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
         <div class="form-group">
-          <label>공격력 (%)</label>
+          <label>{{SIM_ATK}}</label>
           <input type="number" id="simAtk" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>치확 (%)</label>
+          <label>{{SIM_CR}}</label>
           <input type="number" id="simCr" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>치피 (%)</label>
+          <label>{{SIM_CD}}</label>
           <input type="number" id="simCd" value="0.0" step="0.1">
         </div>
         <div class="form-group">
-          <label>속도</label>
+          <label>{{SIM_SPD}}</label>
           <input type="number" id="simSpd" value="0.0" step="0.1">
         </div>
       </div>
       <button class="sim-btn" id="simBtn" py-click="run_simulation" disabled>
-        <span class="btn-text">엔진 로딩 중... (최초 1회 수 초 소요)</span>
+        <span class="btn-text">{{SIM_LOADING}}</span>
         <div class="loader" id="simLoader"></div>
       </button>
       <div id="simStatus" style="margin-top: 10px; font-size: 11px; color: var(--text3); font-family: 'JetBrains Mono', monospace; display: none; padding: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px;"></div>
@@ -485,17 +723,9 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 
 <script>
 const data = %%DATA_JSON%%;
+const LANG = "{{LANG}}";
 
-const badgeMap = {
-  moon: { cls:"badge-moon", label:"달속성 파티" },
-  bunny: { cls:"badge-bunny", label:"바니걸" },
-  passive: { cls:"badge-passive", label:"패시브 1lv" },
-  passive4: { cls:"badge-passive4", label:"패시브 4lv (최대)" },
-  noult: { cls:"badge-noult", label:"궁극기 미사용" },
-  boss: { cls:"badge-boss", label:"보스 1인" },
-  normal: { cls:"badge-normal", label:"일반 3인" },
-  gauntlet: { cls:"badge-gauntlet", label:"건틀릿 4인" },
-};
+const badgeMap = %%BADGE_MAP%%;
 
 function renderBadges(badges) {
   return badges.map(b => `<span class="char-badge ${badgeMap[b].cls}">${badgeMap[b].label}</span>`).join('');
@@ -551,21 +781,21 @@ function buildCard(char) {
       <span class="char-name">${char.name}</span>
       ${renderBadges(char.badges)}
       <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
-        <span class="dps-label">${char.badges.includes('gauntlet') ? '최고 Total Dmg (3T)' : '최고 DPS'}</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
+        <span class="dps-label">${char.badges.includes('gauntlet') ? '{{LABEL_PEAK_TOTAL}}' : '{{LABEL_PEAK_DPS}}'}</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
         <span class="chevron">▼</span>
       </div>
     </div>
     <div class="char-body">
       <div class="strat-tabs">
-        <button class="strat-tab active-std" id="tab-std-${char.id}" onclick="switchTab('${char.id}','std')">🔹 일반 전략 (궁극기 사용)</button>
-        <button class="strat-tab" id="tab-alt-${char.id}" onclick="switchTab('${char.id}','alt')">🔸 노울트 전략 (AX 특화)</button>
+        <button class="strat-tab active-std" id="tab-std-${char.id}" onclick="switchTab('${char.id}','std')">{{TAB_STD}}</button>
+        <button class="strat-tab" id="tab-alt-${char.id}" onclick="switchTab('${char.id}','alt')">{{TAB_ALT}}</button>
       </div>
 
       <div class="strat-panel visible" id="${stdId}">
         <table class="rank-table">
           <thead>
             <tr>
-              <th>순위</th><th>장비 세트</th><th>축복</th><th>최적 여정 조합 (Top 5)</th><th>DPS</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th>
+              <th>{{TH_RANK}}</th><th>{{TH_GEAR}}</th><th>{{TH_BLESS}}</th><th>{{TH_JOURNEY}}</th><th>{{TH_DPS}}</th><th>{{TH_MAXHIT}}</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th>
             </tr>
           </thead>
           <tbody>
@@ -586,17 +816,17 @@ function buildCard(char) {
           </tbody>
         </table>
         <div class="traj-section">
-          <div class="traj-title">빌드 진화 경로</div>
+          <div class="traj-title">{{TRAJ_TITLE}}</div>
           ${trajSections}
         </div>
       </div>
 
       <div class="strat-panel" id="${altId}">
-        <div style="font-size:12px;color:var(--text3);margin-bottom:12px;">궁극기를 포기하고 AX 스택 피해량에 올인한 특수 상황용 고점 빌드입니다.</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:12px;">{{ALT_DESC}}</div>
         <div class="peak-box">
           <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
             <div style="display:flex; align-items:center; gap:8px;">
-               <span class="peak-label">최고점</span>
+               <span class="peak-label">{{PEAK_BUILD}}</span>
                <span class="peak-equip"><span class="equip-tag">${char.alt.equip}</span>&nbsp;<span class="bless-tag">${char.alt.bless}</span></span>
                <span class="peak-dps" style="margin-left:auto;">${fmt(char.alt.dps)}</span>
             </div>
@@ -614,7 +844,7 @@ function buildCard(char) {
 
 function buildSidebar() {
   const sidebar = document.getElementById('sidebar');
-  let html = `<div class="sidebar-title">구원자 목록</div>`;
+  let html = `<div class="sidebar-title">{{SIDEBAR_TITLE}}</div>`;
   data.forEach(c => {
     const badgeText = c.badges.map(b => badgeMap[b].label).join(' · ');
     html += `<button class="nav-item" id="nav-${c.id}" onclick="scrollToCard('${c.id}')">${c.name}${badgeText ? `<br><span style="font-size:10px;color:var(--text3);">${badgeText}</span>` : ''}</button>`;
@@ -684,10 +914,13 @@ function buildCharTree() {
     }
     
     // Parse spec and level from raw if possible
-    let spec = 'Standard';
-    if (raw.includes('달속성파티')) spec = '달속성 파티';
-    if (raw.includes('바니걸')) spec = '바니걸';
-    if (raw.includes('궁극기미사용')) spec = '궁극기 미사용 (AX특화)';
+    const isEn = (LANG === 'en');
+    let spec = isEn ? 'Standard' : 'Standard'; // Just a placeholder, we use mapping below
+    
+    if (raw.includes('달속성파티')) spec = isEn ? 'Moon Team' : '달속성 파티';
+    else if (raw.includes('바니걸')) spec = isEn ? 'Bunny Girl' : '바니걸';
+    else if (raw.includes('궁극기미사용')) spec = isEn ? 'No Ult (AX Spec)' : '궁극기 미사용 (AX특화)';
+    else spec = isEn ? 'Standard' : '일반';
     
     let lv = '4lv';
     if (raw.includes('1lv')) lv = '1lv';
@@ -740,12 +973,18 @@ function updateSimDropdowns(trigger) {
   
   // Reset target select
   let targetHtml = '';
-  if (availableTargets.includes('1') || availableTargets.includes('both')) 
-    targetHtml += `<option value="1">보스전 (1인)</option>`;
-  if (availableTargets.includes('3') || availableTargets.includes('both')) 
-    targetHtml += `<option value="3">일반전 (3인)</option>`;
+  const isEn = (LANG === 'en');
+  
+  if (availableTargets.includes('1') || availableTargets.includes('both')) {
+    const label = isEn ? "Boss Mode (1 Unit)" : "보스전 (1인)";
+    targetHtml += `<option value="1">${label}</option>`;
+  }
+  if (availableTargets.includes('3') || availableTargets.includes('both')) {
+    const label = isEn ? "Normal Mode (3 Units)" : "일반전 (3인)";
+    targetHtml += `<option value="3">${label}</option>`;
+  }
     
-  targetSelect.innerHTML = targetHtml || `<option value="3">기본 (3인)</option>`;
+  targetSelect.innerHTML = targetHtml || `<option value="3">${isEn ? 'Basic (3 Units)' : '기본 (3인)'}</option>`;
 }
 
 // Init
@@ -766,18 +1005,35 @@ import sys
 import json
 import asyncio
 import datetime
+import os
+import base64
 from js import document, console
 from pyodide.ffi import create_proxy
 
-# VFS Diagnostic
-import os
-print(f"Current Working Directory: {os.getcwd()}")
-try:
-    for root, dirs, files in os.walk("/home/pyodide"):
-        for name in files:
-            print(f"VFS FILE: {os.path.join(root, name)}")
-except:
-    pass
+# VFS Manual Injection (Bypass CORS for file:// protocol)
+def setup_vfs():
+    print("Initializing Virtual Filesystem...")
+    vfs_script = document.getElementById("vfs-bundled")
+    if not vfs_script:
+        print("CRITICAL: VFS data not found in HTML!")
+        return
+    
+    files = json.loads(vfs_script.innerHTML)
+    for path, content in files.items():
+        # Create directories if needed
+        dirs = os.path.dirname(path)
+        if dirs and not os.path.exists(dirs):
+            os.makedirs(dirs, exist_ok=True)
+            
+        if content.startswith("BASE64:"):
+            with open(path, "wb") as f:
+                f.write(base64.b64decode(content[7:]))
+        else:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(content)
+        print(f"VFS Mount: {path} ({len(content)} bytes)")
+
+setup_vfs()
 
 # Setup Engine
 import Core.calc_engine_v5 as calc_engine
@@ -966,23 +1222,110 @@ pass
 </html>'''
 
 
-def generate_html(md_path: str, output_path: str):
+def get_vfs_bundle():
+    bundle = {}
+    files_to_bundle = [
+        "Core/__init__.py",
+        "Core/calc_engine_v5.py",
+        "Core/data_loader_v5.py",
+        "Core/models_v5.py",
+        "Core/gear_sensitivity_v5.py",
+        "Data/characters.json",
+        "Data/equipments.json",
+        "Data/사이클_로테이션_마스터.md",
+        "Data/캐릭터_스펙_마스터.md"
+    ]
+    for fpath in files_to_bundle:
+        full_path = os.path.join(os.path.dirname(__file__), fpath)
+        if os.path.exists(full_path):
+            mode = "rb"
+            with open(full_path, mode) as f:
+                content = f.read()
+                try:
+                    # Try as text first
+                    bundle[fpath] = content.decode("utf-8")
+                except:
+                    # Fallback to base64 if it's binary or has encoding issues
+                    import base64
+                    bundle[fpath] = "BASE64:" + base64.b64encode(content).decode("ascii")
+        else:
+            print(f"Warning: Build file not found: {fpath}")
+    return bundle
+
+
+def generate_html(md_path: str, output_path: str, lang: str = "ko"):
     characters, update_date = parse_optimization_guide(md_path)
-
+    
+    # Translate data content if English
+    if lang == "en":
+        characters = translate_data_recursive(characters, lang)
+        
     data_json = json.dumps(characters, ensure_ascii=False, indent=2)
-
-    html = HTML_TEMPLATE.replace('%%DATA_JSON%%', data_json)
+    vfs_data = json.dumps(get_vfs_bundle(), ensure_ascii=False)
+    
+    t = TRANSLATIONS.get(lang, TRANSLATIONS["ko"])
+    
+    html = HTML_TEMPLATE
+    html = html.replace('%%DATA_JSON%%', data_json)
+    html = html.replace('%%VFS_DATA%%', vfs_data)
     html = html.replace('%%UPDATE_DATE%%', update_date)
+    html = html.replace('%%BADGE_MAP%%', json.dumps(t["badges"], ensure_ascii=False))
+    
+    # UI String Replacements
+    html = html.replace('{{TITLE}}', t["title"])
+    html = html.replace('{{HEADER_SUB}}', t["header_sub"])
+    html = html.replace('{{UPDATE}}', t["update"])
+    html = html.replace('{{SEARCH_PH}}', t["search_ph"])
+    html = html.replace('{{SIM_TITLE}}', t["sim_title"])
+    html = html.replace('{{SIM_AX_BADGE}}', t["sim_ax_badge"])
+    html = html.replace('{{SIM_CHAR}}', t["sim_char"])
+    html = html.replace('{{SIM_SPEC}}', t["sim_spec"])
+    html = html.replace('{{SIM_PASSIVE_LV}}', t["sim_passive_lv"])
+    html = html.replace('{{SIM_LV4}}', t["sim_lv4"])
+    html = html.replace('{{SIM_LV1}}', t["sim_lv1"])
+    html = html.replace('{{SIM_TARGET}}', t["sim_target"])
+    html = html.replace('{{SIM_NORMAL}}', t["sim_normal"])
+    html = html.replace('{{SIM_BOSS}}', t["sim_boss"])
+    html = html.replace('{{SIM_GAUNTLET}}', t["sim_gauntlet"])
+    html = html.replace('{{SIM_DURATION}}', t["sim_duration"])
+    html = html.replace('{{SIM_LONG}}', t["sim_long"])
+    html = html.replace('{{SIM_MID}}', t["sim_mid"])
+    html = html.replace('{{SIM_SHORT}}', t["sim_short"])
+    html = html.replace('{{SIM_BURST}}', t["sim_burst"])
+    html = html.replace('{{SIM_ATK}}', t["sim_atk"])
+    html = html.replace('{{SIM_CR}}', t["sim_cr"])
+    html = html.replace('{{SIM_CD}}', t["sim_cd"])
+    html = html.replace('{{SIM_SPD}}', t["sim_spd"])
+    html = html.replace('{{SIM_LOADING}}', t["sim_loading"])
+    html = html.replace('{{SIM_RUN}}', t["sim_run"])
+    html = html.replace('{{SIDEBAR_TITLE}}', t["sidebar_title"])
+    html = html.replace('{{LABEL_PEAK_DPS}}', t["label_peak_dps"])
+    html = html.replace('{{LABEL_PEAK_TOTAL}}', t["label_peak_total"])
+    html = html.replace('{{TAB_STD}}', t["tab_std"])
+    html = html.replace('{{TAB_ALT}}', t["tab_alt"])
+    html = html.replace('{{TH_RANK}}', t["th_rank"])
+    html = html.replace('{{TH_GEAR}}', t["th_gear"])
+    html = html.replace('{{TH_BLESS}}', t["th_bless"])
+    html = html.replace('{{TH_JOURNEY}}', t["th_journey"])
+    html = html.replace('{{TH_DPS}}', t["th_dps"])
+    html = html.replace('{{TH_MAXHIT}}', t["th_maxhit"])
+    html = html.replace('{{TRAJ_TITLE}}', t["traj_title"])
+    html = html.replace('{{ALT_DESC}}', t["alt_desc"])
+    html = html.replace('{{PEAK_BUILD}}', t["peak_build"])
+    html = html.replace('{{LANG}}', lang)
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"[OK] HTML generated: {output_path}")
-    print(f"     Characters: {len(characters)}")
-    print(f"     Update date: {update_date}")
+    print(f"[OK] HTML generated ({lang}): {output_path}")
 
 
 if __name__ == "__main__":
-    md_input = sys.argv[1] if len(sys.argv) > 1 else "Results/optimization_guide.md"
-    html_output = sys.argv[2] if len(sys.argv) > 2 else "Results/optimization_guide.html"
-    generate_html(md_input, html_output)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--md", default="Results/optimization_guide.md")
+    parser.add_argument("--out", default="index.html")
+    parser.add_argument("--lang", default="ko")
+    args = parser.parse_args()
+    
+    generate_html(args.md, args.out, args.lang)
