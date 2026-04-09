@@ -6,6 +6,7 @@ generate_html.py — optimization_guide.md → HTML 변환기
 import re
 import json
 import sys
+import os
 
 def parse_optimization_guide(md_path: str) -> list:
     """Parse optimization_guide.md and return a list of character data dicts."""
