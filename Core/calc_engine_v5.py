@@ -299,9 +299,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                     ign_di = 0.10
                     ros_ign_stack = 0
                 m_di += ign_di
-            # Ult gives Ignition +3
-            if is_ult:
-                ros_ign_stack = min(5, ros_ign_stack + 3)
+                # Ult gain is handled after eff_cr calculation below
+                pass
         
         # Trigger Passives (v15.0 Dynamic Triggers)
         
@@ -470,6 +469,11 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                 
         eff_cr = min(1.0, final_cr)
         eff_cd = final_cd
+        
+        # Rosaria Dynamic Ignition Stack (v5.1)
+        if is_rosaria and is_ult:
+            # Ignition + min(crit_hits, 3). Statistical expected value: target_count * eff_cr
+            ros_ign_stack = min(5, ros_ign_stack + min(target_count * eff_cr, 3))
         
         # Jackpot logic removed (handled by JSON)
         # if is_frey and is_basic and frey_hr >= 5:
