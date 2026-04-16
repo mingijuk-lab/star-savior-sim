@@ -829,7 +829,7 @@ function buildCard(char) {
       <span class="char-name">${char.name}</span>
       ${renderBadges(char.badges)}
       <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
-        <span class="dps-label">${char.badges.includes('gauntlet') ? '{{LABEL_PEAK_TOTAL}}' : '{{LABEL_PEAK_DPS}}'}</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
+        <span class="dps-label">{{LABEL_PEAK_DPS}}</span><span class="dps-peak">${fmt(char.peakDPS)}</span>
         <span class="chevron">▼</span>
       </div>
     </div>
@@ -1240,7 +1240,7 @@ async def run_simulation(e):
         calc_engine.EQUIPMENTS = calc_engine.setup_equipments(sim_vars)
         
         sim_turns = int(document.getElementById("simTurns").value)
-        metric_label = "Total Dmg" if sim_turns <= 5 else "DPS"
+        metric_label = S.get("th_dps", "DPS")
         
         html_out = f"<h3>{S['res_title']} <span style='font-size:12px; color:var(--text3); font-weight:normal;'>({sim_turns}T {S['res_opt']})</span></h3><table class='rank-table'><thead><tr><th>{S['th_gear']}</th><th>{metric_label}</th><th>MaxHit</th><th>ATK</th><th>CR</th><th>CD</th><th>SPD</th><th>{S['th_journey']}</th></tr></thead><tbody>"
         
@@ -1270,7 +1270,7 @@ async def run_simulation(e):
             
             # Re-run for the specific turn count to get correct final metrics (redundant but safe)
             dps_final, total_final, _, _, std_max, std_stats = calc_engine.calculate_dps(char_name, cdata, rdata, eq_name, std_jrs, std_bless, sim_turns, False, target_count=target_count, force_moon_party=force_moon_party)
-            std_val = total_final if sim_turns <= 5 else dps_final
+            std_val = dps_final
             
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs, std_stats))
             
