@@ -1,0 +1,19716 @@
+# 사이클 로테이션 마스터 (v14.1/v6)
+
+> **설명**: 시뮬레이션 엔진이 참조하는 공인 로테이션 데이터입니다. 가독성을 위해 테이블 형식을 제공하며, 하단의 JSON 블록은 엔진 파싱용입니다.
+
+## 📋 캐릭터 목차
+
+- [레이시](#레이시)
+- [로자리아](#로자리아)
+- [로자리아(패시브1lv)](#로자리아패시브1lv)
+- [루나](#루나)
+- [리디아](#리디아)
+- [릴리](#릴리)
+- [뮤리엘](#뮤리엘)
+- [벨리스](#벨리스)
+- [린](#린)
+- [샤를(바니걸)](#샤를바니걸)
+- [샤를(바니걸)(궁극기미사용)](#샤를바니걸궁극기미사용)
+- [샤를(바니걸)(패시브1lv)](#샤를바니걸패시브1lv)
+- [스마일](#스마일)
+- [스칼렛(바니걸)](#스칼렛바니걸)
+- [아세라](#아세라)
+- [에핀델](#에핀델)
+- [유미나](#유미나)
+- [유미나(패시브1lv)](#유미나패시브1lv)
+- [클레어(바니걸)](#클레어바니걸)
+- [키라](#키라)
+- [프레이](#프레이)
+- [프레이(달속성파티)](#프레이달속성파티)
+- [프레이(달속성파티, 1lv)](#프레이달속성파티,-1lv)
+- [힐데](#힐데)
+
+---
+
+## 레이시
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 2.10 | 0.35 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "레이시": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 2.1,
+        "di": 0.35,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 로자리아
+
+- **사이클 길이**: 64 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 15
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T2 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T2+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T3 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T4 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T5 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T7 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T8 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T8+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T9 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T10 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T11 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T12 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T12+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T13 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T14 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T15 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15+ | **BASIC(+)** | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B_추가 (업화3+) |
+| T16 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T17 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T18 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T18+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T19 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T20 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T22 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T22+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T23 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T24 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| ... | ... | ... | ... | ... | ... | (총 64턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "로자리아": {
+    "cycle_length": 64,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "upwa_stack": 0,
+        "note": "T1 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "upwa_stack": 3,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "upwa_stack": 3,
+        "note": "T2+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "upwa_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "upwa_stack": 0.4,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "upwa_stack": 1.0,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "upwa_stack": 0,
+        "note": "T6 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "upwa_stack": 3,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 4.0,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4.0,
+        "note": "T8+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T11 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T12+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T15+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T16 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T18+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T21 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T22+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T25 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T25+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T26 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T28+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T31 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T32+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T35+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T36 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T38+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T41 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T42+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T45 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T45+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T46 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T48+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 로자리아(패시브1lv)
+
+- **사이클 길이**: 64 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 15
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T2 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T2+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T3 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T4 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T5 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T7 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T8 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T8+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T9 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T10 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T11 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T12 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T12+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T13 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T14 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T15 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15+ | **BASIC(+)** | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B_추가 (업화3+) |
+| T16 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T17 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T18 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T18+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T19 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T20 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (행게+50%) |
+| T22 | SPEC | 1.80 | 0.20 | 0.00 | 0.00 | 0.00 | 1.15 | S |
+| T22+ | **BASIC(+)** | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B_추가 (업화3+) |
+| T23 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| T24 | BASIC | 1.50 | 0.30 | 0.00 | 0.00 | 0.00 | 1.15 | B |
+| ... | ... | ... | ... | ... | ... | (총 64턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "로자리아(패시브1lv)": {
+    "cycle_length": 64,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "upwa_stack": 0,
+        "note": "T1 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "upwa_stack": 3,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "upwa_stack": 3,
+        "note": "T2+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "upwa_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "upwa_stack": 0.4,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "upwa_stack": 1.0,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "upwa_stack": 0,
+        "note": "T6 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "upwa_stack": 3,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 4.0,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4.0,
+        "note": "T8+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T11 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T12+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T15+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T16 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T18+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T21 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T22+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T25 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T25+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T26 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T28+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T31 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T32+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T35+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T36 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T38+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T41 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5,
+        "note": "T42+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T45 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 3.0,
+        "note": "T45+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T46 U (행게+50%)",
+        "ag_boost": 0.5
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 4,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.8,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 5.0,
+        "note": "T48+ B_추가 (업화3+)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.3,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.15,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 1,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "upwa_stack": 2.0,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 루나
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T3 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T4 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T7 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T8 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T11 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T12 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T15 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T16 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T19 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T20 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T23 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T24 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| T27 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | B |
+| T28 | BASIC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.20 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "루나": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 리디아
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 15
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T7 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T9 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T10 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T11 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T12 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T13 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T14 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T15 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T16 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T17 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T18 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T26 | ULT | 2.15 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T27 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | SPEC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T29 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T30 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "리디아": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T11 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T16 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T31 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T36 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 릴리
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.65 | 0.15 | 0.00 | 0.15 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 0.00 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "릴리": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.15,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 뮤리엘
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 15
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T9 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T11 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T12 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T13 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T14 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T15 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T16 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T17 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T18 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T26 | ULT | 1.66 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T29 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T30 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "뮤리엘": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T11 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T16 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 S"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T31 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T36 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 S"
+      },
+      {
+        "coeff": 1.6625,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 벨리스
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 15
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T4 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T5 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | U |
+| T7 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T8 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T9 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T10 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T11 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T12 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T13 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T14 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T15 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T16 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | U |
+| T17 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T18 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T20 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T21 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T24 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T25 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T26 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | U |
+| T27 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T28 | SPEC | 1.60 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T29 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T30 | BASIC | 1.65 | 0.10 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "벨리스": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T11 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T16 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T31 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T36 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.6,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 샤를(바니걸)
+
+- **사이클 길이**: 75 액션
+- **궁극기 횟수**: 12
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T2+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T3 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T3+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T4 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T6+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T7 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T7+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T8 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T9 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T10+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T11 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T11+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T12 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T13 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T14+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T15 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T15+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T16 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T18+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T19 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T19+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T20 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| ... | ... | ... | ... | ... | ... | (총 75턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "샤를(바니걸)": {
+    "cycle_length": 75,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T2 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T2+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T3+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T4 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T6+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T7+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T8 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T10+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T12 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T14+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T15+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T16 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T18 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T18+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T19+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T20 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T22+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T23+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T24 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T26+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T27+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T30+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T31+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T32 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T34+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T35+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T36 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T38+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T39+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T40 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T42+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T43+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T44 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T46 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T46+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T47+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T50 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T50+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 샤를(바니걸)(궁극기미사용)
+
+- **사이클 길이**: 74 액션
+- **궁극기 횟수**: 1
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | ULT | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | U |
+| T3 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T3+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T4 | BASIC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T6+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T7 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T7+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T8 | BASIC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T10+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T11 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T11+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T12 | BASIC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T14+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T15 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T15+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T16 | BASIC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T18+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T19 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T19+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T20 | BASIC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 74턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "샤를(바니걸)(궁극기미사용)": {
+    "cycle_length": 74,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "note": "T2 U"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T6+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T7+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T10+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T11+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T14+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T18 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T18+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T22+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T26+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T34+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T38+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T42+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T46 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T46+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 샤를(바니걸)(패시브1lv)
+
+- **사이클 길이**: 75 액션
+- **궁극기 횟수**: 12
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T2+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T3 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T3+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T4 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T6+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T7 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T7+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T8 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T9 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T10+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T11 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T11+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T12 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T13 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T14+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T15 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T15+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T16 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T18+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T19 | BASIC | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B |
+| T19+ | **BASIC(+)** | 1.40 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | B_추가 (럭키토큰) |
+| T20 | ULT | 1.90 | 0.40 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| ... | ... | ... | ... | ... | ... | (총 75턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "샤를(바니걸)(패시브1lv)": {
+    "cycle_length": 75,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T2 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T2+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T3+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T4 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T6+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T7+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T8 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T10+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T12 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T14+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T15+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T16 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T18 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T18+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T19+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T20 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T22+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T23+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T24 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T26+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T27+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T30+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T31+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T32 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T34+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T35+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T36 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T38+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T39+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T40 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T42+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T43+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T44 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T46 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T46+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T47+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.4,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T50 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T50+ B_추가 (럭키토큰)",
+        "is_extra_attack": true
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 스마일
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 37
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T4 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T5 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T8 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T9 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T12 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T13 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T16 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T17 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T20 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T21 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T24 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T25 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T28 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T29 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.30 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "스마일": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T3 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T4 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T7 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T8 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T11 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T12 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T15 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T16 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T19 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T20 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T23 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T24 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T27 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T28 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T31 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T32 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T35 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T36 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T39 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T40 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T43 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T44 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T47 S"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T48 S"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.3,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 스칼렛(바니걸)
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 9
+- **특수기 횟수**: 11
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | ULT | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T9 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T18 | ULT | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T19 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T22 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T23 | ULT | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T24 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T25 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T26 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | ULT | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T29 | SPEC | 1.70 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T30 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "스칼렛(바니걸)": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T2 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "note": "T5 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T8 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T9 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T17 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T19 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T21 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T23 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T24 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T25 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T37 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T39 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T41 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T43 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T44 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T45 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T46 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T48 U"
+      },
+      {
+        "coeff": 1.7,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 아세라
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T5 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T9 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T12 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T13 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T17 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T24 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T25 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.20 | B |
+| T28 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.20 | B |
+| T29 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "아세라": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.2,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 에핀델
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.65 | 0.20 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "에핀델": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.2,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 유미나
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.50 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.50 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.90 | 0.15 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "유미나": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "yumina_hit_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "yumina_hit_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "yumina_hit_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "yumina_hit_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "yumina_hit_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 유미나(패시브1lv)
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "유미나(패시브1lv)": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "yumina_hit_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "yumina_hit_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "yumina_hit_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "yumina_hit_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "yumina_hit_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "yumina_hit_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 클레어(바니걸)
+
+- **사이클 길이**: 62 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T3 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T4 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T4+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| T5 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T7 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T8 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T8+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| T9 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T11 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T12 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T12+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| T13 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T15 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T16 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T16+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| T17 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T19 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T20 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T20+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| T21 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.55 | 0.15 | 0.00 | 0.20 | 0.20 | 1.00 | S |
+| T23 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T24 | BASIC | 1.50 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | B |
+| T24+ | **SPEC(+)** | 1.55 | 0.15 | 0.30 | 0.20 | 0.20 | 1.00 | S_추가 (냉각5) |
+| ... | ... | ... | ... | ... | ... | (총 62턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "클레어(바니걸)": {
+    "cycle_length": 62,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T4+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T8+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T12+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T16+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T20+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T24+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T28+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T32+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T36+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T40+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T44+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T48+ S_추가 (냉각5)",
+        "is_extra_attack": true
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.55,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.2,
+        "cd_buf": 0.2,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 키라
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 2.15 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.90 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "키라": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 2.15,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.9,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 프레이
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T3 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T7 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T8 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T9 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T12 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T13 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T19 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T20 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T21 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T22 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T23 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T24 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T25 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T26 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T28 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T29 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T30 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "프레이": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "hr_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "hr_stack": 0,
+        "note": "T2 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "hr_stack": 3,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "hr_stack": 3,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T7 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T8 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T12 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T18 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T19 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T23 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T30 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T34 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T39 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T40 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T44 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T46 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T50 U"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 프레이(달속성파티)
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T3 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T4 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T7 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T8 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T9 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T12 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T13 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T19 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T20 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T21 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T22 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T23 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T24 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T25 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T26 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T28 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T29 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T30 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "프레이(달속성파티)": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "hr_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "hr_stack": 1,
+        "note": "T2 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "hr_stack": 5,
+        "note": "T3 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "hr_stack": 0,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "hr_stack": 1,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T7 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T8 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T12 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T14 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T18 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T19 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T23 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T24 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T30 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T34 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T35 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T39 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T40 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T44 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T46 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T50 U"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 프레이(달속성파티, 1lv)
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T2 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T3 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T4 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T5 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T6 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T7 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T8 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T9 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T11 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T12 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T13 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T14 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T15 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T17 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T18 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T19 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T20 | BASIC | 1.65 | 0.15 | 0.30 | 0.30 | 0.00 | 1.00 | B |
+| T21 | SPEC | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T22 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T23 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T24 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| T25 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T26 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T27 | BASIC | 1.65 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | B |
+| T28 | ULT | 1.40 | 0.15 | 0.00 | 0.30 | 0.00 | 1.00 | U |
+| T29 | SPEC | 0.00 | 0.00 | 0.30 | 0.00 | 0.00 | 1.00 | S |
+| T30 | BASIC | 1.65 | 1.15 | 0.30 | 0.30 | 0.00 | 1.00 | B_강제협상 (HR5) |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "프레이(달속성파티, 1lv)": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "hr_stack": 0,
+        "note": "T1 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 3,
+        "hr_stack": 1,
+        "note": "T2 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "hr_stack": 5,
+        "note": "T3 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "hr_stack": 0,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "hr_stack": 1,
+        "note": "T5 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T6 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T7 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T8 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T9 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T12 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T13 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T14 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T17 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T18 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T19 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T21 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T22 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T23 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T24 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T25 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T26 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T28 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T29 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T30 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T33 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T34 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T35 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T37 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T39 U"
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T40 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T41 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T42 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T44 U"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.3,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T45 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.65,
+        "di": 1.15,
+        "atk_buf": 0.3,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 5,
+        "note": "T46 B_강제협상 (HR5)",
+        "ag_boost": 0.3
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 0,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "hr_stack": 1,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 0.0,
+        "di": 0.0,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 2,
+        "note": "T49 S",
+        "is_extra_turn": true
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.3,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "hr_stack": 3,
+        "note": "T50 U"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 힐데
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 13
+- **특수기 횟수**: 13
+
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T2 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T3 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T6 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T7 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T8 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T10 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T11 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T12 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T13 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T14 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T15 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T16 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T17 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T18 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T19 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T20 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T21 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T22 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T23 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T24 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T25 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T26 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| T27 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T28 | BASIC | 1.50 | 0.10 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T29 | ULT | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U |
+| T30 | SPEC | 1.50 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 30턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "힐데": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T1 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 0,
+        "note": "T2 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 0,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 1,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T5 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 2,
+        "note": "T6 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 2,
+        "note": "T7 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 3,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T9 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 4,
+        "note": "T10 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 4,
+        "note": "T11 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T12 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T13 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T14 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T16 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T17 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T18 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T21 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T22 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T25 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T26 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T27 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T29 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T30 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T31 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T32 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T33 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T34 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T36 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T37 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T38 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T41 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T42 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T45 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T46 S"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T47 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.1,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "attribute_stack": 5,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T49 U"
+      },
+      {
+        "coeff": 1.5,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "attribute_stack": 5,
+        "note": "T50 S"
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
+## 린
+
+- **사이클 길이**: 50 액션
+- **궁극기 횟수**: 10
+- **특수기 횟수**: 10
+
+### 단일 대상 최적화 루프
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | SPEC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S (추가턴) |
+| T2 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (단일) |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T6 | SPEC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S (추가턴) |
+| T7 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (단일) |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+
+### 전체 대상 최적화 루프
+| 순서 | 행동 | 계수 | DI | ATK | CR | CD | SPD | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| T1 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (추가턴) |
+| T2 | SPEC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S (도약+3) |
+| T3 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T4 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T5 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T6 | ULT | 1.52 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | U (추가턴) |
+| T7 | SPEC | 1.40 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | S (도약+3) |
+| T8 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T9 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| T10 | BASIC | 1.65 | 0.15 | 0.00 | 0.00 | 0.00 | 1.00 | B |
+| ... | ... | ... | ... | ... | ... | (총 50턴 중 10턴까지 표시) |
+
+<details>
+<summary>⚙️ 엔진 파싱용 JSON 데이터</summary>
+
+```json
+{
+  "린": {
+    "cycle_length": 50,
+    "turns": [
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T1 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T2 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T5 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T6 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T7 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T11 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T12 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T16 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T17 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T18 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T21 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T22 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T25 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T26 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T27 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T31 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T32 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T36 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T37 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T41 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T42 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T45 B"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T46 S (추가턴)"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T47 U (단일)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T50 B"
+      }
+    ],
+    "turns_광역": [
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T1 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T2 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T3 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T4 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T5 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T6 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T7 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T8 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T9 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T10 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T11 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T12 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T13 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T14 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T15 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T16 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T17 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T18 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T19 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T20 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T21 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T22 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T23 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T24 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T25 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T26 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T27 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T28 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T29 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T30 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T31 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T32 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T33 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T34 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T35 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T36 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T37 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T38 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T39 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T40 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T41 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T42 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T43 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T44 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T45 B"
+      },
+      {
+        "coeff": 1.525,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": true,
+        "is_basic": false,
+        "is_extra_turn": true,
+        "note": "T46 U (추가턴)"
+      },
+      {
+        "coeff": 1.4,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": false,
+        "is_extra_turn": false,
+        "note": "T47 S (도약+3)"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T48 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T49 B"
+      },
+      {
+        "coeff": 1.65,
+        "di": 0.15,
+        "atk_buf": 0.0,
+        "cr_buf": 0.0,
+        "cd_buf": 0.0,
+        "def_pen_buf": 0.0,
+        "spd_mult": 1.0,
+        "is_ult": false,
+        "is_basic": true,
+        "is_extra_turn": false,
+        "note": "T50 B"
+      }
+    ]
+  }
+}
+```
+</details>
+---
