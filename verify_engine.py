@@ -34,8 +34,8 @@ def verify():
     eq_name = list(engine.EQUIPMENTS.keys())[0]
     print(f"Using test equipment: {eq_name}")
     
-    # Test cases: Frey (Moon Party) and Claire
-    test_cases = ["프레이(달속성파티)", "클레어(바니걸)"]
+    # Test cases: Frey (Moon Party), Claire, Lin, and Bunny Girl Charles
+    test_cases = ["프레이(달속성파티)", "클레어(바니걸)", "린", "샤를(바니걸)"]
     
     for cname in test_cases:
         print(f"\n[Character: {cname}]")

@@ -181,8 +181,21 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     yumina_atk_stack = 0    # Yumina's Passive (4% x 5)
     bleeding_dots = []
     
+    # Lin (린) States
+    lin_leap_stack = 0
+    lin_bright_moon_turns = 0
+    lin_cheongpung_turns = 0
+    lin_atk_buff_turns = 0
+    lin_cd_buff_turns = 0
+    
     # Universal Attribute (속성) Stack
     attr_stack = 0
+    c_attr = cdata.get("속성", "별")
+    if c_attr == "혼돈": attr_stack_name = "격동"
+    elif c_attr == "달": attr_stack_name = "냉각"
+    elif c_attr == "질서": attr_stack_name = "통찰"
+    elif c_attr == "태양": attr_stack_name = "점화"
+    else: attr_stack_name = "도약"
     # Rosaria Ignition (업화)
     is_rosaria = "로자리아" in cname
     ros_ign_stack = 0
@@ -192,6 +205,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     # Engine Environment Detection (Flexible matching for UI-sanitized names)
     # Normalize cname for robust detection (remove parentheses/hyphens)
     cname_norm = cname.replace("(", "").replace(")", "").replace("-", "")
+    is_lin = "린" in cname_norm
     is_yumina = "유미나" in cname_norm
     is_frey = "프레이" in cname_norm
     is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower() or force_moon_party
@@ -302,13 +316,29 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if "아세라" in cname and is_spec:
             # Assera: CD +6% per Special (max 5)
             p_stacks["assera_cd"] = min(5, p_stacks["assera_cd"] + 1)
-        if is_yumina:
-            # Yumina: ATK +4% per "Action/Hit" (simplified to per action for consistency, but user said hit)
-            # We'll use 1 stack per action here for now unless it's multi-hit.
-            p_stacks["yumina_atk"] = min(5, p_stacks["yumina_atk"] + 1)
-            
+        if is_lin:
+            leap_gain = 0
+            if is_basic:
+                leap_gain = 1
+            elif is_spec:
+                if lin_cheongpung_turns > 0:
+                    leap_gain = 3
+                else:
+                    lin_bright_moon_turns = 3 
+                    lin_atk_buff_turns = 3
+            elif is_ult:
+                if lin_bright_moon_turns <= 0:
+                    lin_cheongpung_turns = 3 
+                    lin_cd_buff_turns = 3
+            lin_leap_stack = min(5, lin_leap_stack + leap_gain)
+
+        if "샤를(바니걸)" in cname:
+            if is_ult:
+                charles_lucky_token_turns = 3
+                charles_atk_buff_turns = 2
+
         # Buff Application (Starts after Spec, so if it was set in PREVIOUS end-of-turn, it's active now)
-        cr_from_buff = 0.30 if (is_frey and frey_cr_turns > 0) else 0.0
+        cr_from_buff = 0.0
             
         # Stacking logic for specialized Journeys
         if any(j.name == "키라만큼 귀여워" for j in jrs): assassin_spd_stack = min(assassin_spd_stack + 1, 3)
@@ -316,13 +346,26 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if any(j.name == "깊은 애도" for j in jrs) and (is_basic or t.get("extra_coeff", 0) > 0):
             ra_cr_stack = min(ra_cr_stack + 1, 5)
 
+        # --- Common Buffs System (v4.0) ---
+        common_buffs = {
+            "atk": t.get("atk_buf", 0.0),
+            "def_red": max(t.get("def_red_buf", 0.0), 0.30 if smile_def_red_turns > 0 else 0.0),
+            "cr": t.get("cr_buf", 0.0),
+            "cd": t.get("cd_buf", 0.0)
+        }
+        
+        # Apply Charles/Lin specific Common ATK Buff
+        if charles_atk_buff_turns > 0 or (is_lin and lin_atk_buff_turns > 0):
+            common_buffs["atk"] = max(common_buffs["atk"], 0.30)
+
         # 0. Defense Calculation (v14.2)
         target_def_base = 3000.0
-        # Check for DEF Reduction (Smile's debuff or Journey)
-        current_def_red = 0.30 if smile_def_red_turns > 0 else 0.0
+        current_def_red = common_buffs["def_red"]
         
         # DEF Penetration (stat-based + dynamic buffer)
         def_pen_total = char.get_stat(StatType.DEF_PEN, []) + t.get("def_pen_buf", 0.0)
+        if charles_lucky_token_turns > 0:
+            def_pen_total += 0.20
             
         effective_def = target_def_base * (1.0 - current_def_red) * (1.0 - def_pen_total)
         def_multiplier = 1.0 - (effective_def / (effective_def + 3000.0))
@@ -332,7 +375,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         dyn_mods = []
         if assassin_spd_stack > 0: dyn_mods.append(Modifier(StatType.SPEED, assassin_spd_stack * 10, ModifierType.FLAT, "AssassinStack"))
         
-        final_spd = char.get_stat(StatType.SPEED, dyn_mods) * t.get("spd_mult", 1.0)
+        lin_spd_mult = 1.10 if (is_lin and lin_cheongpung_turns > 0) else 1.0
+        final_spd = char.get_stat(StatType.SPEED, dyn_mods) * t.get("spd_mult", 1.0) * lin_spd_mult        
         
         # Extra Attack (TN+) / Extra Turn (TN+1) Logic
         if not t.get("is_extra_attack", False):
@@ -358,8 +402,17 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if is_yumina: 
             y_atk_rate = 0.02 if y_is_1lv else 0.04
             dyn_atk_p_sum += p_stacks["yumina_atk"] * y_atk_rate
+            
+        if is_lin:
+            # Leap ATK Stack
+            l_atk_rate = 0.02 if y_is_1lv else 0.04
+            dyn_atk_p_sum += lin_leap_stack * l_atk_rate
+            # Bright Moon (명월) ATK +20%
+            if lin_bright_moon_turns > 0:
+                dyn_atk_p_sum += 0.20
         
         # Collect DI and Buffs from turn data
+        dyn_atk_p_sum += common_buffs["atk"]
         for k, v in t.items():
             if k.endswith("_di"): m_di += v
             if k.endswith("_atk_p"): dyn_atk_p_sum += v
@@ -399,13 +452,22 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         eff_atk = eff_base * (1.0 + dyn_atk_p_sum) + resonance_val
         
         # Final Crit/CD Calculation including Passives (v15.0)
-        final_cr = char.get_stat(StatType.CRIT_RATE, []) + t.get("cr_buf", 0) + cr_from_buff
+        if is_frey and frey_cr_turns > 0:
+            common_buffs["cr"] = max(common_buffs["cr"], 0.30)
+            
+        final_cr = char.get_stat(StatType.CRIT_RATE, []) + common_buffs["cr"]
         if "클레어(바니걸)" in cname: final_cr += p_stacks["claire_cr"] * 0.10
         if any(j.name == "깊은 애도" for j in jrs): final_cr += ra_cr_stack * 0.05
         
-        final_cd = char.get_stat(StatType.CRIT_DAMAGE, []) + t.get("cd_buf", 0) + caster_cd_stack * 0.10
+        final_cd = char.get_stat(StatType.CRIT_DAMAGE, []) + common_buffs["cd"] + caster_cd_stack * 0.10
         if "아세라" in cname: final_cd += p_stacks["assera_cd"] * 0.06
         
+        if is_lin:
+            if lin_cd_buff_turns > 0:
+                final_cd += 0.30
+            if is_ult and lin_bright_moon_turns > 0:
+                final_cd += 0.50 # S3 Bright Moon ST conversion bonus
+                
         eff_cr = min(1.0, final_cr)
         eff_cd = final_cd
         
@@ -483,6 +545,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         
         # Buff/Debuff decrement
         smile_def_red_turns = max(0, smile_def_red_turns - 1)
+        if is_lin:
+            lin_bright_moon_turns = max(0, lin_bright_moon_turns - 1)
+            lin_cheongpung_turns = max(0, lin_cheongpung_turns - 1)
+            lin_atk_buff_turns = max(0, lin_atk_buff_turns - 1)
+            lin_cd_buff_turns = max(0, lin_cd_buff_turns - 1)
+            
+        charles_lucky_token_turns = max(0, charles_lucky_token_turns - 1)
+        charles_atk_buff_turns = max(0, charles_atk_buff_turns - 1)
+            
         if t.get("note"):
             if "행게+30%" in t["note"]: ga_red_carry += 0.30
             if "행게+50%" in t["note"]: ga_red_carry += 0.50
