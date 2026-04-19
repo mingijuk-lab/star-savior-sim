@@ -57,6 +57,7 @@ def parse_character_section(section: str) -> dict:
         p_clean = p.replace(' ', '').lower()
         
         if '달속성파티' in p: badges.append('moon')
+        if '별속성파티' in p: badges.append('star')
         if '바니걸' in p: badges.append('bunny')
         if '1lv' in p_clean: 
             badges.append('passive')
@@ -239,7 +240,8 @@ TRANSLATIONS = {
             "noult": {"cls":"badge-noult", "label":"궁극기 미사용"},
             "boss": {"cls":"badge-boss", "label":"보스 1인"},
             "normal": {"cls":"badge-normal", "label":"일반 3인"},
-            "gauntlet": {"cls":"badge-gauntlet", "label":"건틀릿 4인"}
+            "gauntlet": {"cls":"badge-gauntlet", "label":"건틀릿 4인"},
+            "star": {"cls":"badge-moon", "label":"별속성 파티"}
         },
         "lang_name": "EN English",
         "lang_link": "index_en.html"
@@ -293,7 +295,8 @@ TRANSLATIONS = {
             "noult": {"cls":"badge-noult", "label":"No Ult"},
             "boss": {"cls":"badge-boss", "label":"Boss (S)"},
             "normal": {"cls":"badge-normal", "label":"General (T)"},
-            "gauntlet": {"cls":"badge-gauntlet", "label":"Gauntlet (Q)"}
+            "gauntlet": {"cls":"badge-gauntlet", "label":"Gauntlet (Q)"},
+            "star": {"cls":"badge-moon", "label":"Star Team"}
         },
         "lang_name": "KO 한국어",
         "lang_link": "index.html"
@@ -348,6 +351,7 @@ DATA_TRANSLATIONS = {
         },
         "misc": {
             "달속성파티": "Moon Team",
+            "별속성파티": "Star Team",
             "바니걸": "Bunny Girl",
             "궁극기미사용": "No Ult",
             "궁극기 미사용 (AX특화)": "No Ult (AX Spec)",
@@ -966,6 +970,7 @@ function buildCharTree() {
     let spec = isEn ? 'Standard' : 'Standard'; // Just a placeholder, we use mapping below
     
     if (raw.includes('달속성파티')) spec = isEn ? 'Moon Team' : '달속성 파티';
+    else if (raw.includes('별속성파티')) spec = isEn ? 'Star Team' : '별속성 파티';
     else if (raw.includes('바니걸')) spec = isEn ? 'Bunny Girl' : '바니걸';
     else if (raw.includes('궁극기미사용')) spec = isEn ? 'No Ult (AX Spec)' : '궁극기 미사용 (AX특화)';
     else spec = isEn ? 'Standard' : '일반';
@@ -1251,7 +1256,8 @@ async def run_simulation(e):
         
         # Detect Moon Party environment explicitly from UI
         current_spec = document.getElementById('simSpec').value
-        force_moon_party = (current_spec == '달속성 파티')
+        force_moon_party = (current_spec == '달속성 파티' or current_spec == 'Moon Team')
+        force_star_party = (current_spec == '별속성 파티' or current_spec == 'Star Team')
         
         for i, eq_name in enumerate(eq_names):
             if i % 2 == 0:
@@ -1264,12 +1270,12 @@ async def run_simulation(e):
                 calc_engine.JOURNEYS = calc_engine.setup_journeys()
                 calc_engine.BLESSINGS = calc_engine.setup_blessings()
 
-            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, (sim_turns <= 5), sim_vars, target_count, force_moon_party=force_moon_party, max_actions=sim_turns)
+            res = calc_engine.find_best_journeys(char_name, char_class, cdata, rdata, eq_name, 5, (sim_turns <= 5), sim_vars, target_count, force_moon_party=force_moon_party, force_star_party=force_star_party, max_actions=sim_turns)
             # Standard contains the best for that turn count
             std_jrs, std_bless, _, _, _ = res["standard"]
             
             # Re-run for the specific turn count to get correct final metrics (redundant but safe)
-            dps_final, total_final, _, _, std_max, std_stats = calc_engine.calculate_dps(char_name, cdata, rdata, eq_name, std_jrs, std_bless, sim_turns, False, target_count=target_count, force_moon_party=force_moon_party)
+            dps_final, total_final, _, _, std_max, std_stats = calc_engine.calculate_dps(char_name, cdata, rdata, eq_name, std_jrs, std_bless, sim_turns, False, target_count=target_count, force_moon_party=force_moon_party, force_star_party=force_star_party)
             std_val = dps_final
             
             best_results.append((eq_name, std_bless, std_val, std_max, std_jrs, std_stats))
