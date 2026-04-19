@@ -88,7 +88,7 @@ def setup_blessings():
 
 BLESSINGS = setup_blessings()
 
-def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None, target_count=3, force_moon_party=False):
+def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, max_actions=15, force_no_ult=False, custom_equipments=None, target_count=3, force_moon_party=False, force_star_party=False):
     """
     Main simulation engine for damage calculation.
     Supports turns, hits, buffs, and dynamic passive stacking.
@@ -180,6 +180,10 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     lydia_atk_stack = 0     # Lydia's Passive (6% x 5)
     yumina_atk_stack = 0    # Yumina's Passive (4% x 5)
     bleeding_dots = []
+    # Omega (오메가) States
+    omega_leap = 0
+    omega_star = 0
+    omega_atk_buff_turns = 0
     
     # Lin (린) States
     lin_leap_stack = 0
@@ -209,6 +213,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
     is_yumina = "유미나" in cname_norm
     is_frey = "프레이" in cname_norm
     is_moon_party = "달속성파티" in cname_norm or "moon" in cname.lower() or force_moon_party
+    is_omega = "오메가" in cname_norm
+    is_star_party = "별속성파티" in cname_norm or "star" in cname.lower() or force_star_party
     
     # Debug trace removed — was printing on every calculate_dps call (tens of thousands during meta-sweep)
 
@@ -278,6 +284,20 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # Claire: 5 stacks trigger Extra Attack (handled by JSON, engine resets here)
         if (is_frey or "클레어" in cname) and attr_stack >= 5:
             attr_stack = 0
+            
+        # Omega: Turn-start Leap-to-Star transition
+        if is_omega:
+            # Star Party: +3 Leap gain per round (ally hits)
+            if is_star_party:
+                omega_leap = min(5, omega_leap + 3)
+            
+            # Transition Leap to Star if maxed
+            if omega_leap >= 5 and omega_star < 3:
+                omega_leap = 0
+                omega_star = min(3, omega_star + 1)
+            elif omega_leap >= 5 and omega_star >= 3:
+                # If Star is maxed, Leap is NOT consumed
+                pass
         
         # Rosaria Specific Logic
         rosaria_extra_basic = False
@@ -301,6 +321,16 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
                 m_di += ign_di
                 # Ult gain is handled after eff_cr calculation below
                 pass
+        
+        # Omega: Skill-based Leap gain
+        if is_omega:
+            if is_basic:
+                omega_leap = min(5, omega_leap + 1)
+            elif is_spec:
+                omega_leap = min(5, omega_leap + 1)
+            elif is_ult:
+                omega_leap = min(5, omega_leap + 3)
+                omega_atk_buff_turns = 2
         
         # Trigger Passives (v15.0 Dynamic Triggers)
         
@@ -354,7 +384,7 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         }
         
         # Apply Charles/Lin specific Common ATK Buff
-        if charles_atk_buff_turns > 0 or (is_lin and lin_atk_buff_turns > 0):
+        if charles_atk_buff_turns > 0 or (is_lin and lin_atk_buff_turns > 0) or (is_omega and omega_atk_buff_turns > 0):
             common_buffs["atk"] = max(common_buffs["atk"], 0.30)
 
         # 0. Defense Calculation (v14.2)
@@ -375,7 +405,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         if assassin_spd_stack > 0: dyn_mods.append(Modifier(StatType.SPEED, assassin_spd_stack * 10, ModifierType.FLAT, "AssassinStack"))
         
         lin_spd_mult = 1.10 if (is_lin and lin_cheongpung_turns > 0) else 1.0
-        final_spd = char.get_stat(StatType.SPEED, dyn_mods) * t.get("spd_mult", 1.0) * lin_spd_mult        
+        omega_spd_mult = 1.0 + (omega_star * 0.05) if is_omega else 1.0
+        final_spd = char.get_stat(StatType.SPEED, dyn_mods) * t.get("spd_mult", 1.0) * lin_spd_mult * omega_spd_mult
         
         # Extra Attack (TN+) / Extra Turn (TN+1) Logic
         if not t.get("is_extra_attack", False):
@@ -484,7 +515,15 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
         # 4. Crit Calculation (OLD - to be replaced by final_cr/final_cd)
         cr_i = eff_cr
         cd_i = eff_cd
-        
+
+        # Omega: Mega Punch dynamic hits and DI
+        if is_omega and is_spec:
+            # 0 stacks: x1, 1: x2, 2: x3, 3: x3 (and +10% DI)
+            star_hits = {0: 1, 1: 2, 2: 3, 3: 3}
+            coeff = coeff * star_hits.get(omega_star, 1)
+            if omega_star >= 3:
+                m_di += 0.10
+
         omega_boost = (omega_dmg_stack * 0.05) if (is_spec or t.get("omega_elig", False)) else 0.0
         total_di = t.get("di", 0) + m_di + omega_boost + fx_carry
         if "샤를(바니걸)" in cname and is_ult:
@@ -557,6 +596,8 @@ def calculate_dps(cname, cdata, rdata, eq_name, jr_names, blessing_name=None, ma
             
         charles_lucky_token_turns = max(0, charles_lucky_token_turns - 1)
         charles_atk_buff_turns = max(0, charles_atk_buff_turns - 1)
+        if is_omega:
+            omega_atk_buff_turns = max(0, omega_atk_buff_turns - 1)
             
         if t.get("note"):
             if "행게+30%" in t["note"]: ga_red_carry += 0.30
@@ -622,7 +663,7 @@ def get_valid_journeys(char_name, char_class):
             continue
     return valid
 
-def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3, force_moon_party=False, max_actions=15):
+def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_total_dmg=False, substat_vars=None, target_count=3, force_moon_party=False, force_star_party=False, max_actions=15):
     valid_names = get_valid_journeys(char_name, char_class)
     
     # Temporarily override EQUIPMENTS if substat_vars provided
@@ -654,13 +695,13 @@ def find_best_journeys(char_name, char_class, cdata, rdata, eq_name, n=5, use_to
     for b_name in available_blessings:
         for combo in combos:
             # Test Standard
-            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            dps_s, total_s, _, _, max_h_s, stats_s = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, False, local_eqs, target_count=target_count, force_moon_party=force_moon_party, force_star_party=force_star_party)
             target_s = total_s if (use_total_dmg or max_actions <= 5) else dps_s
             if target_s > max_val_std:
                 max_val_std, best_combo_std, best_bless_std, max_hit_std, best_stats_std = target_s, list(combo), b_name, max_h_s, stats_s
             
             # Test No-Ult
-            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party)
+            dps_n, total_n, _, _, max_h_n, stats_n = calculate_dps(char_name, cdata, rdata, eq_name, list(combo), b_name, max_actions, True, local_eqs, target_count=target_count, force_moon_party=force_moon_party, force_star_party=force_star_party)
             target_n = total_n if (use_total_dmg or max_actions <= 5) else dps_n
             if target_n > max_val_nu:
                 max_val_nu, best_combo_nu, best_bless_nu, max_hit_nu, best_stats_nu = target_n, list(combo), b_name, max_h_n, stats_n
